@@ -11,8 +11,10 @@ define("MEDIA_PATH", "public/assets/articles_media/article_");
 
 require_once("./controllers/Tools.controller.php");
 require_once("./controllers/Main.controller.php");
+require_once("./controllers/Home.controller.php");
 
 $mainController = new MainController();
+$homeController = new HomeController();
 
 try {
     if (!isset($_GET['page'])) {
@@ -45,39 +47,49 @@ try {
                 }
                 break;
 
-            // case "characters":
-            //     if (!Tools::isConnected()) {
-            //         Tools::showAlert("Vous devez vous connecter pour accéder à cet espace.", "alert-danger");
-            //         header('Location: ' . URL . 'home');
-            //     } else {
-            //         require_once("./indexComponents/characters.index.php");
-            //     }
-            //     break;
-            // case "hangman":
-            //     if (!Tools::isConnected()) {
-            //         Tools::showAlert("Vous devez vous connecter pour accéder à cet espace.", "alert-danger");
-            //         header('Location: ' . URL . 'home');
-            //     } else {
-            //         require_once("./indexComponents/hangman.index.php");
-            //     }
-            //     break;
+            case "admin":
+                if (!Tools::isConnected()) {
+                    Tools::showAlert("Vous devez vous connecter pour accéder à cet espace.", "alert-danger");
+                    header('Location: ' . URL . 'connection');
+                } else {
+                    switch ($url[1]) {
+                         
+
+                        case "logout":
+                            $mainController->logout();
+                            break;
+
+                        case "sliders_page":
+                            $homeController->slidersPage();
+                            break;
+
+
+
+
+
+
+
+
+                        default:
+                            throw new Exception("La page demandée n'existe pas...");
+                    }
+                }
+                break;
 
 
                 // Les apis
 
-            // case "api_characters_rpg":
-            //     $charactersController->sendCharacters();
-            //     break;
-            // case "api_hangman_words":
-            //     $hangmanController->sendHangmanWords();
-            //     break;
-            // case "api_blog_articles":
-            //     $blogController->sendAllArticles();
-            //     break;
+                // case "api_characters_rpg":
+                //     $charactersController->sendCharacters();
+                //     break;
+                // case "api_hangman_words":
+                //     $hangmanController->sendHangmanWords();
+                //     break;
+                // case "api_blog_articles":
+                //     $blogController->sendAllArticles();
+                //     break;
 
-            case "logout":
-                $mainController->logout();
-                break;
+
 
             default:
                 throw new Exception("La page demandée n'existe pas...");
