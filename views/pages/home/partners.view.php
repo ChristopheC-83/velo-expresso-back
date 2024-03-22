@@ -1,0 +1,1 @@
+<h1>Les Partenaires</h1>

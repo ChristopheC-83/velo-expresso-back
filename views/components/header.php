@@ -14,7 +14,7 @@
                 <h3 class="w-100 text-black text-center m-0">Accueil</h3>
                 <div class=" w-100 d-flex flex-wrap justify-content-center">
                     <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/sliders_page" class="text-light text-decoration-none">Slider</a>
+                        <a href="<?= URL ?>admin/sliders_page" class="text-light text-decoration-none">Sliders</a>
                     </button>
                     <button class="btn btn-secondary btn-lg text-light m-1">
                         <a href="<?= URL ?>admin/frames_page" class="text-light text-decoration-none">Cadres</a>

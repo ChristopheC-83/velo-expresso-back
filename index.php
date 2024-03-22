@@ -27,9 +27,7 @@ try {
 
 
 
-            case "accueil":
-                echo "coucou";
-                break;
+            
 
             case "home":
                 $mainController->homePage();
@@ -61,6 +59,15 @@ try {
 
                         case "sliders_page":
                             $homeController->slidersPage();
+                            break;
+                        case "frames_page":
+                            $homeController->framesPage();
+                            break;
+                        case "partners_page":
+                            $homeController->partnersPage();
+                            break;
+                        case "opinions_page":
+                            $homeController->opinionsPage();
                             break;
 
 
