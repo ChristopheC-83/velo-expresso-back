@@ -15,7 +15,7 @@ class HomeController extends MainController
     public function __construct()
     {
         $this->functions = new Functions();
-        // $this->homeManager = new HomeManager();  à mettre en place
+        $this->homeManager = new HomeManager();  
     }
 
 

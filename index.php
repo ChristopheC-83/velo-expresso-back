@@ -81,13 +81,18 @@ try {
                         case "features_page":
                             $bikesController->featuresPage();
                             break;
+
                         case "bikes_page":
                             $bikesController->bikesPage();
                             break;
+
+
                         // Gestion page de l'atelier
                         case "workshop_page":
                             $workshopController->workshopPage();
                             break;
+
+                            
                         // Gestion page de la location 
                         case "rental_page":
                             $rentalController->rentalPage();

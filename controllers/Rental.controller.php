@@ -13,7 +13,7 @@ class RentalController extends MainController
     public function __construct()
     {
         $this->functions = new Functions();
-        // $this->homeManager = new RentalManager(); à mettre en place
+        $this->rentalManager = new RentalManager(); 
     }
 
     public function  rentalPage()

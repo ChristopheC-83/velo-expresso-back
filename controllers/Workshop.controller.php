@@ -13,7 +13,7 @@ class WorkshopController extends MainController
     public function __construct()
     {
         $this->functions = new Functions();
-        // $this->workshopManager = new WorkshopManager(); à mettre en place
+        $this->workshopManager = new WorkshopManager(); 
     }
 
     public function  workshopPage()

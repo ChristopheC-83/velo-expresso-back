@@ -9,11 +9,11 @@ class BikesController extends MainController
 {
 
     private $functions;
-    private $homeManager;
+    private $bikesManager;
     public function __construct()
     {
         $this->functions = new Functions();
-        // $this->bikesManager = new BikesManager(); à mettre en place
+        $this->bikesManager = new BikesManager();
     }
 
     public function  featuresPage()
