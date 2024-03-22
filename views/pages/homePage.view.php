@@ -22,21 +22,7 @@
             </div>
 
         <?php else : ?>
-            <div class="d-flex">
-
-                <div class="my-2 w-100 h-100 p-1 p-sm-2 p-md-3">
-                    <h2 class="text-center mb-2"><u>Notice :</u></h2>
-                    <h3><u>Accueil:</u></h3>
-                    <h3><u>Location:</u></h3>
-                    <h3><u>Atelier:</u></h3>
-                    <h3><u>Vélos:</u></h3>
-
-
-
-                </div>
-
-            </div>
-
+            <?php require_once("views/components/notices/notices.php")   ?>
         <?php endif ?>
 
         <!-- <?php Tools::showArray($_SESSION) ?> -->
