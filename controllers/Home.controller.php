@@ -15,7 +15,7 @@ class HomeController extends MainController
     public function __construct()
     {
         $this->functions = new Functions();
-        $this->homeManager = new MainManager();
+        // $this->homeManager = new HomeManager();  à mettre en place
     }
 
 
@@ -40,8 +40,8 @@ class HomeController extends MainController
     public function  partnersPage()
     {
         $data_page = [
-            "page_description" => "Page des sliders",
-            "page_title" => "VE | Sliders",
+            "page_description" => "Page des partenaires",
+            "page_title" => "VE | Partenaires",
             "view" => "./views/pages/home/partners.view.php",
             "template" => "./views/common/template.php",
         ];
@@ -50,8 +50,8 @@ class HomeController extends MainController
     public function  opinionsPage()
     {
         $data_page = [
-            "page_description" => "Page des sliders",
-            "page_title" => "VE | Sliders",
+            "page_description" => "Page des Avis",
+            "page_title" => "VE | Avis",
             "view" => "./views/pages/home/opinions.view.php",
             "template" => "./views/common/template.php",
         ];
@@ -60,8 +60,8 @@ class HomeController extends MainController
     public function  framesPage()
     {
         $data_page = [
-            "page_description" => "Page des sliders",
-            "page_title" => "VE | Sliders",
+            "page_description" => "Page des cadres",
+            "page_title" => "VE | Cadres",
             "view" => "./views/pages/home/frames.view.php",
             "template" => "./views/common/template.php",
         ];

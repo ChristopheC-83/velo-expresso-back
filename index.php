@@ -12,9 +12,15 @@ define("MEDIA_PATH", "public/assets/articles_media/article_");
 require_once("./controllers/Tools.controller.php");
 require_once("./controllers/Main.controller.php");
 require_once("./controllers/Home.controller.php");
+require_once("./controllers/Bikes.controller.php");
+require_once("./controllers/Rental.controller.php");
+require_once("./controllers/Workshop.controller.php");
 
 $mainController = new MainController();
 $homeController = new HomeController();
+$bikesController = new BikesController();
+$workshopController = new WorkshopController();
+$rentalController = new RentalController();
 
 try {
     if (!isset($_GET['page'])) {
@@ -27,7 +33,7 @@ try {
 
 
 
-            
+
 
             case "home":
                 $mainController->homePage();
@@ -51,12 +57,13 @@ try {
                     header('Location: ' . URL . 'connection');
                 } else {
                     switch ($url[1]) {
-                         
+
 
                         case "logout":
                             $mainController->logout();
                             break;
 
+                        // Gestion page d'accueil
                         case "sliders_page":
                             $homeController->slidersPage();
                             break;
@@ -68,6 +75,22 @@ try {
                             break;
                         case "opinions_page":
                             $homeController->opinionsPage();
+                            break;
+
+                        // Gestion page des vélos
+                        case "features_page":
+                            $bikesController->featuresPage();
+                            break;
+                        case "bikes_page":
+                            $bikesController->bikesPage();
+                            break;
+                        // Gestion page de l'atelier
+                        case "workshop_page":
+                            $workshopController->workshopPage();
+                            break;
+                        // Gestion page de la location 
+                        case "rental_page":
+                            $rentalController->rentalPage();
                             break;
 
 
