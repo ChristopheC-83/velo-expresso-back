@@ -1,4 +1,4 @@
-<h1 class="text-center my-4"><u>Gestion de : <?= $category['cat_name'] ?></u></h1>
+<h1 class="text-center my-4"><u>Gestion de : <span class="text-capitalize"><?= $category['cat_name'] ?></span></u></h1>
 
 <div class="container">
     <!-- <?= Tools::showArray($category)  ?>

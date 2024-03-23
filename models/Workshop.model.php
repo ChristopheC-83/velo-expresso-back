@@ -117,7 +117,7 @@ class WorkshopManager extends MainManager
 
     public function  getTasksByCategory($task_category)
     {
-        $req = "SELECT * FROM workshop WHERE task_category = :task_category";
+        $req = "SELECT * FROM workshop WHERE task_category = :task_category ORDER BY task_position";
         $stmt = $this->getDB()->prepare($req);
         $stmt->bindValue(":task_category", $task_category, PDO::PARAM_STR);
         $stmt->execute();

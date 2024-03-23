@@ -129,7 +129,7 @@ class WorkshopController extends MainController
         $task_category = $this->workshopManager->getTaskById($id)['task_category'];
         $old_name = $this->workshopManager->getTaskById($id)['task_name'];
 
-        if (!$this->workshopManager->isTaskByNameFree($new_name) && $$new_name != $old_name) {
+        if (!$this->workshopManager->isTaskByNameFree($new_name) && $new_name !== $old_name) {
             Tools::showAlert("La nom est déjà pris", "alert-danger");
             header('Location: ' . URL . 'admin/workshop/' . $task_category);
             return;
