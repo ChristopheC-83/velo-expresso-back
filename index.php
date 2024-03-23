@@ -87,14 +87,14 @@ try {
                             break;
 
 
-                            // Gestion page de l'atelier
+                            // Gestion des catégories de l'atelier
                         case "workshop_page":
                             $workshopController->workshopPage();
                             break;
 
                         case "send_new_category":
                             $new_position = Tools::secureHTML($_POST['new_position']);
-                            $new_category = Tools::secureHTML($_POST['new_category']);
+                            $new_category = strtolower(Tools::secureHTML($_POST['new_category']));
                             if (empty($new_position) || empty($new_category)) {
                                 Tools::showAlert("Il faut remplir les 2 champs !", "alert-danger");
                                 header('Location: ' . URL . 'admin/workshop_page');
@@ -107,6 +107,25 @@ try {
                             $workshopController->deleteCategory($_POST['id']);
                             break;
 
+                        case "modify_category":
+                            $id = $_POST['id'];
+                            $new_position = Tools::secureHTML($_POST['new_cat_position']);
+                            $new_category = strtolower(Tools::secureHTML($_POST['new_cat_name']));
+                            if (empty($new_position) || empty($new_category)) {
+                                Tools::showAlert("Il faut remplir les 2 champs !", "alert-danger");
+                                header('Location: ' . URL . 'admin/workshop_page');
+                            } else {
+                                $workshopController->modifyCategory($id, $new_category, $new_position);
+                            }
+                            break;
+
+                            // gestion des taches de l'atelier
+                            case "workshop":
+                                echo($url[2]);
+
+
+
+                                break;
 
 
                             // Gestion page de la location 

@@ -23,7 +23,7 @@ class WorkshopController extends MainController
         $data_page = [
             "page_description" => "Page de l'atelier",
             "page_title" => "VE | Atelier",
-            "view" => "./views/pages/workshop.view.php",
+            "view" => "./views/pages/workshop/categories.view.php",
             "template" => "./views/common/template.php",
             "categories" => $categories
         ];
@@ -47,6 +47,20 @@ class WorkshopController extends MainController
             Tools::showAlert("La catégorie a bien été ajoutée", "alert-success");
         } else {
             Tools::showAlert("La catégorie n'a pas été ajoutée", "alert-danger");
+        }
+        header('Location: ' . URL . 'admin/workshop_page');
+    }
+    public function modifyCategory($id,$new_category, $new_position)
+    {
+            if (!$this->workshopManager->isPositionFree($new_position)) {
+            Tools::showAlert("La position est déjà prise", "alert-danger");
+            header('Location: ' . URL . 'admin/workshop_page');
+            return;
+        }
+        if ($this->workshopManager->updateCategory($id, $new_category, $new_position)) {
+            Tools::showAlert("La catégorie a bien été modifiée", "alert-success");
+        } else {
+            Tools::showAlert("La catégorie n'a pas été modifiée", "alert-danger");
         }
         header('Location: ' . URL . 'admin/workshop_page');
     }
