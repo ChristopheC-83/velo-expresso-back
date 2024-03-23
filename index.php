@@ -133,7 +133,27 @@ try {
                                 $workshopController->sendNewTask($task_category, $task_name, $task_position, $task_price);
                             }
                             break;
+                        case "delete_task":
+                            $workshopController->deleteTask($_POST['id'], $_POST['task_category']);
+                            break;
+                        case "modify_task":
+                            Tools::showArray($_POST);
+                            $id = $_POST['id'];
+                            $task_category = $_POST['task_category'];
+                            $new_name = Tools::secureHTML($_POST['new_task_name']);
+                            $new_position = Tools::secureHTML($_POST['new_task_position']);
+                            $new_price = strtolower(Tools::secureHTML($_POST['new_task_price']));
+                            if (empty($new_position) || empty($new_name) || empty($new_price)) {
+                                Tools::showAlert("Il faut remplir les 3 champs !", "alert-danger");
+                                header('Location: ' . URL . 'admin/workshop/'.$task_category);
+                            } else {
+                                $workshopController->modifyTask($id,$new_name, $new_position, $new_price);
+                            }
+                            break;
 
+                            case "show_all_tasks":
+                                $workshopController->showAllTasks();
+                                break;
 
                             // Gestion page de la location 
                         case "rental_page":

@@ -10,7 +10,7 @@
     <?php foreach ($categories as $category) : ?>
         <?php if (empty($_POST['id']) || $_POST['id'] != $category['cat_id']) : ?>
             <div class="row w-100 border p-2">
-                <div class="col-5 text-capitalize"><a href="<?=URL?>admin/workshop/<?= $category['cat_name'] ?>"><?= $category['cat_name'] ?></a></div>
+                <div class="col-5 text-capitalize"><a href="<?= URL ?>admin/workshop/<?= $category['cat_name'] ?>"><?= $category['cat_name'] ?></a></div>
                 <div class="col-3 text-center"><?= $category['cat_position'] ?></div>
                 <div class="col-2 text-center text-secondary">
                     <form method="POST" action="">
@@ -19,15 +19,16 @@
                     </form>
                 </div>
                 <div class="col-2 text-center">
-                    <form action="<?=URL?>admin/delete_category" method="POST" onSubmit="return confirm('On confirme la suppression ?')">
+                    <form action="<?= URL ?>admin/delete_category" method="POST" onSubmit="return confirm('On confirme la suppression ?')">
                         <input type="hidden" name="id" value=<?= $category['cat_id'] ?>>
                         <button class="btn" type="submit"><i class="fa-solid fa-trash-can  text-danger"></i></button>
                     </form>
                 </div>
             </div>
         <?php else :  ?>
-            <form method="POST" action="<?=URL?>admin/modify_category">
+            <form method="POST" action="<?= URL ?>admin/modify_category">
                 <div class="row w-100 border p-2">
+                    <input type="hidden" name="id" value=<?= $category['cat_id'] ?>>
                     <div class="col-5">
                         <input type="text" value="<?= $category['cat_name'] ?>" name="new_cat_name">
                     </div>
@@ -35,7 +36,6 @@
                         <input type="number" name="new_cat_position" value="<?= $category['cat_position'] ?>">
                     </div>
                     <div class="col-4 text-center text-secondary">
-                        <input type="hidden" name="id" value=<?= $category['cat_id'] ?>>
                         <button class="btn btn-warning" type="submit">valider la modification</button>
                     </div>
                 </div>

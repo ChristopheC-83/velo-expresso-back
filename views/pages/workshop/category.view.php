@@ -11,7 +11,7 @@
         <div class="col-2 text-center">Supp.</div>
     </div>
     <?php foreach ($tasks as $task) : ?>
-        <!-- <?php if (empty($_POST['id']) || $_POST['id'] != $task['task_id']) : ?> -->
+        <?php if (empty($_POST['id']) || $_POST['id'] != $task['task_id']) : ?>
             <div class="row w-100 border p-2">
                 <div class="col-4 text-capitalize"><?= $task['task_name'] ?></div>
                 <div class="col-2 text-center"><?= $task['task_position'] ?></div>
@@ -24,27 +24,32 @@
                 </div>
                 <div class="col-2 text-center">
                     <form action="<?= URL ?>admin/delete_task" method="POST" onSubmit="return confirm('On confirme la suppression ?')">
+                        <input type="hidden" name="task_category" value=<?= $task['task_category'] ?>>
                         <input type="hidden" name="id" value=<?= $task['task_id'] ?>>
                         <button class="btn" type="submit"><i class="fa-solid fa-trash-can  text-danger"></i></button>
                     </form>
                 </div>
             </div>
-            <!-- <?php else :  ?>  -->
-            <!-- <form method="POST" action="<?= URL ?>admin/modify_category">
+            <?php else :  ?> 
+            <form method="POST" action="<?= URL ?>admin/modify_task">
                 <div class="row w-100 border p-2">
-                    <div class="col-5">
-                        <input type="text" value="<?= $category['cat_name'] ?>" name="new_cat_name">
+                    <input type="hidden" name="task_category" value=<?= $task['task_category'] ?>>
+                    <input type="hidden" name="id" value=<?= $task['task_id'] ?>>
+                    <div class="col-4">
+                        <input type="text" value="<?= $task['task_name'] ?>" name="new_task_name">
                     </div>
-                    <div class="col-3 text-center">
-                        <input type="number" name="new_cat_position" value="<?= $category['cat_position'] ?>">
+                    <div class="col-2 text-center">
+                        <input type="number" name="new_task_position" value="<?= $task['task_position']?>">
+                    </div>
+                    <div class="col-2 text-center">
+                        <input type="number" name="new_task_price" value="<?= $task['task_price'] ?>">
                     </div>
                     <div class="col-4 text-center text-secondary">
-                        <input type="hidden" name="id" value=<?= $category['cat_id'] ?>>
                         <button class="btn btn-warning" type="submit">valider la modification</button>
                     </div>
                 </div>
-            </form> -->
-            <!-- <?php endif ?> -->
+            </form>
+            <?php endif ?>
         <?php endforeach; ?>
 
 </div>

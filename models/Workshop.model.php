@@ -90,6 +90,16 @@ class WorkshopManager extends MainManager
 
     //  les taches
 
+
+    public function getAllTasks(){
+        $req = "SELECT * FROM workshop ORDER BY task_position";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->execute();
+        $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $tasks;
+    }
+
     public function createNewTask($task_category, $task_name, $task_position, $task_price)
     {
 
@@ -128,5 +138,58 @@ class WorkshopManager extends MainManager
     public function isTaskByNameFree($task_name)
     {
         return (empty($this->getTaskByName($task_name)));
+    }
+    public function deleteTaskFromDB($task_id)
+    {
+        $req = "DELETE FROM workshop WHERE task_id = :task_id";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":task_id", $task_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate;
+    }
+
+    public function getTaskById($id)
+    {
+        $req = "SELECT * FROM workshop WHERE task_id = :id";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $task = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $task;
+    }
+
+    public function getTaskByPosition($task_position, $task_category){ 
+        $req = "SELECT * FROM workshop WHERE task_position = :task_position AND task_category = :task_category";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":task_position", $task_position, PDO::PARAM_INT);
+        $stmt->bindValue(":task_category", $task_category, PDO::PARAM_STR);
+        $stmt->execute();
+        $task = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $task;
+    }
+
+    public function isPositionTaskFree($id, $task_category)
+    {
+        return (empty($this->getTaskByPosition($id, $task_category)));
+    }
+
+
+
+    public function  updateTask($id, $new_name, $new_position, $new_price)
+    {
+        $req = "UPDATE workshop SET task_name = :new_name, task_position = :new_position, task_price = :new_price WHERE task_id = :id";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":new_name", $new_name, PDO::PARAM_STR);
+        $stmt->bindValue(":new_position", $new_position, PDO::PARAM_INT);
+        $stmt->bindValue(":new_price", $new_price, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate;
     }
 }
