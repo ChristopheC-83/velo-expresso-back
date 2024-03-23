@@ -42,7 +42,6 @@
             </form>
         <?php endif ?>
     <?php endforeach; ?>
-
 </div>
 
 
@@ -52,7 +51,7 @@
         <div class=" col-11 col-sm-10 col-lg-8 mx-auto">
             <form action="<?= URL ?>admin/send_new_category" method="POST" class="row">
                 <input type="text" class="col-7 text-primary fs-5  rounded" id="new_category" name="new_category" placeholder="Ajout d'une Catégorie">
-                <input type="number" class="col-3 text-primary fs-5 rounded" id="new_position" name="new_position" placeholder="sa position">
+                <input type="number" class="col-3 text-primary fs-5 rounded mx-2 " id="new_position" name="new_position" placeholder="sa position">
                 <button class="col-1 btn btn-light">
                     <h1>✅</h1>
                 </button>

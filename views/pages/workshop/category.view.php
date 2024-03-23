@@ -57,17 +57,17 @@
 <!-- ajout d'une tache dans la catégorie choisie -->
 <div class="container mt-5">
     <div class="row">
-        <div class=" col-11 col-sm-10 col-lg-8 mx-auto">
-            <form action="<?= URL ?>admin/send_new_task" method="POST" class="row">
+        <div class=" col-11 col-sm-10 col-lg-8 mx-auto ">
+            <form action="<?= URL ?>admin/send_new_task" method="POST" class="row ">
                 <input type="hidden" name="task_category" value="<?= $category['cat_name'] ?>">
 
 
                 <input type="text" class="col-5 text-primary fs-5  rounded" id="task_name" name="task_name" placeholder="Ajout d'une Tache">
 
 
-                <input type="number" class="col-3 text-primary fs-5 rounded" id="task_position" name="task_position" placeholder="sa position">
+                <input type="number" class="col-2 text-primary fs-5 rounded mx-3" id="task_position" name="task_position" placeholder="sa position">
 
-                <input type="number" class="col-3 text-primary fs-5 rounded" id="task_price	" name="task_price" placeholder="son prix">
+                <input type="number" class="col-2 text-primary fs-5 rounded" id="task_price	" name="task_price" placeholder="son prix">
 
                 <button class="col-1 btn btn-light">
                     <h1>✅</h1>

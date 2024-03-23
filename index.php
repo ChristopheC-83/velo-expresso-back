@@ -63,6 +63,11 @@ try {
                             $mainController->logout();
                             break;
 
+                            // Gestion page de la location et des routes associées dans le fichier 
+                        case "rental":
+                            require_once("indexComponents/rental.index.php");
+                            break;
+
                             // Gestion page d'accueil
                         case "sliders_page":
                             $homeController->slidersPage();
@@ -145,19 +150,20 @@ try {
                             $new_price = strtolower(Tools::secureHTML($_POST['new_task_price']));
                             if (empty($new_position) || empty($new_name) || empty($new_price)) {
                                 Tools::showAlert("Il faut remplir les 3 champs !", "alert-danger");
-                                header('Location: ' . URL . 'admin/workshop/'.$task_category);
+                                header('Location: ' . URL . 'admin/workshop/' . $task_category);
                             } else {
-                                $workshopController->modifyTask($id,$new_name, $new_position, $new_price);
+                                $workshopController->modifyTask($id, $new_name, $new_position, $new_price);
                             }
                             break;
 
-                            case "show_all_tasks":
-                                $workshopController->showAllTasks();
-                                break;
+                        case "show_all_tasks":
+                            $workshopController->showAllTasks();
+                            break;
 
-                            // Gestion page de la location 
-                        case "rental_page":
-                            $rentalController->rentalPage();
+
+
+                        case "send_new_rental":
+                            Tools::showArray($_POST);
                             break;
 
 
@@ -176,9 +182,9 @@ try {
 
                 // Les apis
 
-                case "api_workshop":
-                    $workshopController->sendCategoriesAndTasksWorkshop();
-                    break;
+            case "api_workshop":
+                $workshopController->sendCategoriesAndTasksWorkshop();
+                break;
                 // case "api_hangman_words":
                 //     $hangmanController->sendHangmanWords();
                 //     break;
