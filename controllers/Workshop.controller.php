@@ -18,7 +18,7 @@ class WorkshopController extends MainController
 
     public function  workshopPage()
     {
-        $categories =$this->workshopManager->getCategories();
+        $categories = $this->workshopManager->getCategories();
 
         $data_page = [
             "page_description" => "Page de l'atelier",
@@ -31,12 +31,25 @@ class WorkshopController extends MainController
     }
     public function sendNewCategory($new_category, $new_position)
     {
+
+        if (!$this->workshopManager->isCategoryNameFree($new_category)) {
+            Tools::showAlert("La catégorie existe déjà", "alert-danger");
+            header('Location: ' . URL . 'admin/workshop_page');
+            Tools::showArray($new_category);
+            return;
+        }
+
+        if (!$this->workshopManager->isPositionFree($new_position)) {
+            Tools::showAlert("La position est déjà prise", "alert-danger");
+            header('Location: ' . URL . 'admin/workshop_page');
+            return;
+        }
+
         if ($this->workshopManager->createNewCategory($new_category, $new_position)) {
             Tools::showAlert("La catégorie a bien été ajoutée", "alert-success");
-            header('Location: ' . URL . 'admin/workshop_page');
         } else {
             Tools::showAlert("La catégorie n'a pas été ajoutée", "alert-danger");
-            header('Location: ' . URL . 'admin/workshop_page');
         }
+        header('Location: ' . URL . 'admin/workshop_page');
     }
 }
