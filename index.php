@@ -91,6 +91,7 @@ try {
                         case "workshop_page":
                             $workshopController->workshopPage();
                             break;
+
                         case "send_new_category":
                             $new_position = Tools::secureHTML($_POST['new_position']);
                             $new_category = Tools::secureHTML($_POST['new_category']);
@@ -100,8 +101,12 @@ try {
                             } else {
                                 $workshopController->sendNewCategory($new_category, $new_position);
                             }
-
                             break;
+
+                        case "delete_category":
+                            $workshopController->deleteCategory($_POST['id']);
+                            break;
+
 
 
                             // Gestion page de la location 

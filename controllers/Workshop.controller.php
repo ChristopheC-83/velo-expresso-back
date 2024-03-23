@@ -38,17 +38,25 @@ class WorkshopController extends MainController
             Tools::showArray($new_category);
             return;
         }
-
         if (!$this->workshopManager->isPositionFree($new_position)) {
             Tools::showAlert("La position est déjà prise", "alert-danger");
             header('Location: ' . URL . 'admin/workshop_page');
             return;
         }
-
         if ($this->workshopManager->createNewCategory($new_category, $new_position)) {
             Tools::showAlert("La catégorie a bien été ajoutée", "alert-success");
         } else {
             Tools::showAlert("La catégorie n'a pas été ajoutée", "alert-danger");
+        }
+        header('Location: ' . URL . 'admin/workshop_page');
+    }
+
+    public function deleteCategory($cat_id)
+    {
+        if ($this->workshopManager->deleteCategoryFromDB($cat_id)) {
+            Tools::showAlert("La catégorie a bien été supprimée", "alert-success");
+        } else {
+            Tools::showAlert("La catégorie n'a pas été supprimée", "alert-danger");
         }
         header('Location: ' . URL . 'admin/workshop_page');
     }

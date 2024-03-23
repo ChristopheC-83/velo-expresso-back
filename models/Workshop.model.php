@@ -59,4 +59,15 @@ class WorkshopManager extends MainManager
     
     }
 
+    public function deleteCategoryFromDB($cat_id)
+    {
+        $req = "DELETE FROM workshop_categories WHERE cat_id = :cat_id";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":cat_id", $cat_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate;
+    }
+
 }
