@@ -63,7 +63,7 @@ try {
                             $mainController->logout();
                             break;
 
-                        // Gestion page d'accueil
+                            // Gestion page d'accueil
                         case "sliders_page":
                             $homeController->slidersPage();
                             break;
@@ -77,7 +77,7 @@ try {
                             $homeController->opinionsPage();
                             break;
 
-                        // Gestion page des vélos
+                            // Gestion page des vélos
                         case "features_page":
                             $bikesController->featuresPage();
                             break;
@@ -87,13 +87,24 @@ try {
                             break;
 
 
-                        // Gestion page de l'atelier
+                            // Gestion page de l'atelier
                         case "workshop_page":
                             $workshopController->workshopPage();
                             break;
+                        case "send_new_category":
+                            $new_position = Tools::secureHTML($_POST['new_position']);
+                            $new_category = Tools::secureHTML($_POST['new_category']);
+                            if (empty($new_position) || empty($new_category)) {
+                                Tools::showAlert("Il faut remplir les 2 champs !", "alert-danger");
+                                header('Location: ' . URL . 'admin/workshop_page');
+                            } else {
+                                $workshopController->sendNewCategory($new_category, $new_position);
+                            }
 
-                            
-                        // Gestion page de la location 
+                            break;
+
+
+                            // Gestion page de la location 
                         case "rental_page":
                             $rentalController->rentalPage();
                             break;
