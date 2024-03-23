@@ -101,7 +101,7 @@ class WorkshopController extends MainController
             header('Location: ' . URL . 'admin/workshop/' . $task_category);
             return;
         }
-        if(!$this->workshopManager->isPositionTaskFree($task_position, $task_category)){
+        if (!$this->workshopManager->isPositionTaskFree($task_position, $task_category)) {
             Tools::showAlert("La position est déjà prise", "alert-danger");
             header('Location: ' . URL . 'admin/workshop/' . $task_category);
             return;
@@ -147,7 +147,8 @@ class WorkshopController extends MainController
 
         header('Location: ' . URL . 'admin/workshop/' . $task_category);
     }
-    public function  showAllTasks(){
+    public function  showAllTasks()
+    {
         $categories = $this->workshopManager->getCategories();
         $tasks = $this->workshopManager->getAllTasks();
 
@@ -159,7 +160,19 @@ class WorkshopController extends MainController
             "categories" => $categories,
             "tasks" => $tasks,
         ];
-    
+
         $this->functions->generatePage($data_page);
+    }
+
+    // api
+    public function  sendCategoriesAndTasksWorkshop()
+    {
+        $categoriesWorkshop = $this->workshopManager->getCategories();
+        $tasksWorkshop = $this->workshopManager->getAllTasks();
+        $workshop = [
+            'categoriesWorkshop' => $categoriesWorkshop,
+            'tasksWorkshop' => $tasksWorkshop
+        ];
+        Tools::sendJson_get($workshop);
     }
 }

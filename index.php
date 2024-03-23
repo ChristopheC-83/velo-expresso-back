@@ -176,9 +176,9 @@ try {
 
                 // Les apis
 
-                // case "api_characters_rpg":
-                //     $charactersController->sendCharacters();
-                //     break;
+                case "api_workshop":
+                    $workshopController->sendCategoriesAndTasksWorkshop();
+                    break;
                 // case "api_hangman_words":
                 //     $hangmanController->sendHangmanWords();
                 //     break;
