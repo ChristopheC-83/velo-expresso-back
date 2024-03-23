@@ -91,7 +91,6 @@ try {
                         case "workshop_page":
                             $workshopController->workshopPage();
                             break;
-
                         case "send_new_category":
                             $new_position = Tools::secureHTML($_POST['new_position']);
                             $new_category = strtolower(Tools::secureHTML($_POST['new_category']));
@@ -102,11 +101,9 @@ try {
                                 $workshopController->sendNewCategory($new_category, $new_position);
                             }
                             break;
-
                         case "delete_category":
                             $workshopController->deleteCategory($_POST['id']);
                             break;
-
                         case "modify_category":
                             $id = $_POST['id'];
                             $new_position = Tools::secureHTML($_POST['new_cat_position']);
@@ -120,12 +117,22 @@ try {
                             break;
 
                             // gestion des taches de l'atelier
-                            case "workshop":
-                                echo($url[2]);
+                        case "workshop":
+                            $workshopController->tasksPage($url[2]);
+                            break;
 
-
-
-                                break;
+                        case "send_new_task":
+                            $task_category = $_POST['task_category'];
+                            $task_price = Tools::secureHTML($_POST['task_price']);
+                            $task_position = Tools::secureHTML($_POST['task_position']);
+                            $task_name = strtolower(Tools::secureHTML($_POST['task_name']));
+                            if (empty($task_price) || empty($task_position) || empty($task_name)) {
+                                Tools::showAlert("Il faut remplir les 3 champs !", "alert-danger");
+                                header('Location: ' . URL . 'admin/workshop/' . $task_category);
+                            } else {
+                                $workshopController->sendNewTask($task_category, $task_name, $task_position, $task_price);
+                            }
+                            break;
 
 
                             // Gestion page de la location 
