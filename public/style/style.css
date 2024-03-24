@@ -23689,12 +23689,21 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.midFlex, .fleMid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .dir-writing {
   writing-mode: vertical-lr;
   text-orientation: mixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 1000px) {
   .dir-writing {
     writing-mode: initial;
   }

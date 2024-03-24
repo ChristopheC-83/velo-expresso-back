@@ -22,14 +22,14 @@
                 <div class="d-flex col-1 justify-content-center border-end border-black py-2 "><?= $rental['day']  ?></div>
                 <div class="d-flex col-1 justify-content-center border-end border-black py-2 "><?= $rental['extra_day']  ?></div>
                 <div class="d-flex col-1 justify-content-center border-end border-black py-2 "><?= $rental['week']  ?></div>
-                <div class="d-flex col-1 justify-content-center border-end border-black py-2 "><i class="fa-solid fa-pen text-secondary"></i></div>
+                <div class="d-flex col-1 justify-content-center border-end border-black py-2 "><a href="<?= URL ?>admin/rental/modify_rental/<?= $rental['rental_id']  ?>"><i class="fa-solid fa-pen text-secondary"></i></a></div>
                 <div class="d-flex col-1 justify-content-center py-2 ">
-                <form action="<?= URL ?>admin/rental/delete_rental" method="POST" onSubmit="return confirm('On confirme la suppression ?')">
+                    <form action="<?= URL ?>admin/rental/delete_rental" method="POST" onSubmit="return confirm('On confirme la suppression ?')">
                         <input type="hidden" name="id" value=<?= $rental['rental_id'] ?>>
                         <button class="btn" type="submit"><i class="fa-solid fa-trash-can  text-danger"></i></button>
                     </form>
-            
-            </div>
+
+                </div>
             </div>
 
         <?php endforeach; ?>
