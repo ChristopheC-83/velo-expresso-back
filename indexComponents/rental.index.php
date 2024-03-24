@@ -6,12 +6,17 @@
 
 
 switch($url[2]){
+    case "rentals_page":
+        $rentalController->rentalsPage();
+        break;
+    case "text_under_arry_rentals":
+        $rentalController->textUnderArrayRentals();
+        break;
     case "add_rental_page":
-        $rentalController->rentalPage();
+        $rentalController->addRental();
         break;
     case "send_new_rental":
         Tools::showArray($_POST);
-        Tools::showArray($_FILES);
         break;
 
 

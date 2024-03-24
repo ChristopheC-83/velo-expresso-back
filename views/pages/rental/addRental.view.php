@@ -1,4 +1,4 @@
-<h1 class="text-center my-4"><u>Locations</u></h1>
+<h1 class="text-center my-4"><u>Ajout d'une Location</u></h1>
 <div class="container">
 
 
@@ -16,8 +16,8 @@
                     <input type="number" class="text-primary fs-5 rounded mb-3" id="day" name="day" placeholder="tarif journée">
                     <input type="number" class="text-primary fs-5 rounded mb-3" id="extra-day" name="extra-day" placeholder="tarif journée-supp">
                     <input type="number" class="text-primary fs-5 rounded mb-3" id="week" name="week" placeholder="tarif semaine">
-                    <input type="file" class="text-primary fs-5 rounded mb-3" id="picture" name="picture" placeholder="image de la location">
-                    <input type="text" class="text-primary fs-5 rounded mb-3" id="picture" name="name" placeholder="A afficher avec l'image">
+                    <!-- <input type="file" class="text-primary fs-5 rounded mb-3" id="picture" name="picture" placeholder="image de la location">
+                    <input type="text" class="text-primary fs-5 rounded mb-3" id="picture" name="name" placeholder="A afficher avec l'image"> -->
 
 
 
