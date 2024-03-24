@@ -56,6 +56,22 @@ class RentalManager extends MainManager
     public function isItemFree($item){
         return (empty($this->getRentalByItem($item)));
     }
+    public function getRentalByPosition($position)
+    {
+        $req = "SELECT * FROM rentals WHERE position = :position";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":position", $position, PDO::PARAM_INT);
+        $stmt->execute();
+        $rental = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $rental;
+    }
+
+    public function isPositionFree($position){
+        return (empty($this->getRentalByPosition($position)));
+    }
+
+
 
     public function  updateRentalDB($rental_id, $item, $position, $half_day, $day, $extra_day, $week)
     {

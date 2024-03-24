@@ -48,6 +48,12 @@ class RentalController extends MainController
             return;
         }
 
+        if (!$this->rentalManager->isPositionFree($position)) {
+            Tools::showAlert("Cette position est déjà prise, Merci d'en changer.", "alert-warning");
+            header('Location: ' . URL . 'admin/rental/add_rental_page/');
+            return;
+        }
+
         if ($this->rentalManager->addRentalDB($item, $position, $half_day, $day, $extra_day, $week)) {
             Tools::showAlert("L'ajout a bien été effectué", "alert-success");
             header('Location: ' . URL . 'admin/rental/rentals_page');
@@ -75,9 +81,15 @@ class RentalController extends MainController
     public function  updateRental($id, $item, $position, $half_day, $day, $extra_day, $week)
     {
         $old_name = $this->rentalManager->getRentalById($id)['item'];
+        $old_position = $this->rentalManager->getRentalById($id)['position'];
 
         if (!$this->rentalManager->isItemFree($item) && $item !== $old_name) {
             Tools::showAlert("Ce nom est déjà pris, Merci d'en changer.", "alert-warning");
+            header('Location: ' . URL . 'admin/rental/modify_rental/' . $id);
+            return;
+        }
+        if (!$this->rentalManager->isPositionFree($position) && $position !== $old_position) {
+            Tools::showAlert("Cette position est déjà prise, Merci d'en changer.", "alert-warning");
             header('Location: ' . URL . 'admin/rental/modify_rental/' . $id);
             return;
         }
