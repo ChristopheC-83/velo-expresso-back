@@ -12,7 +12,7 @@
                     <input type="hidden" name="id" value=<?= $rentalToUpdate['rental_id'] ?>>
 
                     <label for="item" class="py-2 mt-1">Article à modifier</label>
-                    <input type="text" class="text-primary fs-5 rounded mb-3" id="item" name="item" value=<?= $rentalToUpdate['item'] ?>>
+                    <input type="text" class="text-primary fs-5 rounded mb-3" id="item" name="item" value="<?= $rentalToUpdate['item'] ?>">
 
                     <label for="position" class="py-2 mt-1">Position</label>
                     <input type="number" class="text-primary fs-5 rounded mb-3" id="position" name="position" value=<?= $rentalToUpdate['position'] ?>>
