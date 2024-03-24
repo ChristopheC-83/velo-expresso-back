@@ -16,7 +16,19 @@ switch($url[2]){
         $rentalController->addRental();
         break;
     case "send_new_rental":
-        Tools::showArray($_POST);
+        // Tools::showArray($_POST);
+        $item = Tools::secureHTML($_POST['item']);
+        $position = Tools::secureHTML($_POST['position']);
+        $half_day = Tools::secureHTML($_POST['half-day']);
+        $day = Tools::secureHTML($_POST['day']);
+        $extra_day = Tools::secureHTML($_POST['extra-day']);
+        $week = Tools::secureHTML($_POST['week']);
+        if(empty($item) || empty($position) || empty($half_day) || empty($day) || empty($extra_day) || empty($week)){
+            Tools::showAlert("Il faut remplir tous les champs", "alert-danger");
+            header('Location: ' . URL . 'admin/rental/add_rental_page');
+        } else {
+            $rentalController->sendNewRental($item, $position, $half_day, $day, $extra_day, $week);
+        }
         break;
 
 

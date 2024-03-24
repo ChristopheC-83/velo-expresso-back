@@ -36,6 +36,40 @@ class RentalController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+
+    public function  sendNewRental($item, $position, $half_day, $day, $extra_day, $week){
+    
+      
+
+    //  test nom item isDispo
+        if($this->rentalManager->addRentalDB($item, $position, $half_day, $day, $extra_day, $week)){
+            Tools::showAlert("L'ajout a bien été effectué", "alert-success");
+            header('Location: ' . URL . 'admin/rental/rentals_page');
+        } else {
+            Tools::showAlert("L'ajout n'a pas été effectué", "alert-danger");
+            header('Location: ' . URL . 'admin/rental/add_rental_page');
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function  textUnderArrayRentals()
     {
         $data_page = [
