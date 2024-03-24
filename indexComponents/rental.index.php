@@ -31,6 +31,11 @@ switch($url[2]){
         }
         break;
 
+        
+        case "delete_rental":
+            $rentalController->deleteRental($_POST['id']);
+            break;
+
 
 
 

@@ -29,4 +29,17 @@ class RentalManager extends MainManager
         $stmt->closeCursor();
         return $isValidate;
     }
+
+    public function deleteRentalDB($rental_id){
+        $req= "DELETE FROM rentals WHERE rental_id = :rental_id";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":rental_id", $rental_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate;
+    
+    
+    
+    }
 }

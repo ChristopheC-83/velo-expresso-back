@@ -19,7 +19,7 @@ class RentalController extends MainController
     public function  rentalsPage()
     {
         $rentals = $this->rentalManager->getRentals();
-        
+
         $data_page = [
             "page_description" => "Page des locations",
             "page_title" => "VE | Locations",
@@ -54,6 +54,17 @@ class RentalController extends MainController
         }
 
 
+    }
+
+    public function  deleteRental($id){  
+        if($this->rentalManager->deleteRentalDB($id)){
+            Tools::showAlert("La suppression a bien été effectuée", "alert-success");
+            header('Location: ' . URL . 'admin/rental/rentals_page');
+        } else {
+            Tools::showAlert("La suppression n'a pas été effectuée", "alert-danger");
+            header('Location: ' . URL . 'admin/rental/rentals_page');
+        }
+    
     }
 
 
