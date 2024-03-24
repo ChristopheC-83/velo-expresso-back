@@ -148,4 +148,15 @@ class RentalController extends MainController
             Tools::showAlert("La modification n'a pas été effectuée", "alert-danger");
         }
     }
+     // api
+     public function  sendRentalsAndTextUnder()
+     {
+         $rentalsItems = $this->rentalManager->getRentals();
+         $textUnderRentals = $this->rentalManager->getTextUnderArrayRentals();
+         $rentals = [
+             'rentalsItems' => $rentalsItems,
+             'textUnderRentals' => $textUnderRentals
+         ];
+         Tools::sendJson_get($rentals);
+     }
 }

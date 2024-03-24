@@ -111,6 +111,10 @@ class RentalManager extends MainManager
     
     }
 
+    
+    
+  
+
     public function updateTextUnderArrayRentals($text){ 
         $req = "UPDATE rental_text SET text_rental = :text WHERE text_rental_id = 1";
         $stmt = $this->getDB()->prepare($req);

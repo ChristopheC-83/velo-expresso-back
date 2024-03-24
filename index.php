@@ -185,6 +185,9 @@ try {
             case "api_workshop":
                 $workshopController->sendCategoriesAndTasksWorkshop();
                 break;
+            case "api_rentals":
+                $rentalController->sendRentalsAndTextUnder();
+                break;
                 // case "api_hangman_words":
                 //     $hangmanController->sendHangmanWords();
                 //     break;
