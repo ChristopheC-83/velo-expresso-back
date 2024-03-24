@@ -9,8 +9,16 @@ switch ($url[2]) {
     case "rentals_page":
         $rentalController->rentalsPage();
         break;
-    case "text_under_arry_rentals":
+    case "text_under_array_rentals":
         $rentalController->textUnderArrayRentals();
+        break;
+    case "send_text_under_rental":
+        $text = Tools::secureHTML($_POST['text_under_rental']);
+        if(empty($text)){
+            Tools::showAlert("Il faut impérativement du texte !", "alert-warning");
+            header('Location: ' . URL . 'admin/rental/text_under_array_rentals');
+        }
+        $rentalController->sendTextUnderRental($text);
         break;
     case "add_rental_page":
         $rentalController->addRental();

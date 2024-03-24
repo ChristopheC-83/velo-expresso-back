@@ -84,4 +84,25 @@ class RentalManager extends MainManager
         $stmt->closeCursor();
         return $isValidate;
     }
+
+    public function  getTextUnderArrayRentals(){ 
+        $req = "SELECT * FROM rental_text WHERE text_rental_id = 1";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->execute();
+        $text = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $text;
+    
+    }
+
+    public function updateTextUnderArrayRentals($text){ 
+        $req = "UPDATE rental_text SET text_rental = :text WHERE text_rental_id = 1";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":text", $text, PDO::PARAM_STR);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate;
+    
+    }
 }

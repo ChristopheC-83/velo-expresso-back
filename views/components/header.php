@@ -37,7 +37,7 @@
                         <a href="<?= URL ?>admin/rental/rentals_page" class="text-light text-decoration-none">Locations</a>
                     </button>
                     <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/rental/text_under_arry_rentals" class="text-light text-decoration-none">Texte</a>
+                        <a href="<?= URL ?>admin/rental/text_under_array_rentals" class="text-light text-decoration-none">Texte</a>
                     </button>
 
                 </div>

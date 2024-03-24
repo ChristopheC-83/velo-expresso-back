@@ -42,12 +42,12 @@ class RentalController extends MainController
 
     public function  sendNewRental($item, $position, $half_day, $day, $extra_day, $week)
     {
-        if(!$this->rentalManager->isItemFree($item)){
+        if (!$this->rentalManager->isItemFree($item)) {
             Tools::showAlert("Ce nom est déjà pris, Merci d'en changer.", "alert-warning");
             header('Location: ' . URL . 'admin/rental/add_rental_page/');
             return;
         }
-        
+
         if ($this->rentalManager->addRentalDB($item, $position, $half_day, $day, $extra_day, $week)) {
             Tools::showAlert("L'ajout a bien été effectué", "alert-success");
             header('Location: ' . URL . 'admin/rental/rentals_page');
@@ -76,7 +76,7 @@ class RentalController extends MainController
     {
         $old_name = $this->rentalManager->getRentalById($id)['item'];
 
-        if(!$this->rentalManager->isItemFree($item) && $item !== $old_name){
+        if (!$this->rentalManager->isItemFree($item) && $item !== $old_name) {
             Tools::showAlert("Ce nom est déjà pris, Merci d'en changer.", "alert-warning");
             header('Location: ' . URL . 'admin/rental/modify_rental/' . $id);
             return;
@@ -111,22 +111,29 @@ class RentalController extends MainController
 
 
 
-
-
-
-
-
-
-
-
     public function  textUnderArrayRentals()
     {
+        $text = $this->rentalManager->getTextUnderArrayRentals()['text_rental'];
+
         $data_page = [
             "page_description" => "Page du texte sous locations",
             "page_title" => "VE | texte Locations",
             "view" => "./views/pages/rental/textUnderArray.view.php",
             "template" => "./views/common/template.php",
+            "text" => $text
         ];
         $this->functions->generatePage($data_page);
+    }
+
+    public function sendTextUnderRental($text)
+    {
+
+        if ($this->rentalManager->updateTextUnderArrayRentals($text)) {
+            Tools::showAlert("La modification a bien été effectuée", "alert-success");
+            header('Location: ' . URL . 'admin/rental/text_under_array_rentals');
+            return;
+        } else {
+            Tools::showAlert("La modification n'a pas été effectuée", "alert-danger");
+        }
     }
 }
