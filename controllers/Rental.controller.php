@@ -42,10 +42,12 @@ class RentalController extends MainController
 
     public function  sendNewRental($item, $position, $half_day, $day, $extra_day, $week)
     {
-
-
-
-        //  test nom item isDispo
+        if(!$this->rentalManager->isItemFree($item)){
+            Tools::showAlert("Ce nom est déjà pris, Merci d'en changer.", "alert-warning");
+            header('Location: ' . URL . 'admin/rental/add_rental_page/');
+            return;
+        }
+        
         if ($this->rentalManager->addRentalDB($item, $position, $half_day, $day, $extra_day, $week)) {
             Tools::showAlert("L'ajout a bien été effectué", "alert-success");
             header('Location: ' . URL . 'admin/rental/rentals_page');
@@ -72,7 +74,13 @@ class RentalController extends MainController
 
     public function  updateRental($id, $item, $position, $half_day, $day, $extra_day, $week)
     {
-        // tester nom item isDispo
+        $old_name = $this->rentalManager->getRentalById($id)['item'];
+
+        if(!$this->rentalManager->isItemFree($item) && $item !== $old_name){
+            Tools::showAlert("Ce nom est déjà pris, Merci d'en changer.", "alert-warning");
+            header('Location: ' . URL . 'admin/rental/modify_rental/' . $id);
+            return;
+        }
 
         if ($this->rentalManager->updateRentalDB($id, $item, $position, $half_day, $day, $extra_day, $week)) {
             Tools::showAlert("La modification a bien été effectuée", "alert-success");

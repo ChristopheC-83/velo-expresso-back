@@ -53,6 +53,10 @@ class RentalManager extends MainManager
         return $rental;
     }
 
+    public function isItemFree($item){
+        return (empty($this->getRentalByItem($item)));
+    }
+
     public function  updateRentalDB($rental_id, $item, $position, $half_day, $day, $extra_day, $week)
     {
         $req = "UPDATE rentals SET item = :item, position = :position, half_day = :half_day, day = :day, extra_day = :extra_day, week = :week WHERE rental_id = :rental_id";

@@ -7,7 +7,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class=" col-11 col-sm-10 col-lg-8 mx-auto">
-                <form action="<?= URL ?>admin/rental/send_new_rental" method="POST" class="d-flex flex-column border" enctype="multipart/form-data">
+                <form action="<?= URL ?>admin/rental/send_new_rental" method="POST" class="d-flex flex-column " enctype="multipart/form-data">
 
 
                     <input type="text" class="text-primary fs-5 rounded mb-3" id="item" name="item" placeholder="Ajout d'un article à louer">
