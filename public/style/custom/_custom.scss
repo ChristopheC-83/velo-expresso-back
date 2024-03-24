@@ -1,0 +1,10 @@
+.dir-writing {
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+}
+
+@media screen and (min-width:850px) {
+  .dir-writing {
+    writing-mode: initial;
+  }
+}

@@ -5,6 +5,15 @@ require_once("./models/Main.model.php");
 class RentalManager extends MainManager
 {
 
+
+    public function getRentals(){ 
+        $req = "SELECT * FROM rentals ORDER BY position";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->execute();
+        $rentals = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $rentals;  
+    }
     public function  addRentalDB($item, $position, $half_day, $day, $extra_day, $week)
     {
         $req = "INSERT INTO rentals (item, position, half_day, day, extra_day, week) VALUES (:item, :position, :half_day, :day, :extra_day, :week)";

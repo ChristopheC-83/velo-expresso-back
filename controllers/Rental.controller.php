@@ -18,11 +18,14 @@ class RentalController extends MainController
 
     public function  rentalsPage()
     {
+        $rentals = $this->rentalManager->getRentals();
+        
         $data_page = [
             "page_description" => "Page des locations",
             "page_title" => "VE | Locations",
             "view" => "./views/pages/rental/allRentals.view.php",
             "template" => "./views/common/template.php",
+            "rentals" => $rentals
         ];
         $this->functions->generatePage($data_page);
     }
