@@ -30,7 +30,7 @@ class BikesController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
-    public function createBike (){ 
+    public function createBikePage (){ 
 
         $allDatasFeatures = $this->featuresBikesManager->getAllDatasFeatures();
         $allFeatures= $this->featuresBikesManager->getAllFeatures();
@@ -44,6 +44,27 @@ class BikesController extends MainController
             "allFeatures" => $allFeatures
         ];
         $this->functions->generatePage($data_page);
+    
+    }
+
+    public function sendNewBike( $infos_new_bike ){ 
+        $imgBike = [
+            'tmp_name'=> $infos_new_bike['bike_image_tmp'],
+            'name'=> $infos_new_bike['bike_image_name'],
+            'size'=> $infos_new_bike['bike_image_size']
+        ];
+        $infos_new_bike['picture']= Tools::addImage($imgBike, 'public/assets/images/bikes/');
+
+        // Tools::showArray($infos_new_bike);
+    
+        if($this->bikesManager->createNewBikeDB($infos_new_bike)){
+            Tools::showAlert("Le vélo a bien été ajouté", "alert-success");
+            header('Location: ' . URL . 'admin/bikes/bikes_page');
+        }  else{
+            Tools::deleteImage( $infos_new_bike['picture'], 'public/assets/images/bikes/' );
+            Tools::showAlert("Le vélo n'a pas pu être ajouté", "alert-danger");
+            header('Location: ' . URL . 'admin/bikes/create_bike');
+        }
     
     }
 }

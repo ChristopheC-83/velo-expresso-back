@@ -45,11 +45,11 @@ abstract class Tools {
 
     public static function addImage($uploadedFile, $dir)
     {
-        echo "function addImage";
-        echo "<br>";
-        Tools::showArray($uploadedFile);
-        echo "<br>";
-        echo $dir;
+        // echo "function addImage";
+        // echo "<br>";
+        // Tools::showArray($uploadedFile);
+        // echo "<br>";
+        // echo $dir;
         if ((!isset($uploadedFile['name']) || empty($uploadedFile['name']))) {
             throw new Exception("Il faut choisir un fichier !");
         }
@@ -67,7 +67,7 @@ abstract class Tools {
         if (file_exists($targetFile)) {
             throw new Exception("Le fichier existe déjà.");
         }
-        if ($uploadedFile['size'] > 5000000) {
+        if ($uploadedFile['size'] > 9000000) {
             throw new Exception("Le fichier est trop lourd.");
         }
         // upload de l'image dans le dossier

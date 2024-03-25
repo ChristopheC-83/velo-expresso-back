@@ -1,4 +1,5 @@
 <h1 class="text-center my-4"><u>Création d'une fiche vélo</u></h1>
+<h3 class="text-center ">En gras, les données obligatoires pour créer la fiche</h3>
 <!-- <?=Tools::showArray($allDatasFeatures)?> -->
 
 
@@ -8,8 +9,8 @@
         class="d-flex flex-column gap-2 col-12 col-sm-10 col-md-8 col-lg-6 mx-auto" enctype="multipart/form-data">
         <!-- Marque -->
         <div class="d-flex flex-column gap-2">
-            <label for="bike_brand">Marque</label>
-            <select name="bike_brand" id="bike_brand" class="p-1" >
+            <label for="bike_brand" class="fw-bold">Marque *</label>
+            <select name="bike_brand" id="bike_brand" class="p-1" required>
                 <option value="">Choisir une marque</option>
                 <?php foreach ($allDatasFeatures as $feature) : ?>
                 <?php if($feature['feature'] === "brand"): ?>
@@ -20,16 +21,16 @@
         </div>
         <!-- Modele -->
         <div class="d-flex flex-column gap-2">
-            <label for="bike_model">Modèle</label>
-            <input type="text" name="bike_model" id="bike_model" class="p-1" >
+            <label for="bike_model" class="fw-bold">Modèle *</label>
+            <input type="text" name="bike_model" id="bike_model" class="p-1" required>
         </div>
         <!-- neuf -->
         <div class="d-flex flex-column gap-2">
-            <label for="bike_new">Neuf ?</label>
-            <select name="bike_new" id="bike_new" class="p-1" >
+            <label for="bike_new" class="fw-bold">Neuf ? *</label>
+            <select name="bike_new" id="bike_new" class="p-1" required>
                 <option value="">Choisir l'état</option>
-                <option value="1">Neuf</option>
-                <option value="0">Occasion</option>
+                <option value="new">Neuf</option>
+                <option value="used">Occasion</option>
             </select>
         </div>
         <!-- type -->
@@ -47,7 +48,7 @@
         <!-- taille -->
         <div class="d-flex flex-column gap-2">
             <label for="bike_type">Taille de vélo</label>
-            <select name="bike_size" id="bike_size" class="p-1" >
+            <select name="bike_size" id="bike_size" class="p-1">
                 <option value="">Choisir une taille</option>
                 <?php foreach ($allDatasFeatures as $feature) : ?>
                 <?php if($feature['feature'] === "size"): ?>
@@ -59,7 +60,7 @@
         <!-- suspension -->
         <div class="d-flex flex-column gap-2">
             <label for="bike_suspension">Type de suspension</label>
-            <select name="bike_suspension" id="bike_suspension" class="p-1" >
+            <select name="bike_suspension" id="bike_suspension" class="p-1">
                 <option value="">Type de suspensions</option>
                 <?php foreach ($allDatasFeatures as $feature) : ?>
                 <?php if($feature['feature'] === "suspension"): ?>
@@ -123,8 +124,8 @@
         </div>
         <!-- prix -->
         <div class="d-flex flex-column gap-2">
-            <label for="bike_price">Si électrique, détails</label>
-            <input type="text" name="bike_price" id="bike_price" class="p-1" >
+            <label for="bike_price" class="fw-bold">Prix du vélo (hors promo) *</label>
+            <input type="text" name="bike_price" id="bike_price" class="p-1" required>
         </div>
         <!-- promo -->
         <div class="d-flex flex-column gap-2">
@@ -142,8 +143,8 @@
         </div>
         <!-- photo -->
         <div class="d-flex flex-column gap-2">
-            <label for="bike_picture">Photo du vélo</label>
-            <input type="file" name="bike_picture" id="bike_picture" class="p-1" >
+            <label for="bike_picture" class="fw-bold">Photo du vélo *</label>
+            <input type="file" name="bike_picture" id="bike_picture" class="p-1" required>
         </div>
         <!-- description -->
         <div class="d-flex flex-column gap-2">
