@@ -17,7 +17,7 @@ class FeaturesBikesManager extends MainManager
 
     public function getAllDatasFeatures() {
 
-        $req = 'SELECT * FROM bike_data_features';
+        $req = 'SELECT * FROM bike_data_features ORDER BY position';
         $stmt = $this->getDB()->prepare( $req );
         $stmt->execute();
         $features = $stmt->fetchAll( PDO::FETCH_ASSOC );
@@ -38,6 +38,17 @@ class FeaturesBikesManager extends MainManager
         $stmt->closeCursor();
         return $isValidate;
 
+    }
+
+    public function  deleteFeatureDB($id){
+        $req = 'DELETE FROM bike_data_features WHERE id = :id';
+        $stmt = $this->getDB()->prepare( $req );
+        $stmt->bindValue( ':id', $id, PDO::PARAM_INT );
+        $stmt->execute();
+        $isValidate = ( $stmt->rowCount() > 0 );
+        $stmt->closeCursor();
+        return $isValidate;
+    
     }
 
 }

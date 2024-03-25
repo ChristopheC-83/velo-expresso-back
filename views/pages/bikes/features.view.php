@@ -8,7 +8,7 @@
             <form action="<?= URL ?>admin/features/add_features" method="POST" class="row ">
                 <select type="text" class="col-4 text-primary fs-5  rounded" id="feature" name="feature"
                     placeholder="Ajout d'une Tache">
-                    <option>Caractéristique</option>
+                    <option value="">Caractéristique</option>
                     <?php foreach($allFeatures as $feature): ?>
                     <option value="<?= $feature['feature'] ?>"><?= $feature['name'] ?></option>
                     <?php endforeach; ?>
@@ -27,16 +27,22 @@
 <div class="container mt-5">
     <?php foreach($allFeatures as $feature): ?>
     <div class="d-flex border border-2 border-black rounded mb-2 align-items-center">
-        <div class="col-4 h-100 border-2 border-end">
+        <div class="col-4 h-100 ">
             <h3 class=" fs-5  text-center"><?= $feature['name'] ?></h3>
         </div>
-        <div class="d-flex flex-column w-100">
+        <div class="d-flex flex-column w-100 border-2 border-start ps-1">
             <?php foreach($allDatasFeatures as $data): ?>
-            <div class="d-flex w-100">
+            <div class="d-flex w-100 ">
                 <?php if($data['feature'] === $feature['feature']): ?>
                 <h3 class="col-3 fs-5 p-2 "><?= $data['position'] ?></h3>
-                <h3 class="col-6 fs-5 p-2"><?= $data['data'] ?></h3>
-                <h3 class="col-2 fs-5 p-2">trash</h3>
+                <h3 class="col-7 fs-5 p-2"><?= $data['data'] ?></h3>
+                <div class="col-2 fs-5 p-2">
+                <form action="<?= URL ?>admin/features/delete_feature" method="POST"
+                        onSubmit="return confirm('On confirme la suppression de <?= $data['data'] ?> ?')">
+                        <input type="hidden" name="id" value=<?= $data['id'] ?>>
+                        <button class="btn" type="submit"><i class="fa-solid fa-trash-can  text-danger"></i></button>
+                    </form>
+                </div>
                 <?php endif; ?>
             </div>
             <?php endforeach; ?>

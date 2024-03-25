@@ -11,17 +11,23 @@ switch ( $url[ 2 ] ) {
     break;
 
     case 'add_features':
-        Tools::showArray($_POST);
+        // Tools::showArray($_POST);
         $feature = Tools::secureHTML($_POST['feature']);
         $position = Tools::secureHTML($_POST['position']);
         $data = Tools::secureHTML($_POST['data']);
-        if(empty($feature) || empty($position) || empty($data)){
+        if(empty($feature) || empty($position) || empty($data) || $feature === "Caractéristique"){
             Tools::showAlert("Il faut remplir les 3 champs !", "alert-danger");
             header('Location: ' . URL . 'admin/features/features_page');
         } else {
             $featuresController->sendNewFeatures($feature, $position, $data);
         }
         break;
+
+        case "delete_feature":
+            $featuresController->deleteFeature($_POST['id']);
+
+
+            break;
 
 
 

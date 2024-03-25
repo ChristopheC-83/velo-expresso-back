@@ -41,4 +41,14 @@ class FeaturesController extends MainController
         }
         header( 'Location: ' . URL . 'admin/features/features_page' );
     }
+
+    public function  deleteFeature($id){
+        if($this->featuresBikesManager->deleteFeatureDB($id)){
+            Tools::showAlert('Caractéristique supprimée', 'alert-success');
+        } else {
+            Tools::showAlert("Erreur lors de la suppression de la caractéristique", 'alert-danger');
+        }
+        
+        header( 'Location: ' . URL . 'admin/features/features_page' );
+    }
 }
