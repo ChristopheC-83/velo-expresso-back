@@ -20,7 +20,7 @@
                         <a href="<?= URL ?>admin/frames_page" class="text-light text-decoration-none">Cadres</a>
                     </button>
                     <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/partners_page" class="text-light text-decoration-none">Partenaires</a>
+                        <a href="<?= URL ?>admin/partners/partners_page" class="text-light text-decoration-none">Partenaires</a>
                     </button>
                     <button class="btn btn-secondary btn-lg text-light m-1">
                         <a href="<?= URL ?>admin/opinions_page" class="text-light text-decoration-none">Avis</a>

@@ -12,12 +12,14 @@ define("MEDIA_PATH", "public/assets/articles_media/article_");
 require_once("./controllers/Tools.controller.php");
 require_once("./controllers/Main.controller.php");
 require_once("./controllers/Home.controller.php");
+require_once("./controllers/Partners.controller.php");
 require_once("./controllers/Bikes.controller.php");
 require_once("./controllers/Rental.controller.php");
 require_once("./controllers/Workshop.controller.php");
 
 $mainController = new MainController();
 $homeController = new HomeController();
+$partnersController = new PartnersController();
 $bikesController = new BikesController();
 $workshopController = new WorkshopController();
 $rentalController = new RentalController();
@@ -30,9 +32,6 @@ try {
         $page = $url[0];
 
         switch ($url[0]) {
-
-
-
 
 
             case "home":
@@ -68,6 +67,11 @@ try {
                             require_once("indexComponents/rental.index.php");
                             break;
 
+                            // Gestion des partenaires
+                        case "partners":
+                            require_once("indexComponents/partners.index.php");
+                            break;
+
                             // Gestion page d'accueil
                         case "sliders_page":
                             $homeController->slidersPage();
@@ -75,9 +79,7 @@ try {
                         case "frames_page":
                             $homeController->framesPage();
                             break;
-                        case "partners_page":
-                            $homeController->partnersPage();
-                            break;
+                        
                         case "opinions_page":
                             $homeController->opinionsPage();
                             break;

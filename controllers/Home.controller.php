@@ -37,16 +37,7 @@ class HomeController extends MainController
 
 
 
-    public function  partnersPage()
-    {
-        $data_page = [
-            "page_description" => "Page des partenaires",
-            "page_title" => "VE | Partenaires",
-            "view" => "./views/pages/home/partners.view.php",
-            "template" => "./views/common/template.php",
-        ];
-        $this->functions->generatePage($data_page);
-    }
+
     public function  opinionsPage()
     {
         $data_page = [
