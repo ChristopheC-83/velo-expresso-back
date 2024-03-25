@@ -16,16 +16,7 @@ class BikesController extends MainController
         $this->bikesManager = new BikesManager();
     }
 
-    public function  featuresPage()
-    {
-        $data_page = [
-            "page_description" => "Page des caractéristiques",
-            "page_title" => "VE | Caractéristiques",
-            "view" => "./views/pages/bikes/features.view.php",
-            "template" => "./views/common/template.php",
-        ];
-        $this->functions->generatePage($data_page);
-    }
+    
     public function  bikesPage()
     {
         $data_page = [

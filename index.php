@@ -14,6 +14,7 @@ require_once("./controllers/Main.controller.php");
 require_once("./controllers/Home.controller.php");
 require_once("./controllers/Partners.controller.php");
 require_once("./controllers/Bikes.controller.php");
+require_once("./controllers/FeaturesBikes.controller.php");
 require_once("./controllers/Rental.controller.php");
 require_once("./controllers/Workshop.controller.php");
 
@@ -23,6 +24,7 @@ $partnersController = new PartnersController();
 $bikesController = new BikesController();
 $workshopController = new WorkshopController();
 $rentalController = new RentalController();
+$featuresController = new FeaturesController();
 
 try {
     if (!isset($_GET['page'])) {
@@ -71,6 +73,12 @@ try {
                         case "partners":
                             require_once("indexComponents/partners.index.php");
                             break;
+                            // Gestion des caractéristiques communes des vélos
+                        case "features":
+                            require_once("indexComponents/featuresBikes.index.php");
+                            break;
+
+
 
                             // Gestion page d'accueil
                         case "sliders_page":
@@ -84,10 +92,7 @@ try {
                             $homeController->opinionsPage();
                             break;
 
-                            // Gestion page des vélos
-                        case "features_page":
-                            $bikesController->featuresPage();
-                            break;
+                       
 
                         case "bikes_page":
                             $bikesController->bikesPage();

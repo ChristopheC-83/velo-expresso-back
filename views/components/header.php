@@ -60,7 +60,7 @@
                 <h3 class="w-100 text-black text-center m-0">Vélos</h3>
                 <div class="container d-flex justify-content-center">
                     <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/features_page" class="text-light text-decoration-none">Caractéristiques</a>
+                        <a href="<?= URL ?>admin/features/features_page" class="text-light text-decoration-none">Caractéristiques</a>
                     </button>
                     <button class="btn btn-secondary btn-lg text-light m-1">
                         <a href="<?= URL ?>admin/bikes_page" class="text-light text-decoration-none">Vélos</a>
