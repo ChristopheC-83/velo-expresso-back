@@ -63,7 +63,7 @@
                         <a href="<?= URL ?>admin/features/features_page" class="text-light text-decoration-none">Caractéristiques</a>
                     </button>
                     <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/bikes_page" class="text-light text-decoration-none">Vélos</a>
+                        <a href="<?= URL ?>admin/bikes/bikes_page" class="text-light text-decoration-none">Vélos</a>
                     </button>
                 </div>
             </div>

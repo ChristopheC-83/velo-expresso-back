@@ -68,7 +68,6 @@ try {
                         case "rental":
                             require_once("indexComponents/rental.index.php");
                             break;
-
                             // Gestion des partenaires
                         case "partners":
                             require_once("indexComponents/partners.index.php");
@@ -77,7 +76,10 @@ try {
                         case "features":
                             require_once("indexComponents/featuresBikes.index.php");
                             break;
-
+                            // Gestion des vélos
+                            case "bikes":
+                                require_once("indexComponents/bikes.index.php");
+                                break;
 
 
                             // Gestion page d'accueil
@@ -94,9 +96,7 @@ try {
 
                        
 
-                        case "bikes_page":
-                            $bikesController->bikesPage();
-                            break;
+                        
 
 
                             // Gestion des catégories de l'atelier
