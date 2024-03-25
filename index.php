@@ -190,6 +190,9 @@ try {
             case "api_rentals":
                 $rentalController->sendRentalsAndTextUnder();
                 break;
+            case "api_partners":
+                $partnersController->sendPartners();
+                break;
                 // case "api_hangman_words":
                 //     $hangmanController->sendHangmanWords();
                 //     break;

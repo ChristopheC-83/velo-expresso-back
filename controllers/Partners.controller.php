@@ -47,13 +47,24 @@ class PartnersController extends MainController
  {
         $logoToDelete = $this->partnersManager->getPartnerById( $id )[ 'logo' ];
         if ( !$this->partnersManager->deletePartnerDB( $id ) ) {
+            Tools::showAlert( 'Erreur lors de la suppression du partenaire', 'alert-danger' );
         } else {
-            if (!Tools::deleteImage( $logoToDelete, 'public/assets/images/partners/' ) )
-            {
+            if ( !Tools::deleteImage( $logoToDelete, 'public/assets/images/partners/' ) )
+ {
                 Tools::showAlert( 'Erreur lors de la suppression du partenaire', 'alert-danger' );
             }
             Tools::showAlert( 'Partenaire supprimé avec succès', 'alert-success' );
         }
         header( 'Location: ' . URL . 'admin/partners/partners_page' );
     }
+
+    public function  sendPartners() {
+
+        $allPartners = $this->partnersManager->getAllPartnersDB();
+        $partners = [
+            'allPartners'=>$allPartners
+        ];
+        Tools::sendJson_get( $partners );
+    }
+
 }
