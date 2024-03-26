@@ -82,4 +82,14 @@ class BikesManager extends MainManager
         return $isValidate;
     }
 
+        public function changePictureDB ($new_img, $bike_id){
+            $req = 'UPDATE bikes SET bike_picture = :bike_picture WHERE bike_id = :bike_id';
+            $stmt = $this->getDB()->prepare( $req );
+            $stmt->bindValue( ':bike_picture', $new_img, PDO::PARAM_STR );
+            $stmt->bindValue( ':bike_id', $bike_id, PDO::PARAM_INT );
+            $stmt->execute();
+            $isValidate = ( $stmt->rowCount() > 0 );
+            $stmt->closeCursor();
+            return $isValidate;
+        }
 }

@@ -7,8 +7,8 @@
 <div class="container mt-3 row w-100 mx-auto ">
     <form action="<?=URL?>admin/bikes/send_new_bike" method="post"
         class="d-flex flex-column gap-2 col-12 col-sm-10 col-md-8 col-lg-6 mx-auto" enctype="multipart/form-data">
-        <!-- Vible du site, par défaut, non  -->
-        <input type="text" name="bike_visibility" id="bike_visibility" value="0">
+        <!-- Visible du site, par défaut, non, input masqué  -->
+        <input type="hidden" name="bike_visibility" id="bike_visibility" value="0">
         <!-- Marque -->
         <div class="d-flex flex-column gap-2">
             <label for="bike_brand" class="fw-bold">Marque *</label>

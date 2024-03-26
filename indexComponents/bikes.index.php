@@ -13,6 +13,7 @@ switch ( $url[ 2 ] ) {
     case 'create_bike':
     $bikesController->createBikePage();
     break;
+
     case 'send_new_bike':
     $infos_new_bike = [
         'bike_visibility' => Tools::secureHTML( $_POST[ 'bike_visibility' ] ),
@@ -50,14 +51,38 @@ switch ( $url[ 2 ] ) {
             header( 'Location: ' . URL . 'admin/bikes/create_bike' );
     } else {
         $bikesController->sendNewBike( $infos_new_bike );
+        header( 'Location: ' . URL . 'admin/bikes/bikes_page' );
     }
-
     break;
+
     case 'delete_bike':
         $id_to_delete = Tools::secureHTML( $_POST[ 'id_to_delete' ] );
         $bikesController->deleteBike( $id_to_delete );
-
-    // $featuresController->deleteFeature( $_POST[ 'id' ] );
     break;
+
+    case 'one_bike':
+        $bike_id = Tools::secureHTML( $url[ 3 ] );
+        $bikesController->oneBikePage( $bike_id );
+    break;
+
+    // Modification d'un vélo
+
+    case 'change_picture':
+        $infos_new_picture = [
+            'bike_id' => Tools::secureHTML( $_POST[ 'bike_id' ] ),
+            'name' => $_FILES[ 'new_picture' ][ 'name' ],
+            'tmp_name' => $_FILES[ 'new_picture' ][ 'tmp_name' ],
+            'size' => $_FILES[ 'new_picture' ][ 'size' ],
+        ];
+
+        // Tools::showArray( $infos_new_picture );
+        if ( empty( $infos_new_picture[ 'name' ] )
+            || empty( $infos_new_picture[ 'tmp_name' ] )
+            || empty( $infos_new_picture[ 'size' ] ) ) {
+                Tools::showAlert( 'Il manque des informations essentielles', 'alert-danger' );
+                header( 'Location: ' . URL . 'admin/bikes/one_bike/' . $infos_new_picture[ 'bike_id' ] );
+        } else {
+            $bikesController->changePicture( $infos_new_picture );
+        }
 
 }
