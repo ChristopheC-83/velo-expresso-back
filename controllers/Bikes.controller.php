@@ -53,12 +53,14 @@ class BikesController extends MainController
     public function oneBikePage( $bike_id ){
     
         $bike= $this->bikesManager->getBikeById($bike_id);
+        $features = $this->featuresBikesManager->getAllDatasFeatures();
         $data_page = [
             "page_description" => "Page des vélos",
             "page_title" => "VE | Création d'un Vélo",
             "view" => "./views/pages/bikes/oneBikePage.view.php",
             "template" => "./views/common/template.php",
             "bike" => $bike,
+            "features" => $features,
         ];
         $this->functions->generatePage($data_page);
     }
