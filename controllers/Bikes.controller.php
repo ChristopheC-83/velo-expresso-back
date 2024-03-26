@@ -37,7 +37,7 @@ class BikesController extends MainController
     
         $data_page = [
             "page_description" => "Page des vélos",
-            "page_title" => "VE | Vélos",
+            "page_title" => "VE | Création d'un Vélo",
             "view" => "./views/pages/bikes/createBike.view.php",
             "template" => "./views/common/template.php",
             "allDatasFeatures" => $allDatasFeatures,

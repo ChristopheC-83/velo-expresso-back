@@ -15,6 +15,7 @@ switch ( $url[ 2 ] ) {
     break;
     case 'send_new_bike':
     $infos_new_bike = [
+        'bike_visibility' => Tools::secureHTML( $_POST[ 'bike_visibility' ] ),
         'bike_brand' => Tools::secureHTML( $_POST[ 'bike_brand' ] ),
         'bike_model' => Tools::secureHTML( $_POST[ 'bike_model' ] ),
         'bike_new' => Tools::secureHTML( $_POST[ 'bike_new' ] ),

@@ -5,8 +5,9 @@ require_once("./models/Main.model.php");
 class BikesManager extends MainManager
 {
     public function  createNewBikeDB($infos_new_bike){ 
-        $req = "INSERT INTO bikes (bike_brand, bike_model, bike_new, bike_type, bike_size, bike_suspension, bike_speeds_number, bike_transmission, bike_wheels_dim, bike_wheels, bike_brake, bike_elec, bike_elec_detail, bike_price, bike_promo, bike_price_promo, bike_picture, bike_description, bike_msg_perso) VALUES (:bike_brand, :bike_model, :bike_new, :bike_type, :bike_size, :bike_suspension, :bike_speeds_number, :bike_transmission, :bike_wheels_dim, :bike_wheels, :bike_brake, :bike_elec, :bike_elec_detail, :bike_price, :bike_promo, :bike_price_promo,:bike_picture, :bike_description, :bike_msg_perso)";
+        $req = "INSERT INTO bikes (bike_visibility, bike_brand, bike_model, bike_new, bike_type, bike_size, bike_suspension, bike_speeds_number, bike_transmission, bike_wheels_dim, bike_wheels, bike_brake, bike_elec, bike_elec_detail, bike_price, bike_promo, bike_price_promo, bike_picture, bike_description, bike_msg_perso) VALUES (:bike_visibility, :bike_brand, :bike_model, :bike_new, :bike_type, :bike_size, :bike_suspension, :bike_speeds_number, :bike_transmission, :bike_wheels_dim, :bike_wheels, :bike_brake, :bike_elec, :bike_elec_detail, :bike_price, :bike_promo, :bike_price_promo,:bike_picture, :bike_description, :bike_msg_perso)";
         $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":bike_visibility", $infos_new_bike['bike_visibility'], PDO::PARAM_INT);
         $stmt->bindValue(":bike_brand", $infos_new_bike['bike_brand'], PDO::PARAM_STR);
         $stmt->bindValue(":bike_model", $infos_new_bike['bike_model'], PDO::PARAM_STR);
         $stmt->bindValue(":bike_new", $infos_new_bike['bike_new'], PDO::PARAM_STR);
