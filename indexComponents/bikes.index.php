@@ -40,17 +40,14 @@ switch ( $url[ 2 ] ) {
         "bike_picture" => ""
     ];
     if ( empty( $infos_new_bike[ 'bike_brand' ] )
-     || empty( $infos_new_bike[ 'bike_model' ] )
-     || empty( $infos_new_bike[ 'bike_new' ] )
-       || empty( $infos_new_bike[ 'bike_price' ] )
-         || empty( $infos_new_bike[ 'bike_image_name' ] )
-          || empty( $infos_new_bike[ 'bike_image_tmp' ] )
-           || empty( $infos_new_bike[ 'bike_image_size' ] ) ) {
-        Tools::showAlert( 'Il manque des informations essentielles', 'alert-danger' );
-        Tools::showAlert( $infos_new_bike[ 'bike_image_name' ], 'alert-danger' );
-        Tools::showAlert( $infos_new_bike[ 'bike_image_tmp' ], 'alert-danger' );
-        Tools::showAlert( $infos_new_bike[ 'bike_image_size' ], 'alert-danger' );
-        header( 'Location: ' . URL . 'admin/bikes/create_bike' );
+        || empty( $infos_new_bike[ 'bike_model' ] )
+        || empty( $infos_new_bike[ 'bike_new' ] )
+        || empty( $infos_new_bike[ 'bike_price' ] )
+        || empty( $infos_new_bike[ 'bike_image_name' ] )
+        || empty( $infos_new_bike[ 'bike_image_tmp' ] )
+        || empty( $infos_new_bike[ 'bike_image_size' ] ) ) {
+            Tools::showAlert( 'Il manque des informations essentielles', 'alert-danger' );
+            header( 'Location: ' . URL . 'admin/bikes/create_bike' );
     } else {
         $bikesController->sendNewBike( $infos_new_bike );
     }

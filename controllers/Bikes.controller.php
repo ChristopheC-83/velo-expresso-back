@@ -22,11 +22,14 @@ class BikesController extends MainController
     
     public function  bikesPage()
     {
+        $allBikes = $this->bikesManager->getAllBikesDB();
+
         $data_page = [
             "page_description" => "Page des vélos",
             "page_title" => "VE | Vélos",
             "view" => "./views/pages/bikes/bikes.view.php",
             "template" => "./views/common/template.php",
+            "allBikes" => $allBikes,
         ];
         $this->functions->generatePage($data_page);
     }
