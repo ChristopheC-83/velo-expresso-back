@@ -6,13 +6,12 @@
         <a href="<?=URL?>bikes/create_bike"><button class="btn btn-secondary fs-3">Les neufs</button></a>
         <a href="<?=URL?>bikes/create_bike"><button class="btn btn-secondary fs-3">Les occaz'</button></a>
     </div>
-    <!-- <?=Tools::showArray($allBikes)?> -->
 
     <div class="d-flex flex-row flex-wrap gap-2 w-100">
 
         <?php foreach ($allBikes as $bike) : ?>
         <div class="card mx-auto" style="width: 18rem;">
-            <img src="<?=URL?>public/assets/images/bikes/<?=$bike['bike_picture']?>" class="card-img-top" alt="...">
+            <img src="<?=URL?>public/assets/images/bikes/<?=$bike['bike_picture']?>" class="card-img-top" alt="<?=$bike['bike_model']?>">
             <div class="card-body d-flex flex-column justify-content-between">
                 <h5 class="card-title"><?=$bike['bike_brand']?> <?=$bike['bike_model']?></h5>
                 <?php if($bike['bike_promo'] == 0) : ?>
@@ -26,8 +25,12 @@
                 <?php elseif($bike['bike_visibility'] == 1) : ?>
                 <h5 class="text-success">Vélo en ligne</h5>
                 <?php endif?>
-                <a href="#" class="btn btn-primary">Voir le vélo</a>
-                <a href="#" class="btn btn-danger my-2">Supprimer le vélo</a>
+                <a href="<?=URL?>admin/bikes/one_bike/<?=$bike['bike_id']?>" class="btn btn-primary">Détail & Modif</a>
+                <form action="<?=URL?>admin/bikes/delete_bike" method="POST"
+                    onSubmit="return confirm('On confirme la suppression ?')">
+                    <input type="hidden" name="id_to_delete" value=<?= $bike['bike_id']  ?>>
+                    <button type="submit" class="btn btn-danger my-2 w-100">Supprimer le vélo</button>
+                </form>
 
             </div>
         </div>

@@ -53,4 +53,33 @@ class BikesManager extends MainManager
         return $allBikes;
     }
 
+    public function  getBikeById( $bike_id ) {
+        $req = 'SELECT * FROM bikes WHERE bike_id = :bike_id';
+        $stmt = $this->getDB()->prepare( $req );
+        $stmt->bindValue( ':bike_id', $bike_id, PDO::PARAM_INT );
+        $stmt->execute();
+        $oneBike = $stmt->fetch( PDO::FETCH_ASSOC );
+        $stmt->closeCursor();
+        return $oneBike;
+    }
+
+    public function  getBikesOnLine(){ 
+        $req = 'SELECT * FROM bikes WHERE bike_visibility = 1 ORDER BY bike_id DESC';
+        $stmt = $this->getDB()->prepare( $req );
+        $stmt->execute();
+        $allBikes = $stmt->fetchAll( PDO::FETCH_ASSOC );
+        $stmt->closeCursor();
+        return $allBikes;
+    } 
+
+    public function  deleteBikeDB($bike_id){ 
+        $req = 'DELETE FROM bikes WHERE bike_id = :bike_id';
+        $stmt = $this->getDB()->prepare( $req );
+        $stmt->bindValue( ':bike_id', $bike_id, PDO::PARAM_INT );
+        $stmt->execute();
+        $isValidate = ( $stmt->rowCount() > 0 );
+        $stmt->closeCursor();
+        return $isValidate;
+    }
+
 }

@@ -44,7 +44,7 @@ class BikesController extends MainController
             "view" => "./views/pages/bikes/createBike.view.php",
             "template" => "./views/common/template.php",
             "allDatasFeatures" => $allDatasFeatures,
-            "allFeatures" => $allFeatures
+            "allFeatures" => $allFeatures,
         ];
         $this->functions->generatePage($data_page);
     
@@ -69,5 +69,21 @@ class BikesController extends MainController
             header('Location: ' . URL . 'admin/bikes/create_bike');
         }
     
+    }
+
+    public function deleteBike($id){
+        $bike_to_delete = $this->bikesManager->getBikeById($id);
+        if(!Tools::deleteImage( $bike_to_delete['bike_picture'], 'public/assets/images/bikes/' )){
+            Tools::showAlert("Pb supression image", "alert-danger");
+            header('Location: ' . URL . 'admin/bikes/bikes_page');
+            return;
+        }
+        if($this->bikesManager->deleteBikeDB($id)){
+            Tools::showAlert("Le vélo a bien été supprimé", "alert-success");
+            header('Location: ' . URL . 'admin/bikes/bikes_page');
+        } else{
+            Tools::showAlert("Le vélo n'a pas pu être supprimé", "alert-danger");
+            header('Location: ' . URL . 'admin/bikes/bikes_page');
+        }
     }
 }

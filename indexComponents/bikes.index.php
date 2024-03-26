@@ -2,7 +2,7 @@
 
 // afin de ne pas avoir un index.php à rallonge,
 // ici, la partie location
-// swith( $url[ 1 ] ) sera toujours bikes/
+// swith( $url[ 1 ] ) sera toujours admin/bikes/
 
 switch ( $url[ 2 ] ) {
 
@@ -54,6 +54,8 @@ switch ( $url[ 2 ] ) {
 
     break;
     case 'delete_bike':
+        $id_to_delete = Tools::secureHTML( $_POST[ 'id_to_delete' ] );
+        $bikesController->deleteBike( $id_to_delete );
 
     // $featuresController->deleteFeature( $_POST[ 'id' ] );
     break;
