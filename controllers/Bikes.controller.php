@@ -135,6 +135,17 @@ class BikesController extends MainController
             Tools::showAlert("L'image n'a pas pu être ajoutée", "alert-danger");
             header('Location: ' . URL . 'admin/bikes/one_bike/' . $infos_new_picture['bike_id']);
         }
+    }
 
+    public function updateBike( $bike_id, $to_update, $new_value ){ 
+    
+            if($this->bikesManager->updateBikeDB($bike_id, $to_update, $new_value)){
+                Tools::showAlert("Le vélo a bien été modifié", "alert-success");
+                header('Location: ' . URL . 'admin/bikes/one_bike/' . $bike_id);
+            } else{
+                Tools::showAlert("Le vélo n'a pas pu être modifié", "alert-danger");
+                header('Location: ' . URL . 'admin/bikes/one_bike/' . $bike_id);
+            }
+    
     }
 }

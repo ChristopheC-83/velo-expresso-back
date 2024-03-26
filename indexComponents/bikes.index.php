@@ -85,4 +85,13 @@ switch ( $url[ 2 ] ) {
             $bikesController->changePicture( $infos_new_picture );
         }
 
+    case 'update_bike':
+            $bike_id = Tools::secureHTML( $_POST[ 'bike_id' ] );
+            $to_update = Tools::secureHTML( $_POST[ 'to_update' ] );
+            $new_value =Tools::secureHTML( $_POST[ 'new_value' ] );
+            $bikesController->updateBike( $bike_id, $to_update, $new_value );
+
+
+        break;
+
 }
