@@ -6,9 +6,9 @@
     <div class="d-flex flex-column px-1 mx-auto my-3" style="width: calc(180px + 40vw)">
         <img src="<?=URL?>public/assets/images/bikes/<?=$bike['bike_picture'] ?>" alt="">
         <form action="<?=URL?>admin/bikes/change_picture" method="POST" enctype="multipart/form-data" class="mt-2">
-            <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
-            <input type="file" name="new_picture" id="new_picture" required>
-            <button type="submit" class="btn btn-primary">Changer l'image</button>
+            <input type="hidden" class="pt-2" name="bike_id" value="<?=$bike['bike_id']?>">
+            <input type="file" class="pt-2" name="new_picture" id="new_picture" required>
+            <button type="submit" class="btn btn-primary mt-2">Changer l'image</button>
         </form>
     </div>
     <hr>
@@ -36,7 +36,7 @@
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
             class="mt-2 mx-auto w-100 ">
-            <label for="bike_visibility">On change la <b>marque : <?=$bike['bike_brand']?> </b> par</label><br>
+            <label for="bike_brand">On change la <b>marque : <?=$bike['bike_brand']?> </b> par</label><br>
             <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
             <input type="hidden" name="to_update" value="bike_brand">
             <select type="number" name="new_value" id="new_value" class="p-2 rounded" required>
@@ -55,7 +55,7 @@
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
             class="mt-2 mx-auto w-100 ">
-            <label for="bike_visibility">On change le <b>modèle : <?=$bike['bike_model']?> </b> par</label><br>
+            <label for="bike_model">On change le <b>modèle : <?=$bike['bike_model']?> </b> par</label><br>
             <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
             <input type="hidden" name="to_update" value="bike_model">
             <input type="text" name="new_value" id="new_value" class="p-2 rounded" required>
@@ -67,7 +67,7 @@
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
             class="mt-2 mx-auto w-100 ">
-            <label for="bike_visibility">On change l'<b>état</b> (neuf ou pas) par</label><br>
+            <label for="bike_new">On change l'<b>état</b> (neuf ou pas) par</label><br>
             <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
             <input type="hidden" name="to_update" value="bike_new">
             <select type="number" name="new_value" id="new_value" class="p-2 rounded" required>
@@ -87,7 +87,7 @@
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
             class="mt-2 mx-auto w-100 ">
-            <label for="bike_visibility">On change le <b>type de vélo : <?=$bike['bike_type']?> </b> par</label><br>
+            <label for="bike_type">On change le <b>type de vélo : <?=$bike['bike_type']?> </b> par</label><br>
             <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
             <input type="hidden" name="to_update" value="bike_type">
             <select type="number" name="new_value" id="new_value" class="p-2 rounded" required>
@@ -108,7 +108,7 @@
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
             class="mt-2 mx-auto w-100 ">
-            <label for="bike_visibility">On change la <b>taille du vélo : <?=$bike['bike_size']?> </b> par</label><br>
+            <label for="bike_size">On change la <b>taille du vélo : <?=$bike['bike_size']?> </b> par</label><br>
             <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
             <input type="hidden" name="to_update" value="bike_size">
             <select type="number" name="new_value" id="new_value" class="p-2 rounded" required>
@@ -129,7 +129,7 @@
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
             class="mt-2 mx-auto w-100 ">
-            <label for="bike_visibility">On change la <b>suspension du vélo : <?=$bike['bike_suspension']?> </b> par</label><br>
+            <label for="bike_suspension">On change la <b>suspension du vélo : <?=$bike['bike_suspension']?> </b> par</label><br>
             <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
             <input type="hidden" name="to_update" value="bike_suspension">
             <select type="number" name="new_value" id="new_value" class="p-2 rounded" required>
@@ -150,7 +150,7 @@
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
             class="mt-2 mx-auto w-100 ">
-            <label for="bike_visibility">On change le <b>nombre de vitesses du vélo : <?=$bike['bike_speeds_number']?> </b> par</label><br>
+            <label for="bike_speeds_number">On change le <b>nombre de vitesses du vélo : <?=$bike['bike_speeds_number']?> </b> par</label><br>
             <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
             <input type="hidden" name="to_update" value="bike_speeds_number">
             <select type="number" name="new_value" id="new_value" class="p-2 rounded" required>
@@ -183,7 +183,7 @@
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
             class="mt-2 mx-auto w-100 ">
-            <label for="bike_visibility">On change la <b>dimension des roues : <?=$bike['bike_wheels_dim']?> </b> par</label><br>
+            <label for="bike_wheels_dim">On change la <b>dimension des roues : <?=$bike['bike_wheels_dim']?> </b> par</label><br>
             <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
             <input type="hidden" name="to_update" value="bike_wheels_dim">
             <select type="number" name="new_value" id="new_value" class="p-2 rounded" required>
@@ -204,7 +204,7 @@
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
             class="mt-2 mx-auto w-100 ">
-            <label for="bike_visibility">On change les <b>roues : <?=$bike['bike_wheels']?> </b> par</label><br>
+            <label for="bike_wheels">On change les <b>roues : <?=$bike['bike_wheels']?> </b> par</label><br>
             <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
             <input type="hidden" name="to_update" value="bike_wheels">
             <input type="text" name="new_value" id="new_value" class="p-2 rounded" required>
@@ -216,7 +216,7 @@
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
             class="mt-2 mx-auto w-100 ">
-            <label for="bike_visibility">On change les <b>freins : <?=$bike['bike_brake']?> </b> par</label><br>
+            <label for="bike_brake">On change les <b>freins : <?=$bike['bike_brake']?> </b> par</label><br>
             <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
             <input type="hidden" name="to_update" value="bike_brake">
             <input type="text" name="new_value" id="new_value" class="p-2 rounded" required>
@@ -248,7 +248,7 @@
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
             class="mt-2 mx-auto w-100 ">
-            <label for="bike_visibility">On change les <b>détails elec (moteur/batterie...) : <?=$bike['bike_elec_detail']?> </b> par</label><br>
+            <label for="bike_elec_detail">On change les <b>détails elec (moteur/batterie...) : <?=$bike['bike_elec_detail']?> </b> par</label><br>
             <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
             <input type="hidden" name="to_update" value="bike_elec_detail">
             <input type="text" name="new_value" id="new_value" class="p-2 rounded" required>
@@ -256,6 +256,68 @@
         </form>
     </div>
     <hr>
+    <!-- Maj du prix -->
+    <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
+        <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
+            class="mt-2 mx-auto w-100 ">
+            <label for="bike_price">On change le <b>prix du vélo: <?=$bike['bike_price']?> </b> par</label><br>
+            <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
+            <input type="hidden" name="to_update" value="bike_price">
+            <input type="number" name="new_value" id="new_value" class="p-2 rounded" required>
+            <button type="submit" class="p-0 border border-0 fs-2">🔄️</button>
+        </form>
+    </div>
+    <hr>
+    <!-- Maj promo ? -->
+    <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
+        <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
+            class="mt-2 mx-auto w-100 d-flex justify-content-start align-items-center">
+            <label for="bike_promo">Vélo en promo ?</label>
+            <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
+            <input type="hidden" name="to_update" value="bike_promo">
+            <select type="number" name="new_value" id="new_value" class="p-2 rounded mx-2" required>
+                <?php if($bike['bike_promo'] == 1) : ?>
+                <option value=1>oui</option>
+                <option value=0>non</option>
+                <?php else : ?>
+                <option value=0>non</option>
+                <option value=1>oui</option>
+                <?php endif?>
+            </select>
+            <button type="submit" class="p-0 border border-0 fs-2">🔄️</button>
+        </form>
+    </div>
+    <hr>
+    <!-- Maj du prix promo -->
+    <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
+        <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
+            class="mt-2 mx-auto w-100 ">
+            <label for="bike_price_promo">On change le <b>prix du vélo: <?=$bike['bike_price_promo']?> </b> par</label><br>
+            <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
+            <input type="hidden" name="to_update" value="bike_price_promo">
+            <input type="number" name="new_value" id="new_value" class="p-2 rounded" required>
+            <button type="submit" class="p-0 border border-0 fs-2">🔄️</button>
+        </form>
+    </div>
+    <hr>
+    <!-- Maj de la description -->
+    <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
+        <form action="<?=URL?>admin/bikes/update_bike" method="POST" class="mt-2 mx-auto w-100 ">
+            <label for="bike_description">On change la <b>description du vélo :  </b></label><br>
+            <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
+            <input type="hidden" name="to_update" value="bike_description">
+            <textarea name="new_value" id="new_value" class="p-2 rounded w-50" rows="8"  style="min-width:250px"  required><?=$bike['bike_description']?></textarea>
+            <button type="submit" class="p-0 border border-0 fs-2">🔄️</button>
+        </form>
+    <!-- Maj de la message perso -->
+    <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
+        <form action="<?=URL?>admin/bikes/update_bike" method="POST" class="mt-2 mx-auto w-100 ">
+            <label for="bike_msg_perso">On change le <b>message perso : </b></label><br>
+            <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
+            <input type="hidden" name="to_update" value="bike_msg_perso">
+            <textarea name="new_value" id="new_value" class="p-2 rounded w-50" rows="8"  style="min-width:250px" required><?=$bike['bike_msg_perso']?></textarea>
+            <button type="submit" class="p-0 border border-0 fs-2">🔄️</button>
+        </form>
 
 
 </div>
