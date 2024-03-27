@@ -55,7 +55,7 @@
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
             class="mt-2 mx-auto w-100 ">
-            <label for="bike_visibility">On change la <b>modèle : <?=$bike['bike_model']?> </b> par</label><br>
+            <label for="bike_visibility">On change le <b>modèle : <?=$bike['bike_model']?> </b> par</label><br>
             <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
             <input type="hidden" name="to_update" value="bike_model">
             <input type="text" name="new_value" id="new_value" class="p-2 rounded" required>
@@ -163,6 +163,95 @@
                     <?php endif; ?>
                 <?php endforeach?>
             </select>
+            <button type="submit" class="p-0 border border-0 fs-2">🔄️</button>
+        </form>
+    </div>
+    <hr>
+     <!-- Maj de la transmission -->
+     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
+        <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
+            class="mt-2 mx-auto w-100 ">
+            <label for="bike_visibility">On change la <b>transmission : <?=$bike['bike_transmission']?> </b> par</label><br>
+            <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
+            <input type="hidden" name="to_update" value="bike_transmission">
+            <input type="text" name="new_value" id="new_value" class="p-2 rounded" required>
+            <button type="submit" class="p-0 border border-0 fs-2">🔄️</button>
+        </form>
+    </div>
+    <hr>
+    <!-- Maj dimansion des roues -->
+    <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
+        <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
+            class="mt-2 mx-auto w-100 ">
+            <label for="bike_visibility">On change la <b>dimension des roues : <?=$bike['bike_wheels_dim']?> </b> par</label><br>
+            <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
+            <input type="hidden" name="to_update" value="bike_wheels_dim">
+            <select type="number" name="new_value" id="new_value" class="p-2 rounded" required>
+                <?php if($bike['bike_wheels_dim']): ?>
+                    <option value="<?=$bike['bike_wheels_dim']?>"><?=$bike['bike_wheels_dim']?></option>
+                <?php endif ?>
+                <?php foreach($features as $feature) : ?>
+                    <?php if($feature['feature'] === "wheels_dim" && $feature['feature'] !== $bike['bike_wheels_dim']): ?>
+                         <option value="<?= $feature['data'] ?>"><?= $feature['data'] ?></option>
+                    <?php endif; ?>
+                <?php endforeach?>
+            </select>
+            <button type="submit" class="p-0 border border-0 fs-2">🔄️</button>
+        </form>
+    </div>
+    <hr>
+    <!-- Maj des roues -->
+    <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
+        <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
+            class="mt-2 mx-auto w-100 ">
+            <label for="bike_visibility">On change les <b>roues : <?=$bike['bike_wheels']?> </b> par</label><br>
+            <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
+            <input type="hidden" name="to_update" value="bike_wheels">
+            <input type="text" name="new_value" id="new_value" class="p-2 rounded" required>
+            <button type="submit" class="p-0 border border-0 fs-2">🔄️</button>
+        </form>
+    </div>
+    <hr>
+    <!-- Maj des freins -->
+    <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
+        <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
+            class="mt-2 mx-auto w-100 ">
+            <label for="bike_visibility">On change les <b>freins : <?=$bike['bike_brake']?> </b> par</label><br>
+            <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
+            <input type="hidden" name="to_update" value="bike_brake">
+            <input type="text" name="new_value" id="new_value" class="p-2 rounded" required>
+            <button type="submit" class="p-0 border border-0 fs-2">🔄️</button>
+        </form>
+    </div>
+    <hr>
+    <!-- Maj electrique ? -->
+    <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
+        <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
+            class="mt-2 mx-auto w-100 d-flex justify-content-start align-items-center">
+            <label for="bike_elec">Vélo Electrique ?</label>
+            <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
+            <input type="hidden" name="to_update" value="bike_elec">
+            <select type="number" name="new_value" id="new_value" class="p-2 rounded mx-2" required>
+                <?php if($bike['bike_elec'] == 1) : ?>
+                <option value=1>oui</option>
+                <option value=0>non</option>
+                <?php else : ?>
+                <option value=0>non</option>
+                <option value=1>oui</option>
+                <?php endif?>
+            </select>
+            <button type="submit" class="p-0 border border-0 fs-2">🔄️</button>
+        </form>
+    </div>
+    <hr>
+    <!-- Maj des détails elec -->
+    <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
+        <form action="<?=URL?>admin/bikes/update_bike" method="POST" enctype="multipart/form-data"
+            class="mt-2 mx-auto w-100 ">
+            <label for="bike_visibility">On change les <b>détails elec (moteur/batterie...) : <?=$bike['bike_elec_detail']?> </b> par</label><br>
+            <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
+            <input type="hidden" name="to_update" value="bike_elec_detail">
+            <input type="text" name="new_value" id="new_value" class="p-2 rounded" required>
             <button type="submit" class="p-0 border border-0 fs-2">🔄️</button>
         </form>
     </div>
