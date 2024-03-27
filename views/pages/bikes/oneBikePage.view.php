@@ -40,10 +40,11 @@
             <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
             <input type="hidden" name="to_update" value="bike_brand">
             <select type="number" name="new_value" id="new_value" class="p-2 rounded" required>
+                <option value="<?=$bike['bike_brand']?>"><?=$bike['bike_brand']?></option>
                 <?php foreach($features as $feature) : ?>
-                <?php if($feature['feature'] === "brand"): ?>
-                <option value="<?= $feature['data'] ?>"><?= $feature['data'] ?></option>
-                <?php endif; ?>
+                    <?php if($feature['feature'] === "brand" && $feature['feature'] !== $bike['bike_brand']): ?>
+                         <option value="<?= $feature['data'] ?>"><?= $feature['data'] ?></option>
+                    <?php endif; ?>
                 <?php endforeach?>
             </select>
             <button type="submit" class="p-0 border border-0 fs-2">🔄️</button>
@@ -81,7 +82,7 @@
             <button type="submit" class="p-0 border border-0 fs-2">🔄️</button>
         </form>
     </div>
-<hr>
+    <hr>
 
 
 </div>

@@ -89,7 +89,12 @@ switch ( $url[ 2 ] ) {
             $bike_id = Tools::secureHTML( $_POST[ 'bike_id' ] );
             $to_update = Tools::secureHTML( $_POST[ 'to_update' ] );
             $new_value =Tools::secureHTML( $_POST[ 'new_value' ] );
-            $bikesController->updateBike( $bike_id, $to_update, $new_value );
+            if(empty($new_value)){
+                Tools::showAlert( 'Il manque des informations à transmettre !', 'alert-danger' );
+                header( 'Location: ' . URL . 'admin/bikes/one_bike/' . $bike_id );
+            }else{
+                $bikesController->updateBike( $bike_id, $to_update, $new_value );
+            }
 
 
         break;
