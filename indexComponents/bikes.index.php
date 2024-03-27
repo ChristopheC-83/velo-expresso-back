@@ -9,6 +9,12 @@ switch ( $url[ 2 ] ) {
     case 'bikes_page':
     $bikesController->bikesPage();
     break;
+    case 'new_bikes_page':
+    $bikesController->newBikesPage();
+    break;
+    case 'used_bikes_page':
+    $bikesController->usedBikesPage();
+    break;
 
     case 'create_bike':
     $bikesController->createBikePage();

@@ -33,6 +33,32 @@ class BikesController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
+    public function  newBikesPage()
+    {
+        $allBikes = $this->bikesManager->getAllBikesDB();
+
+        $data_page = [
+            "page_description" => "Page des vélos",
+            "page_title" => "VE | Vélos",
+            "view" => "./views/pages/bikes/new_bikes.view.php",
+            "template" => "./views/common/template.php",
+            "allBikes" => $allBikes,
+        ];
+        $this->functions->generatePage($data_page);
+    }
+    public function  usedBikesPage()
+    {
+        $allBikes = $this->bikesManager->getAllBikesDB();
+
+        $data_page = [
+            "page_description" => "Page des vélos",
+            "page_title" => "VE | Vélos",
+            "view" => "./views/pages/bikes/used_bikes.view.php",
+            "template" => "./views/common/template.php",
+            "allBikes" => $allBikes,
+        ];
+        $this->functions->generatePage($data_page);
+    }
     public function createBikePage (){ 
 
         $allDatasFeatures = $this->featuresBikesManager->getAllDatasFeatures();

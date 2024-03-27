@@ -10,8 +10,10 @@
     <div class="d-flex flex-row flex-wrap gap-2 w-100">
 
         <?php foreach ($allBikes as $bike) : ?>
+        <?php if ($bike['bike_new']==="used") : ?>
         <div class="card mx-auto" style="width: 18rem;">
-            <img src="<?=URL?>public/assets/images/bikes/<?=$bike['bike_picture']?>" class="card-img-top" alt="<?=$bike['bike_model']?>">
+            <img src="<?=URL?>public/assets/images/bikes/<?=$bike['bike_picture']?>" class="card-img-top"
+                alt="<?=$bike['bike_model']?>">
             <div class="card-body d-flex flex-column justify-content-between">
             <?= $bike['bike_new'] ?>
                 <h5 class="card-title"><?=$bike['bike_brand']?> <?=$bike['bike_model']?></h5>
@@ -35,6 +37,7 @@
 
             </div>
         </div>
+        <?php endif; ?>
         <?php endforeach; ?>
 
     </div>
