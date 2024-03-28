@@ -176,4 +176,13 @@ class BikesController extends MainController
             }
     
     }
+
+    public function  sendBikes() {
+
+        $bikes = $this->bikesManager->getAllVisibleBikes();
+        $bikes = [
+            'bikes'=>$bikes
+        ];
+        Tools::sendJson_get( $bikes );
+    }
 }

@@ -23,7 +23,7 @@
                         <a href="<?= URL ?>admin/partners/partners_page" class="text-light text-decoration-none">Partenaires</a>
                     </button>
                     <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/opinions_page" class="text-light text-decoration-none">Avis</a>
+                        <a href="<?= URL ?>admin/opinions/opinions_page" class="text-light text-decoration-none">Avis</a>
                     </button>
                 </div>
             </div>
@@ -39,7 +39,6 @@
                     <button class="btn btn-secondary btn-lg text-light m-1">
                         <a href="<?= URL ?>admin/rental/text_under_array_rentals" class="text-light text-decoration-none">Texte</a>
                     </button>
-
                 </div>
             </div>
         </div>

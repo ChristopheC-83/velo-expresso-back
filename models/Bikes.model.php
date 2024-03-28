@@ -104,4 +104,15 @@ class BikesManager extends MainManager
         return $isValidate;
     }
 
+    public function  getAllVisibleBikes(){
+        $req = 'SELECT * FROM bikes WHERE bike_visibility = 1 ORDER BY bike_id DESC';
+        $stmt = $this->getDB()->prepare( $req );
+        $stmt->execute();
+        $allBikes = $stmt->fetchAll( PDO::FETCH_ASSOC );
+        $stmt->closeCursor();
+        return $allBikes;
+    
+    
+    }
+
 }

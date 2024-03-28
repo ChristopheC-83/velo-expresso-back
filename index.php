@@ -1,4 +1,3 @@
-
 <?php
 
 session_start();
@@ -17,6 +16,7 @@ require_once("./controllers/Bikes.controller.php");
 require_once("./controllers/FeaturesBikes.controller.php");
 require_once("./controllers/Rental.controller.php");
 require_once("./controllers/Workshop.controller.php");
+require_once("./controllers/Opinions.controller.php");
 
 $mainController = new MainController();
 $homeController = new HomeController();
@@ -25,6 +25,7 @@ $bikesController = new BikesController();
 $workshopController = new WorkshopController();
 $rentalController = new RentalController();
 $featuresController = new FeaturesController();
+$opinionsController = new OpinionsController();
 
 try {
     if (!isset($_GET['page'])) {
@@ -77,9 +78,15 @@ try {
                             require_once("indexComponents/featuresBikes.index.php");
                             break;
                             // Gestion des vélos
-                            case "bikes":
-                                require_once("indexComponents/bikes.index.php");
-                                break;
+                        case "bikes":
+                            require_once("indexComponents/bikes.index.php");
+                            break;
+                        case "opinions":
+                            require_once("indexComponents/opinions.index.php");
+                            break;
+
+
+
 
 
                             // Gestion page d'accueil
@@ -197,6 +204,9 @@ try {
                 break;
             case "api_partners":
                 $partnersController->sendPartners();
+                break;
+            case "api_bikes":
+                $bikesController->sendBikes();
                 break;
                 // case "api_hangman_words":
                 //     $hangmanController->sendHangmanWords();
