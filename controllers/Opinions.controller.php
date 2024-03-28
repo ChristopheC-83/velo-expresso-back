@@ -78,4 +78,15 @@ class OpinionsController extends MainController
     
     }
 
+    public function  sendOpinions(){
+    
+        $validatedOpinions = $this->OpinionsManager->getAllOpinionsValidated();
+        $opinions = [
+            'validatedOpinions'=>$validatedOpinions
+        ];
+        Tools::sendJson_get( $opinions );
+    
+    }
+
+
 }

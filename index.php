@@ -208,6 +208,9 @@ try {
             case "api_bikes":
                 $bikesController->sendBikes();
                 break;
+            case "api_opinions":
+                $opinionsController->sendOpinions();
+                break;
                 // case "api_hangman_words":
                 //     $hangmanController->sendHangmanWords();
                 //     break;

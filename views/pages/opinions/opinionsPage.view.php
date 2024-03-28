@@ -1,9 +1,9 @@
-<h1 class="text-center my-4"><u>Gestion des avis à valider</u></h1>
+<h1 class="text-center my-4"><span class="bg-danger p-2 px-4 rounded-pill"><?=count($allOpinions)?></span><u> avis à valider</u></h1>
 <h3 class="text-center ">Ici les avis non validés</h3>
 <h3 class="text-center ">Non affichés sur le site</h3>
 
 <div class="container mt-3 d-flex flex-column justify-content-center align-items-center gap-4">
-    <!-- <?=Tools::showArray($allOpinions)?> -->
+    
 
     <?php foreach ($allOpinions as $opinion) : ?>
     <?php if($opinion['validated'] === 0) : ?>
