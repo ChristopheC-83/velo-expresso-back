@@ -18,6 +18,7 @@ require_once("./controllers/Rental.controller.php");
 require_once("./controllers/Workshop.controller.php");
 require_once("./controllers/Opinions.controller.php");
 require_once("./controllers/Slider.controller.php");
+require_once("./controllers/Frames.controller.php");
 
 $mainController = new MainController();
 $homeController = new HomeController();
@@ -28,6 +29,7 @@ $rentalController = new RentalController();
 $featuresController = new FeaturesController();
 $opinionsController = new OpinionsController();
 $sliderController = new SliderController();
+$framesController = new FramesController();
 
 try {
     if (!isset($_GET['page'])) {
@@ -91,22 +93,16 @@ try {
                         case "slider":
                             require_once("indexComponents/slider.index.php");
                             break;
-
-
-
-
-
-                            // Gestion page d'accueil
-                        case "sliders_page":
-                            $homeController->slidersPage();
+                            // gestion des cadres de l'accueil
+                        case "frames":
+                            require_once("indexComponents/frames.index.php");
                             break;
-                        case "frames_page":
-                            $homeController->framesPage();
-                            break;
+
+
+
+
+
                         
-                        case "opinions_page":
-                            $homeController->opinionsPage();
-                            break;
 
                        
 

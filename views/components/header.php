@@ -17,7 +17,7 @@
                         <a href="<?= URL ?>admin/slider/sliders_page" class="text-light text-decoration-none">Sliders</a>
                     </button>
                     <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/frames_page" class="text-light text-decoration-none">Cadres</a>
+                        <a href="<?= URL ?>admin/frames/frames_page" class="text-light text-decoration-none">Cadres</a>
                     </button>
                     <button class="btn btn-secondary btn-lg text-light m-1">
                         <a href="<?= URL ?>admin/partners/partners_page" class="text-light text-decoration-none">Partenaires</a>
