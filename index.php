@@ -218,6 +218,9 @@ try {
             case "api_opinions":
                 $opinionsController->sendOpinions();
                 break;
+            case "api_slider":
+                $sliderController->sendSliders();
+                break;
                 // case "api_hangman_words":
                 //     $hangmanController->sendHangmanWords();
                 //     break;

@@ -75,4 +75,14 @@ class SliderController extends MainController
         header( 'Location: ' . URL . 'admin/slider/sliders_page' );
     }
 
+    public function  sendSliders() {
+
+        $allSliders = $this->sliderManager->getAllSlidersDB();
+        $sliders = [
+            'allSliders'=>$allSliders
+        ];
+        Tools::sendJson_get( $sliders );
+    }
+
+
 }
