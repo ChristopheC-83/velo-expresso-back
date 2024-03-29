@@ -88,4 +88,15 @@ abstract class Tools {
         }
 
     }
+    public static function deleteImageMute( $file, $dir ) {
+        $eltToDelete = $dir . $file;
+        if ( unlink( $eltToDelete ) ) {
+            // Tools::showAlert( 'Le fichier '.$file.' a été supprimé avec succès.', 'alert-success' );
+            return true;
+        } else {
+            Tools::showAlert( 'Impossible de supprimer le fichier '.$file, 'alert-danger' );
+            return false;
+        }
+
+    }
 }

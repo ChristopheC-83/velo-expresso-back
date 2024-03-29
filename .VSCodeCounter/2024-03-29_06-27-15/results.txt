@@ -1,0 +1,115 @@
+Date : 2024-03-29 06:27:15
+Directory : c:\xampp\htdocs\kiki\velo-expresso-back
+Total : 65 files,  24984 codes, 127 comments, 2338 blanks, all 27449 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| CSS        |          1 |     21,876 |         46 |      1,792 |     23,714 |
+| PHP        |         58 |      3,007 |         74 |        527 |      3,608 |
+| JSON       |          2 |         59 |          0 |          2 |         61 |
+| SCSS       |          2 |         25 |          7 |          6 |         38 |
+| Markdown   |          1 |          9 |          0 |          9 |         18 |
+| JavaScript |          1 |          8 |          0 |          2 |         10 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                        | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                           |         65 |     24,984 |        127 |      2,338 |     27,449 |
+| . (Files)                                                                                   |          4 |        241 |         17 |         57 |        315 |
+| controllers                                                                                 |         11 |        844 |         27 |        164 |      1,035 |
+| indexComponents                                                                             |          6 |        218 |         24 |         55 |        297 |
+| models                                                                                      |         10 |        617 |          6 |        107 |        730 |
+| public                                                                                      |          4 |     21,909 |         53 |      1,800 |     23,762 |
+| public\javascript                                                                           |          1 |          8 |          0 |          2 |         10 |
+| public\style                                                                                |          3 |     21,901 |         53 |      1,798 |     23,752 |
+| public\style (Files)                                                                        |          2 |     21,880 |         53 |      1,796 |     23,729 |
+| public\style\custom                                                                         |          1 |         21 |          0 |          2 |         23 |
+| views                                                                                       |         30 |      1,155 |          0 |        155 |      1,310 |
+| views\common                                                                                |          1 |         42 |          0 |         13 |         55 |
+| views\components                                                                            |          8 |         95 |          0 |         14 |        109 |
+| views\components (Files)                                                                    |          2 |         72 |          0 |          5 |         77 |
+| views\components\notices                                                                    |          6 |         23 |          0 |          9 |         32 |
+| views\pages                                                                                 |         21 |      1,018 |          0 |        128 |      1,146 |
+| views\pages (Files)                                                                         |          2 |         32 |          0 |         17 |         49 |
+| views\pages\bikes                                                                           |          6 |        646 |          0 |         35 |        681 |
+| views\pages\home                                                                            |          4 |         37 |          0 |         16 |         53 |
+| views\pages\opinions                                                                        |          2 |         61 |          0 |         15 |         76 |
+| views\pages\rental                                                                          |          4 |         95 |          0 |         29 |        124 |
+| views\pages\workshop                                                                        |          3 |        147 |          0 |         16 |        163 |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                    | language   | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\xampp\htdocs\kiki\velo-expresso-back\README.md                                           | Markdown   |          9 |          0 |          9 |         18 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\controllers\Bikes.controller.php                    | PHP        |        155 |          0 |         33 |        188 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\controllers\FeaturesBikes.controller.php            | PHP        |         46 |          0 |          8 |         54 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\controllers\Functions.controller.php                | PHP        |         17 |          5 |          3 |         25 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\controllers\Home.controller.php                     | PHP        |         45 |          3 |         14 |         62 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\controllers\Main.controller.php                     | PHP        |         58 |          5 |         12 |         75 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\controllers\Opinions.controller.php                 | PHP        |         73 |          0 |         19 |         92 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\controllers\Partners.controller.php                 | PHP        |         58 |          2 |         11 |         71 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\controllers\Rental.controller.php                   | PHP        |        133 |          1 |         29 |        163 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\controllers\Slider.controller.php                   | PHP        |         27 |          0 |          7 |         34 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\controllers\Tools.controller.php                    | PHP        |         73 |          8 |         11 |         92 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\controllers\Workshop.controller.php                 | PHP        |        159 |          3 |         17 |        179 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\index.php                                           | PHP        |        173 |         17 |         46 |        236 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\indexComponents\bikes.index.php                     | PHP        |         90 |          5 |         14 |        109 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\indexComponents\featuresBikes.index.php             | PHP        |         20 |          4 |          6 |         30 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\indexComponents\opinions.index.php                  | PHP        |         22 |          4 |          8 |         34 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\indexComponents\partners.index.php                  | PHP        |         23 |          3 |          7 |         33 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\indexComponents\rental.index.php                    | PHP        |         57 |          5 |         13 |         75 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\indexComponents\slider.index.php                    | PHP        |          6 |          3 |          7 |         16 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\models\Bikes.model.php                              | PHP        |        103 |          0 |         15 |        118 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\models\FeaturesBikes.model.php                      | PHP        |         41 |          0 |         13 |         54 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\models\Home.model.php                               | PHP        |          5 |          0 |          4 |          9 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\models\Main.model.php                               | PHP        |         30 |          0 |          3 |         33 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\models\Opinions.model.php                           | PHP        |         56 |          0 |         17 |         73 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\models\Partners.model.php                           | PHP        |         46 |          0 |          9 |         55 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\models\Rental.model.php                             | PHP        |        108 |          0 |         21 |        129 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\models\Slider.model.php                             | PHP        |          7 |          0 |          4 |         11 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\models\Workshop.model.php                           | PHP        |        177 |          3 |         20 |        200 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\models\pdo.model.php                                | PHP        |         44 |          3 |          1 |         48 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\package-lock.json                                   | JSON       |         44 |          0 |          1 |         45 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\package.json                                        | JSON       |         15 |          0 |          1 |         16 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\public\javascript\app.js                            | JavaScript |          8 |          0 |          2 |         10 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\public\style\custom\_custom.scss                    | SCSS       |         21 |          0 |          2 |         23 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\public\style\style.css                              | CSS        |     21,876 |         46 |      1,792 |     23,714 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\public\style\style.scss                             | SCSS       |          4 |          7 |          4 |         15 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\common\template.php                           | PHP        |         42 |          0 |         13 |         55 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\components\footer.php                         | PHP        |          3 |          0 |          0 |          3 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\components\header.php                         | PHP        |         69 |          0 |          5 |         74 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\components\notices\bikes_notice.php           | PHP        |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\components\notices\general_notice.php         | PHP        |          8 |          0 |          0 |          8 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\components\notices\home_notice.php            | PHP        |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\components\notices\notices.php                | PHP        |         15 |          0 |          5 |         20 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\components\notices\rental_notice.php          | PHP        |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\components\notices\workshop_notice.php        | PHP        |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\bikes\bikes.view.php                    | PHP        |         37 |          0 |          8 |         45 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\bikes\createBike.view.php               | PHP        |        160 |          0 |          5 |        165 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\bikes\features.view.php                 | PHP        |         52 |          0 |          2 |         54 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\bikes\new_bikes.view.php                | PHP        |         39 |          0 |          8 |         47 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\bikes\oneBikePage.view.php              | PHP        |        318 |          0 |          4 |        322 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\bikes\used_bikes.view.php               | PHP        |         40 |          0 |          8 |         48 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\errorPage.view.php                      | PHP        |          6 |          0 |          8 |         14 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\homePage.view.php                       | PHP        |         26 |          0 |          9 |         35 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\home\frames.view.php                    | PHP        |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\home\opinions.view.php                  | PHP        |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\home\partners.view.php                  | PHP        |         31 |          0 |         10 |         41 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\home\sliders.view.php                   | PHP        |          4 |          0 |          6 |         10 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\opinions\opinionsPage.view.php          | PHP        |         31 |          0 |          8 |         39 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\opinions\validatedOpinionsPage.view.php | PHP        |         30 |          0 |          7 |         37 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\rental\addRental.view.php               | PHP        |         21 |          0 |         12 |         33 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\rental\allRentals.view.php              | PHP        |         32 |          0 |          7 |         39 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\rental\modifyRental.view.php            | PHP        |         29 |          0 |          9 |         38 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\rental\textUnderArray.view.php          | PHP        |         13 |          0 |          1 |         14 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\workshop\categories.view.php            | PHP        |         59 |          0 |          2 |         61 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\workshop\category.view.php              | PHP        |         69 |          0 |          9 |         78 |
+| c:\xampp\htdocs\kiki\velo-expresso-back\views\pages\workshop\showAllTasks.view.php          | PHP        |         19 |          0 |          5 |         24 |
+| Total                                                                                       |            |     24,984 |        127 |      2,338 |     27,449 |
++---------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

@@ -1,5 +1,5 @@
 <h1 class="text-center my-4"><u>Les Partenaires</u></h1>
-<h2 class="text-center my-4"><u>Liste & Ajout</u></h2>
+<h2 class="text-center my-4">Liste & Ajout</h2>
 
 <div class="container">
 
@@ -19,18 +19,21 @@
 
 
 <?php endforeach; ?>
-
+<h2 class="text-center my-2 p-0">Ajout d'un partenaire</h2>
     <form action="<?= URL ?>admin/partners/add_partner" method="post" class="d-flex flex-column " enctype="multipart/form-data">
 
         <label for="name" class="py-2 mt-1">Nom du nouveau partenaire</label>
         <input type="text" class="text-primary fs-5 rounded mb-3" id="name" name="name" placeholder="Nom du partenaire">
+        
         <label for="link" class="py-2 mt-1">Lien du site du nouveau partenaire</label>
         <input type="text" class="text-primary fs-5 rounded mb-3" id="link" name="link" placeholder="Lien du partenaire">
+
         <label for="position" class="py-2 mt-1">Position</label>
         <input type="number" class="text-primary fs-5 rounded mb-3" id="position" name="position" placeholder="Position du partenaire">
+        
         <label for="item" class="py-2 mt-1">Logo du nouveau partenaire</label>
         <input type="file" class="text-primary fs-5 rounded mb-3" id="logo" name="logo" placeholder="Logo du partenaire">
-        <button class="col-12 btn btn-light">
+        <button class="col-12 btn btn-primary">
             <h2>Valider l'ajout</h2>
         </button>
 

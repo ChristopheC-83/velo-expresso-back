@@ -17,6 +17,7 @@ require_once("./controllers/FeaturesBikes.controller.php");
 require_once("./controllers/Rental.controller.php");
 require_once("./controllers/Workshop.controller.php");
 require_once("./controllers/Opinions.controller.php");
+require_once("./controllers/Slider.controller.php");
 
 $mainController = new MainController();
 $homeController = new HomeController();
@@ -26,6 +27,7 @@ $workshopController = new WorkshopController();
 $rentalController = new RentalController();
 $featuresController = new FeaturesController();
 $opinionsController = new OpinionsController();
+$sliderController = new SliderController();
 
 try {
     if (!isset($_GET['page'])) {
@@ -81,8 +83,13 @@ try {
                         case "bikes":
                             require_once("indexComponents/bikes.index.php");
                             break;
+                            // gestion des avis
                         case "opinions":
                             require_once("indexComponents/opinions.index.php");
+                            break;
+                            // gestion des slider de l'accueil
+                        case "slider":
+                            require_once("indexComponents/slider.index.php");
                             break;
 
 
