@@ -67,8 +67,8 @@ abstract class Tools {
         if (file_exists($targetFile)) {
             throw new Exception("Le fichier existe déjà.");
         }
-        if ($uploadedFile['size'] > 9000000) {
-            throw new Exception("Le fichier est trop lourd.");
+        if ($uploadedFile['size'] > 800000) {
+            throw new Exception("Le fichier est trop lourd, 750Ko maximum.");
         }
         // upload de l'image dans le dossier
         if (!move_uploaded_file($uploadedFile['tmp_name'], $targetFile))

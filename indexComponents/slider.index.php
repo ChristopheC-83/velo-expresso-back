@@ -18,8 +18,8 @@ switch ( $url[ 2 ] ) {
     $btnText = Tools::secureHTML( $_POST[ 'btnText' ] );
     $btnLink = Tools::secureHTML( $_POST[ 'btnLink' ] );
     $image = $_FILES[ 'image' ];
-    if ( empty( $position ) || empty( $title ) || empty( $btnText ) || empty( $btnLink ) || empty( $image ) ) {
-        Tools::showAlert( 'Il faut remplir tous les champs', 'alert-danger' );
+    if ( empty( $image ) ) {
+        Tools::showAlert( 'Il faut au moins une image', 'alert-danger' );
         header( 'Location: ' . URL . 'admin/slider/slider_page' );
     } else {
         $sliderController->addSlider( $position, $title, $btnText, $btnLink, $image );
@@ -33,9 +33,9 @@ switch ( $url[ 2 ] ) {
     case 'overlay_slider':
         Tools::showArray($_POST);
         if ($_POST['overlay']==="on") {
-            $sliderController->overlaySlider($_POST['id'], true );
+            $sliderController->overlaySlider($_POST['id'], 1 );
         }else{
-            $sliderController->overlaySlider($_POST['id'], false );
+            $sliderController->overlaySlider($_POST['id'], 0 );
         }
         break;
 
