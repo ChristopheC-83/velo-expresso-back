@@ -49,4 +49,16 @@ class SliderManager extends MainManager
         $stmt->closeCursor();
         return $isValidate;
     }
+
+    public function  updateOverlay($slider_id, $overlay){
+        $req= "UPDATE home_slider SET overlay = :overlay WHERE slider_id = :slider_id";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":overlay", $overlay, PDO::PARAM_BOOL);
+        $stmt->bindValue(":slider_id", $slider_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate;
+    
+    }
 }

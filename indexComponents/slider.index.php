@@ -30,6 +30,15 @@ switch ( $url[ 2 ] ) {
     $sliderController->deleteSlider( $_POST[ 'id' ] );
     break;
 
+    case 'overlay_slider':
+        Tools::showArray($_POST);
+        if ($_POST['overlay']==="on") {
+            $sliderController->overlaySlider($_POST['id'], true );
+        }else{
+            $sliderController->overlaySlider($_POST['id'], false );
+        }
+        break;
+
     default:
     throw new Exception( "La page demandée n'existe pas..." );
 }

@@ -64,4 +64,15 @@ class SliderController extends MainController
     
     }
 
+    public function overlaySlider ($id, $overlay){
+        Tools::showArray($overlay);
+        if ($this->sliderManager->updateOverlay($id, $overlay)){
+            Tools::showAlert( 'Overlay Mis A Jour', 'alert-success' );
+        } else {
+            Tools::showAlert( 'Overlay inchangé', 'alert-warning' );
+        }
+        
+        header( 'Location: ' . URL . 'admin/slider/sliders_page' );
+    }
+
 }

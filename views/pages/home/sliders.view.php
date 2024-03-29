@@ -14,7 +14,8 @@
             <p><u>Position :</u> <?= $slider['position'] ?></p>
             <form id="overlay" action="<?= URL ?>admin/slider/overlay_slider" method="post">
                 <label for="overlay">Overlay ?</label>
-                <input type="checkbox" id="overlay" name="overlay" value="<?= $slider['overlay']  ?>"
+                <input type="hidden" name="id" value=<?= $slider['slider_id'] ?>>
+                <input type="checkbox" id="overlay" name="overlay" <?= $slider['overlay'] ? 'checked' : '' ?>
                     onchange="submitForm()">
             </form>
             <form action="<?= URL ?>admin/slider/delete_slider" method="POST"
