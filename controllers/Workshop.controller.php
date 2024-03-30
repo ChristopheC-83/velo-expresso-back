@@ -33,15 +33,15 @@ class WorkshopController extends MainController
     public function sendNewCategory($new_category, $new_position)
     {
         
-        if (!$this->workshopManager->isCategoryNameFree($new_category)) {
+        if (!$this->workshopManager->isNameFreeGeneric($new_category, "workshop_categories")) {
             Tools::showAlert("La catégorie existe déjà", "alert-danger");
-            header('Location: ' . URL . 'admin/workshop_page');
+            header('Location: ' . URL . 'admin/workshop/workshop_page');
             Tools::showArray($new_category);
             return;
         }
         if (!$this->workshopManager->isPositionFreeGeneric($new_position,"workshop_categories")) {
             Tools::showAlert("La position est déjà prise", "alert-danger");
-            header('Location: ' . URL . 'admin/workshop_page');
+            header('Location: ' . URL . 'admin/workshop/workshop_page');
             return;
         }
         if ($this->workshopManager->createNewCategory($new_category, $new_position)) {
@@ -49,23 +49,31 @@ class WorkshopController extends MainController
         } else {
             Tools::showAlert("La catégorie n'a pas été ajoutée", "alert-danger");
         }
-        header('Location: ' . URL . 'admin/workshop_page');
+        header('Location: ' . URL . 'admin/workshop/workshop_page');
     }
-    public function modifyCategory($id, $new_category, $new_position)
+    public function modifyCategory($id, $name, $position)
     {
-        $oldPosition = $this->workshopManager->getCategoryById($id)['position'];
-        if (!$this->workshopManager->isPositionFree($new_position) && $new_position != $oldPosition) {
-            Tools::showAlert("La position est déjà prise", "alert-danger");
-            header('Location: ' . URL . 'admin/workshop_page');
+        $old_position = $this->workshopManager->getCategoryById($id)['position'];
+        $old_name = $this->workshopManager->getCategoryById($id)['name'];
+
+        if (!$this->workshopManager->isNameFreeGeneric($name, "workshop_categories") && $name != $old_name) {
+            Tools::showAlert("Ce nom est déjà pris, Merci d'en changer.", "alert-warning");
+            header('Location: ' . URL . 'admin/workshop/workshop_page');
             return;
         }
-        if ($this->workshopManager->updateCategory($id, $new_category, $new_position)) {
+        if (!$this->workshopManager->isPositionFreeGeneric($position, "workshop_categories") && $position != $old_position) {
+            Tools::showAlert("Cette position est déjà prise, Merci d'en changer.", "alert-warning");
+            header('Location: ' . URL . 'admin/workshop/workshop_page');
+            return;
+        }
+
+        if ($this->workshopManager->updateCategory($id, $name, $position)) {
             Tools::showAlert("La catégorie a bien été modifiée", "alert-success");
         } else {
             Tools::showAlert("La catégorie n'a pas été modifiée", "alert-warning");
         }
 
-        header('Location: ' . URL . 'admin/workshop_page');
+        header('Location: ' . URL . 'admin/workshop/workshop_page');
     }
     public function deleteCategory($cat_id)
     {
@@ -74,7 +82,7 @@ class WorkshopController extends MainController
         } else {
             Tools::showAlert("La catégorie n'a pas été supprimée", "alert-danger");
         }
-        header('Location: ' . URL . 'admin/workshop_page');
+        header('Location: ' . URL . 'admin/workshop/workshop_page');
     }
 
 
@@ -96,14 +104,14 @@ class WorkshopController extends MainController
     }
     public function sendNewTask($task_category, $task_name, $task_position, $task_price)
     {
-        if (!$this->workshopManager->isTaskByNameFree($task_name)) {
-            Tools::showAlert("La tache existe déjà", "alert-danger");
-            header('Location: ' . URL . 'admin/workshop/' . $task_category);
-            return;
-        }
+        // if (!$this->workshopManager->isTaskByNameFree($task_name)) {
+        //     Tools::showAlert("La tache existe déjà", "alert-danger");
+        //     header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
+        //     return;
+        // }
         if (!$this->workshopManager->isPositionTaskFree($task_position, $task_category)) {
             Tools::showAlert("La position est déjà prise", "alert-danger");
-            header('Location: ' . URL . 'admin/workshop/' . $task_category);
+            header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
             return;
         }
         if ($this->workshopManager->createNewTask($task_category, $task_name, $task_position, $task_price)) {
@@ -111,7 +119,7 @@ class WorkshopController extends MainController
         } else {
             Tools::showAlert("La tâche n'a pas été ajoutée", "alert-danger");
         }
-        header('Location: ' . URL . 'admin/workshop/' . $task_category);
+        header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
     }
     public function deleteTask($task_id, $task_category)
     {
@@ -120,7 +128,7 @@ class WorkshopController extends MainController
         } else {
             Tools::showAlert("La tache n'a pas été supprimée", "alert-danger");
         }
-        header('Location: ' . URL . 'admin/workshop/' . $task_category);
+        header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
     }
 
     public function  modifyTask($id, $new_name, $new_position, $new_price)
@@ -129,14 +137,14 @@ class WorkshopController extends MainController
         $task_category = $this->workshopManager->getTaskById($id)['task_category'];
         $old_name = $this->workshopManager->getTaskById($id)['task_name'];
 
-        if (!$this->workshopManager->isTaskByNameFree($new_name) && $new_name !== $old_name) {
-            Tools::showAlert("La nom est déjà pris", "alert-danger");
-            header('Location: ' . URL . 'admin/workshop/' . $task_category);
-            return;
-        }
+        // if (!$this->workshopManager->isTaskByNameFree($new_name) && $new_name !== $old_name) {
+        //     Tools::showAlert("La nom est déjà pris", "alert-danger");
+        //     header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
+        //     return;
+        // }
         if (!$this->workshopManager->isPositionTaskFree($new_position, $task_category) && $new_position != $old_position) {
             Tools::showAlert("La position est déjà prise", "alert-danger");
-            header('Location: ' . URL . 'admin/workshop/' . $task_category);
+            header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
             return;
         }
         if ($this->workshopManager->updateTask($id, $new_name, $new_position, $new_price)) {
@@ -145,7 +153,7 @@ class WorkshopController extends MainController
             Tools::showAlert("La tache n'a pas été modifiée", "alert-warning");
         }
 
-        header('Location: ' . URL . 'admin/workshop/' . $task_category);
+        header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
     }
     public function  showAllTasks()
     {

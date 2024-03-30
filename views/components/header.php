@@ -45,10 +45,10 @@
                 <h3 class="w-100 text-black text-center m-0">Atelier</h3>
                 <div class="container d-flex justify-content-center">
                     <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/workshop_page" class="text-light text-decoration-none">Catégories</a>
+                        <a href="<?= URL ?>admin/workshop/workshop_page" class="text-light text-decoration-none">Catégories</a>
                     </button>
                     <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/show_all_tasks" class="text-light text-decoration-none">Voir Tout</a>
+                        <a href="<?= URL ?>admin/workshop/show_all_tasks" class="text-light text-decoration-none">Voir Tout</a>
                     </button>
 
                 </div>

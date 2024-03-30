@@ -23,7 +23,7 @@
                     </form>
                 </div>
                 <div class="col-2 text-center">
-                    <form action="<?= URL ?>admin/delete_task" method="POST" onSubmit="return confirm('On confirme la suppression ?')">
+                    <form action="<?= URL ?>admin/workshop/delete_task" method="POST" onSubmit="return confirm('On confirme la suppression ?')">
                         <input type="hidden" name="task_category" value=<?= $task['task_category'] ?>>
                         <input type="hidden" name="id" value=<?= $task['task_id'] ?>>
                         <button class="btn" type="submit"><i class="fa-solid fa-trash-can  text-danger"></i></button>
@@ -31,7 +31,7 @@
                 </div>
             </div>
             <?php else :  ?> 
-            <form method="POST" action="<?= URL ?>admin/modify_task">
+            <form method="POST" action="<?= URL ?>admin/workshop/modify_task">
                 <div class="row w-100 border p-2">
                     <input type="hidden" name="task_category" value=<?= $task['task_category'] ?>>
                     <input type="hidden" name="id" value=<?= $task['task_id'] ?>>
@@ -51,14 +51,13 @@
             </form>
             <?php endif ?>
         <?php endforeach; ?>
-
 </div>
 
 <!-- ajout d'une tache dans la catégorie choisie -->
 <div class="container mt-5">
     <div class="row">
         <div class=" col-11 col-sm-10 col-lg-8 mx-auto ">
-            <form action="<?= URL ?>admin/send_new_task" method="POST" class="row ">
+            <form action="<?= URL ?>admin/workshop/send_new_task" method="POST" class="row ">
                 <input type="hidden" name="task_category" value="<?= $category['cat_name'] ?>">
 
 

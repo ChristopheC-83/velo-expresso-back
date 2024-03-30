@@ -15,11 +15,11 @@ class WorkshopManager extends MainManager
         $stmt->closeCursor();
         return $categories;
     }
-    public function getCategoryById($task_category_id)
+    public function getCategoryById($id)
     {
-        $req = "SELECT * FROM workshop_categories WHERE cat_id = :task_category_id";
+        $req = "SELECT * FROM workshop_categories WHERE id = :id";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":task_category_id", $task_category_id, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $category = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
@@ -39,48 +39,48 @@ class WorkshopManager extends MainManager
     {
         return (empty($this->getCategoryByPosition($position)));
     }
-    public function getCategoryByName($cat_name)
+    public function getCategoryByName($name)
     {
-        $req = "SELECT * FROM workshop_categories WHERE cat_name = :cat_name";
+        $req = "SELECT * FROM workshop_categories WHERE name = :name";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":cat_name", $cat_name, PDO::PARAM_STR);
+        $stmt->bindValue(":name", $name, PDO::PARAM_STR);
         $stmt->execute();
         $category = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
         return $category;
     }
-    public function isCategoryNameFree($cat_name)
+    public function isCategoryNameFree($name)
     {
-        return (empty($this->getCategoryByName($cat_name)));
+        return (empty($this->getCategoryByName($name)));
     }
-    public function createNewCategory($cat_name, $position)
+    public function createNewCategory($name, $position)
     {
-        $req = "INSERT INTO workshop_categories (cat_name, position) VALUES (:cat_name, :position)";
+        $req = "INSERT INTO workshop_categories (name, position) VALUES (:name, :position)";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":cat_name", $cat_name, PDO::PARAM_STR);
+        $stmt->bindValue(":name", $name, PDO::PARAM_STR);
         $stmt->bindValue(":position", $position, PDO::PARAM_STR);
         $stmt->execute();
         $isValidate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();
         return $isValidate;
     }
-    public function updateCategory($cat_id, $cat_name, $position)
+    public function updateCategory($id, $name, $position)
     {
-        $req = "UPDATE workshop_categories SET cat_name = :cat_name, position = :position WHERE cat_id = :cat_id";
+        $req = "UPDATE workshop_categories SET name = :name, position = :position WHERE id = :id";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":cat_name", $cat_name, PDO::PARAM_STR);
+        $stmt->bindValue(":name", $name, PDO::PARAM_STR);
         $stmt->bindValue(":position", $position, PDO::PARAM_INT);
-        $stmt->bindValue(":cat_id", $cat_id, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $isValidate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();
         return $isValidate;
     }
-    public function deleteCategoryFromDB($cat_id)
+    public function deleteCategoryFromDB($id)
     {
-        $req = "DELETE FROM workshop_categories WHERE cat_id = :cat_id";
+        $req = "DELETE FROM workshop_categories WHERE id = :id";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":cat_id", $cat_id, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $isValidate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();
@@ -92,7 +92,7 @@ class WorkshopManager extends MainManager
 
 
     public function getAllTasks(){
-        $req = "SELECT * FROM workshop ORDER BY task_position";
+        $req = "SELECT * FROM workshop ORDER BY position";
         $stmt = $this->getDB()->prepare($req);
         $stmt->execute();
         $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -100,14 +100,14 @@ class WorkshopManager extends MainManager
         return $tasks;
     }
 
-    public function createNewTask($task_category, $task_name, $task_position, $task_price)
+    public function createNewTask($task_category, $name, $position, $task_price)
     {
 
-        $req = "INSERT INTO workshop (task_category, task_name,task_position, task_price) VALUES (:task_category,:task_name, :task_position, :task_price)";
+        $req = "INSERT INTO workshop (task_category, name,task_pospositionition, task_price) VALUES (:task_category,:name, :position, :task_price)";
         $stmt = $this->getDB()->prepare($req);
         $stmt->bindValue(":task_category", $task_category, PDO::PARAM_STR);
-        $stmt->bindValue(":task_name", $task_name, PDO::PARAM_STR);
-        $stmt->bindValue(":task_position", $task_position, PDO::PARAM_INT);
+        $stmt->bindValue(":name", $name, PDO::PARAM_STR);
+        $stmt->bindValue(":position", $position, PDO::PARAM_INT);
         $stmt->bindValue(":task_price", $task_price, PDO::PARAM_INT);
         $stmt->execute();
         $isValidate = ($stmt->rowCount() > 0);
@@ -117,7 +117,7 @@ class WorkshopManager extends MainManager
 
     public function  getTasksByCategory($task_category)
     {
-        $req = "SELECT * FROM workshop WHERE task_category = :task_category ORDER BY task_position";
+        $req = "SELECT * FROM workshop WHERE task_category = :task_category ORDER BY position";
         $stmt = $this->getDB()->prepare($req);
         $stmt->bindValue(":task_category", $task_category, PDO::PARAM_STR);
         $stmt->execute();
@@ -125,25 +125,25 @@ class WorkshopManager extends MainManager
         $stmt->closeCursor();
         return $tasks;
     }
-    public function getTaskByName($task_name)
+    // public function getTaskByName($name)
+    // {
+    //     $req = "SELECT * FROM workshop WHERE name = :name";
+    //     $stmt = $this->getDB()->prepare($req);
+    //     $stmt->bindValue(":name", $name, PDO::PARAM_STR);
+    //     $stmt->execute();
+    //     $category = $stmt->fetch(PDO::FETCH_ASSOC);
+    //     $stmt->closeCursor();
+    //     return $category;
+    // }
+    // public function isTaskByNameFree($name)
+    // {
+    //     return (empty($this->getTaskByName($name)));
+    // }
+    public function deleteTaskFromDB($id)
     {
-        $req = "SELECT * FROM workshop WHERE task_name = :task_name";
+        $req = "DELETE FROM workshop WHERE id = :id";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":task_name", $task_name, PDO::PARAM_STR);
-        $stmt->execute();
-        $category = $stmt->fetch(PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-        return $category;
-    }
-    public function isTaskByNameFree($task_name)
-    {
-        return (empty($this->getTaskByName($task_name)));
-    }
-    public function deleteTaskFromDB($task_id)
-    {
-        $req = "DELETE FROM workshop WHERE task_id = :task_id";
-        $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":task_id", $task_id, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $isValidate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();
@@ -152,7 +152,7 @@ class WorkshopManager extends MainManager
 
     public function getTaskById($id)
     {
-        $req = "SELECT * FROM workshop WHERE task_id = :id";
+        $req = "SELECT * FROM workshop WHERE id = :id";
         $stmt = $this->getDB()->prepare($req);
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -161,10 +161,10 @@ class WorkshopManager extends MainManager
         return $task;
     }
 
-    public function getTaskByPosition($task_position, $task_category){ 
-        $req = "SELECT * FROM workshop WHERE task_position = :task_position AND task_category = :task_category";
+    public function getTaskByPosition($position, $task_category){ 
+        $req = "SELECT * FROM workshop WHERE position = :position AND task_category = :task_category";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":task_position", $task_position, PDO::PARAM_INT);
+        $stmt->bindValue(":position", $position, PDO::PARAM_INT);
         $stmt->bindValue(":task_category", $task_category, PDO::PARAM_STR);
         $stmt->execute();
         $task = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -181,7 +181,7 @@ class WorkshopManager extends MainManager
 
     public function  updateTask($id, $new_name, $new_position, $new_price)
     {
-        $req = "UPDATE workshop SET task_name = :new_name, task_position = :new_position, task_price = :new_price WHERE task_id = :id";
+        $req = "UPDATE workshop SET name = :new_name, position = :new_position, task_price = :new_price WHERE task_id = :id";
         $stmt = $this->getDB()->prepare($req);
         $stmt->bindValue(":new_name", $new_name, PDO::PARAM_STR);
         $stmt->bindValue(":new_position", $new_position, PDO::PARAM_INT);
