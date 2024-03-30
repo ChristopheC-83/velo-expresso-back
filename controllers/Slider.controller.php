@@ -64,9 +64,9 @@ class SliderController extends MainController
     
     }
 
-    public function overlaySlider ($id, $overlay){
+    public function overlaySlider ( $slider_id, $overlay ){
         Tools::showArray($overlay);
-        if ($this->sliderManager->updateOverlay($id, $overlay)){
+        if ($this->sliderManager->updateOverlay( $slider_id, $overlay )){
             Tools::showAlert( 'Overlay Mis A Jour', 'alert-success' );
         } else {
             Tools::showAlert( 'Overlay inchangé', 'alert-warning' );

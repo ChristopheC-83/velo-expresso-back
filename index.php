@@ -217,13 +217,9 @@ try {
             case "api_slider":
                 $sliderController->sendSliders();
                 break;
-                // case "api_hangman_words":
-                //     $hangmanController->sendHangmanWords();
-                //     break;
-                // case "api_blog_articles":
-                //     $blogController->sendAllArticles();
-                //     break;
-
+            case "api_frames":
+                $framesController->sendFrames();
+                break;
 
 
             default:

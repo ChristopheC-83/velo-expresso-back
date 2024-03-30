@@ -6,18 +6,34 @@
     <?php foreach($sliders as $slider) : ?>
     <div class="d-flex justify-content-between align-items-center border border-dark p-2 my-2">
         <img src="<?= URL ?>public/assets/images/slider/<?= $slider['image'] ?>" alt="<?= $slider['btnText'] ?>"
-            class=" logo-partner">
+            class=" logo-partner <?= $slider['overlay']===1 ? "overlay" : ""     ?>">
         <div class="d-flex flex-column flex-grow-1 ps-2 ps-md-4">
             <p><u>Titre :</u> <?= $slider['title'] ?></p>
             <p><u>Lien du bouton :</u> <?= $slider['btnLink'] ?></p>
             <p><u>Texte dans le bouton :</u> <?= $slider['btnText'] ?></p>
             <p><u>Position :</u> <?= $slider['position'] ?></p>
-            <form id="overlay" action="<?= URL ?>admin/slider/overlay_slider" method="post">
-                <label for="overlay">Overlay ?</label>
-                <input type="hidden" name="id" value=<?= $slider['slider_id'] ?>>
-                <input type="checkbox" id="overlay" name="overlay" <?= $slider['overlay'] ? 'checked' : '' ?>
-                    onchange="submitForm()">
-            </form>
+            <?php if($slider['overlay'] === 0) : ?>
+                <form action="overlay_slider" method="POST">
+                    <input type="hidden" value="<?= $slider['slider_id'] ?>" name="slider_id">
+                    <input type="hidden" value=1 name="overlay">
+                    <button class="btn btn-success">Assombrir l'image</button>
+                </form>
+            <?php elseif ($slider['overlay'] === 1): ?>
+                <form action="overlay_slider" method="POST">
+                    <input type="hidden" value="<?= $slider['slider_id'] ?>" name="slider_id">
+                    <input type="hidden" value=0 name="overlay">
+                    <button class="btn btn-warning">Eclaircir l'image</button>
+                </form>
+            <?php endif; ?>
+
+
+            
+
+
+           
+
+
+
             <form action="<?= URL ?>admin/slider/delete_slider" method="POST"
                 onSubmit="return confirm('On confirme la suppression ?')">
                 <input type="hidden" name="id" value=<?= $slider['slider_id'] ?>>

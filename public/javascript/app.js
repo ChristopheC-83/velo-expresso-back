@@ -9,9 +9,3 @@ if (alerts.length > 0) {
 }
 
 
-// envoie automatiquement le formulaire overlay du slider function submitForm() {
-function submitForm() {
-  document.getElementById("overlay").submit(); 
-}
-
-    

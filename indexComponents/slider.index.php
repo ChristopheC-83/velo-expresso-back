@@ -31,13 +31,11 @@ switch ( $url[ 2 ] ) {
     break;
 
     case 'overlay_slider':
-        Tools::showArray($_POST);
-        if ($_POST['overlay']==="on") {
-            $sliderController->overlaySlider($_POST['id'], 1 );
-        }else{
-            $sliderController->overlaySlider($_POST['id'], 0 );
-        }
-        break;
+    $slider_id = Tools::secureHTML( $_POST[ 'slider_id' ] );
+    $overlay = Tools::secureHTML( $_POST[ 'overlay' ] );
+    $sliderController->overlaySlider( $slider_id, $overlay );
+
+    break;
 
     default:
     throw new Exception( "La page demandée n'existe pas..." );
