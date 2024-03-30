@@ -15,11 +15,11 @@ class RentalManager extends MainManager
         $stmt->closeCursor();
         return $rentals;
     }
-    public function  addRentalDB($item, $position, $half_day, $day, $extra_day, $week)
+    public function  addRentalDB($name, $position, $half_day, $day, $extra_day, $week)
     {
-        $req = "INSERT INTO rentals (item, position, half_day, day, extra_day, week) VALUES (:item, :position, :half_day, :day, :extra_day, :week)";
+        $req = "INSERT INTO rentals (name, position, half_day, day, extra_day, week) VALUES (:name, :position, :half_day, :day, :extra_day, :week)";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":item", $item, PDO::PARAM_STR);
+        $stmt->bindValue(":name", $name, PDO::PARAM_STR);
         $stmt->bindValue(":position", $position, PDO::PARAM_INT);
         $stmt->bindValue(":half_day", $half_day, PDO::PARAM_INT);
         $stmt->bindValue(":day", $day, PDO::PARAM_INT);
@@ -33,7 +33,7 @@ class RentalManager extends MainManager
 
     public function  getRentalById($id)
     {
-        $req = "SELECT * FROM rentals WHERE rental_id = :id";
+        $req = "SELECT * FROM rentals WHERE id = :id";
         $stmt = $this->getDB()->prepare($req);
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -42,43 +42,24 @@ class RentalManager extends MainManager
         return $rental;
     }
 
-    public function getRentalByItem($item)
+    public function getRentalByItem($name)
     {
-        $req = "SELECT * FROM rentals WHERE item = :item";
+        $req = "SELECT * FROM rentals WHERE name = :name";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":item", $item, PDO::PARAM_STR);
+        $stmt->bindValue(":name", $name, PDO::PARAM_STR);
         $stmt->execute();
         $rental = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
         return $rental;
     }
 
-    public function isItemFree($item){
-        return (empty($this->getRentalByItem($item)));
-    }
-    public function getRentalByPosition($position)
+
+    public function  updateRentalDB($id, $name, $position, $half_day, $day, $extra_day, $week)
     {
-        $req = "SELECT * FROM rentals WHERE position = :position";
+        $req = "UPDATE rentals SET name = :name, position = :position, half_day = :half_day, day = :day, extra_day = :extra_day, week = :week WHERE id = :id";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":position", $position, PDO::PARAM_INT);
-        $stmt->execute();
-        $rental = $stmt->fetch(PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-        return $rental;
-    }
-
-    public function isPositionFree($position){
-        return (empty($this->getRentalByPosition($position)));
-    }
-
-
-
-    public function  updateRentalDB($rental_id, $item, $position, $half_day, $day, $extra_day, $week)
-    {
-        $req = "UPDATE rentals SET item = :item, position = :position, half_day = :half_day, day = :day, extra_day = :extra_day, week = :week WHERE rental_id = :rental_id";
-        $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":rental_id", $rental_id, PDO::PARAM_INT);
-        $stmt->bindValue(":item", $item, PDO::PARAM_STR);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->bindValue(":name", $name, PDO::PARAM_STR);
         $stmt->bindValue(":position", $position, PDO::PARAM_INT);
         $stmt->bindValue(":half_day", $half_day, PDO::PARAM_INT);
         $stmt->bindValue(":day", $day, PDO::PARAM_INT);
@@ -90,11 +71,11 @@ class RentalManager extends MainManager
         return $isValidate;
     }
 
-    public function deleteRentalDB($rental_id)
+    public function deleteRentalDB($id)
     {
-        $req = "DELETE FROM rentals WHERE rental_id = :rental_id";
+        $req = "DELETE FROM rentals WHERE id = :id";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":rental_id", $rental_id, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $isValidate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();

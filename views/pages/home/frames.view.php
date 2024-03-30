@@ -29,7 +29,7 @@
             <form action="<?= URL ?>admin/frames/delete_frame" method="POST"
                 onSubmit="return confirm('On confirme la suppression ?')">
                 <input type="hidden" name="id" value=<?= $frame['id'] ?>>
-                    <button class="btn btn-danger mt-3" type="submit">Supprimer le cadre</button>
+                    <button class="btn btn-danger mt-3" type="submit">Supprimer le</button>
             </form>
         </div>
     </div>

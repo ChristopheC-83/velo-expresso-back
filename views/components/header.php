@@ -30,9 +30,7 @@
             <div class="m-0 ">
                 <h3 class="w-100 text-black text-center m-0">Location</h3>
                 <div class="container d-flex justify-content-center">
-                    <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/rental/add_rental_page" class="text-light text-decoration-none">Ajout Loc</a>
-                    </button>
+                    
                     <button class="btn btn-secondary btn-lg text-light m-1">
                         <a href="<?= URL ?>admin/rental/rentals_page" class="text-light text-decoration-none">Locations</a>
                     </button>

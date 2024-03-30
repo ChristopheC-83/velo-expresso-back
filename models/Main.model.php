@@ -49,9 +49,9 @@ class MainManager extends Model
     }
     public function getItemByName($name, $table)
     {
-        $req = "SELECT * FROM $table WHERE name = :posinametion";
+        $req = "SELECT * FROM $table WHERE name = :name";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":name", $name, PDO::PARAM_INT);
+        $stmt->bindValue(":name", $name, PDO::PARAM_STR);
         $stmt->execute();
         $category = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
