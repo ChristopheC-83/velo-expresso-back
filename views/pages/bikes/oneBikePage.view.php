@@ -263,7 +263,8 @@
         </form>
     </div>
     <hr>
-    <!-- Maj promo ? -->
+    <!-- Maj promo ?  si velo neuf-->
+    <?php if($bike['bike_new'] === "new") : ?>
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST"
             class="mt-2 mx-auto w-100 d-flex justify-content-start align-items-center">
@@ -284,9 +285,10 @@
     </div>
     <hr>
     <!-- Maj du prix promo -->
+    <?php if($bike['bike_promo'] == 1) : ?>
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST" class="mt-2 mx-auto w-100 ">
-            <label for="bike_price_promo">On change le <b>prix du vélo </b> ?</label><br>
+            <label for="bike_price_promo">On change le <b>prix promo du vélo </b> ?</label><br>
             <input type="hidden" name="bike_id" value="<?=$bike['bike_id']?>">
             <input type="hidden" name="to_update" value="bike_price_promo">
             <input type="number" name="new_value" id="new_value" class="p-2 rounded"
@@ -295,6 +297,8 @@
         </form>
     </div>
     <hr>
+    <?php endif ?>
+    <?php endif ?>
     <!-- Maj de la description -->
     <div class=" px-1 mx-auto my-3 " style="width: calc(180px + 40vw)">
         <form action="<?=URL?>admin/bikes/update_bike" method="POST" class="mt-2 mx-auto w-100 ">

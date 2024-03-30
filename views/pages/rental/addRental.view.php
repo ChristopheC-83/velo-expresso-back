@@ -17,8 +17,8 @@
                     <input type="number" class="text-primary fs-5 rounded mb-3" id="extra-day" name="extra-day" placeholder="tarif journée-supp">
                     <input type="number" class="text-primary fs-5 rounded mb-3" id="week" name="week" placeholder="tarif semaine">
 
-                    <button class="col-12 btn btn-light">
-                        <h2>Valider l'ajout</h2>
+                    <button class="col-12 btn btn-primary">
+                        <h3>Valider l'ajout</h3>
                     </button>
                 </form>
             </div>
