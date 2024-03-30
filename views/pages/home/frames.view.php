@@ -8,16 +8,28 @@
         <img src="<?= URL ?>public/assets/images/frames/<?= $frame['image'] ?>" alt="<?= $frame['btnText'] ?>"
             class=" logo-partner">
         <div class="d-flex flex-column flex-grow-1 ps-2 ps-md-4">
-            <p><u>Titre :</u> <?= $frame['title'] ?></p>
-            <p><u>Texte :</u> <?= $frame['text'] ?></p>
-            <p><u>Lien du bouton :</u> <?= $frame['btnLink'] ?></p>
-            <p><u>Texte dans le bouton :</u> <?= $frame['btnText'] ?></p>
-            <p><u>Position :</u> <?= $frame['position'] ?></p>
+        <form action="update_frame" method="POST">
+                <input type="hidden" value="<?= $frame['id'] ?>" name="id">
+                <label for="title"><u>Titre :</u></label><br>
+                <input type="text" value="<?= $frame['title'] ?>" name="title" class="w-100 rounded mt-1 mb-2 p-1"><br>
+                <label for="text"><u>Texte :</u></label><br>
+                <input type="text" value="<?= $frame['text'] ?>" name="text" class="w-100 rounded mt-1 mb-2 p-1"><br>
+                <label for="btnLink"><u>Lien du bouton :</u></label><br>
+                <input type="text" value="<?= $frame['btnLink'] ?>" name="btnLink"
+                    class="w-100 rounded mt-1 mb-2 p-1"><br>
+                <label for="btnText"><u>Texte dans le bouton :</u></label><br>
+                <input type="text" value="<?= $frame['btnText'] ?>" name="btnText"
+                    class="w-100 rounded mt-1 mb-2 p-1"><br>
+                <label for="position"><u>Position :</u></label><br>
+                <input type="text" value="<?= $frame['position'] ?>" name="position"
+                    class="w-100 rounded mt-1 mb-2 p-1">
+                <button type="submit" class="btn btn-primary mt-2">Valider les modifications</button>
+            </form>
 
             <form action="<?= URL ?>admin/frames/delete_frame" method="POST"
                 onSubmit="return confirm('On confirme la suppression ?')">
                 <input type="hidden" name="id" value=<?= $frame['id'] ?>>
-                <button class="btn" type="submit"><i class="fa-solid fa-trash-can text-danger fs-5"></i></button>
+                    <button class="btn btn-danger mt-3" type="submit">Supprimer le cadre</button>
             </form>
         </div>
     </div>

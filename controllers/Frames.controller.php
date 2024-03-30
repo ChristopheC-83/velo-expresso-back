@@ -33,6 +33,12 @@ class FramesController extends MainController
 
     public function addFrame( $position, $title,$text, $btnText, $btnLink, $image ) {
 
+        if ( !$this->framesManager->isPositionFreeGeneric( $position, 'home_frame' )) {
+            Tools::showAlert( 'La position est déjà prise', 'alert-danger' );
+            header( 'Location: ' . URL . 'admin/frames/frames_page' );
+            return;
+        }
+
         if ( $addedImage = Tools::addImage( $image, 'public/assets/images/frames/' )){
             if (!$this->framesManager->addFrameDB( $position, $title, $text,$btnText, $btnLink, $addedImage) ) {
                 if(Tools::deleteImageMute( $addedImage, 'public/assets/images/frames/' )){
@@ -47,6 +53,25 @@ class FramesController extends MainController
         } else{
             Tools::showAlert( "Erreur lors de l'ajout du Cadre !", 'alert-danger' );
         }
+    }
+
+    public function  updateFrame( $id, $position, $title,$text, $btnText, $btnLink ){ 
+        $oldPosition = $this->framesManager->getFrameById( $id )[ 'position' ];
+    
+        if ( !$this->framesManager->isPositionFreeGeneric( $position, 'home_frame' ) && $position != $oldPosition ) {
+            Tools::showAlert( 'La position est déjà prise', 'alert-danger' );
+            header( 'Location: ' . URL . 'admin/frames/frames_page' );
+            return;
+        }
+
+        if ( !$this->framesManager->updateFrameDB( $id, $position, $title,$text, $btnText, $btnLink ) ){
+            Tools::showAlert( 'Erreur lors de la modification du cadre', 'alert-danger' );
+        } else {
+            Tools::showAlert( 'Cadre modifié avec succès', 'alert-success' );
+        }
+        header( 'Location: ' . URL . 'admin/frames/frames_page' );
+    
+    
     }
 
     public function deleteFrame($id){ 

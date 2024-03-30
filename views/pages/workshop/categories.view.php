@@ -11,7 +11,7 @@
         <?php if (empty($_POST['id']) || $_POST['id'] != $category['cat_id']) : ?>
             <div class="row w-100 border p-2">
                 <div class="col-5 text-capitalize"><a href="<?= URL ?>admin/workshop/<?= $category['cat_name'] ?>"><?= $category['cat_name'] ?></a></div>
-                <div class="col-3 text-center"><?= $category['cat_position'] ?></div>
+                <div class="col-3 text-center"><?= $category['position'] ?></div>
                 <div class="col-2 text-center text-secondary">
                     <form method="POST" action="">
                         <input type="hidden" name="id" value=<?= $category['cat_id'] ?>>
@@ -33,7 +33,7 @@
                         <input type="text" value="<?= $category['cat_name'] ?>" name="new_cat_name">
                     </div>
                     <div class="col-3 text-center">
-                        <input type="number" name="new_cat_position" value="<?= $category['cat_position'] ?>">
+                        <input type="number" name="new_cat_position" value="<?= $category['position'] ?>">
                     </div>
                     <div class="col-4 text-center text-secondary">
                         <button class="btn btn-warning" type="submit">valider la modification</button>

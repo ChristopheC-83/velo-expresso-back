@@ -33,45 +33,70 @@ class SliderController extends MainController
 
     public function addSlider( $position, $title, $btnText, $btnLink, $image ) {
 
-        if ( $addedImage = Tools::addImage( $image, 'public/assets/images/slider/' )){
-            if (!$this->sliderManager->addSliderDB( $position, $title, $btnText, $btnLink, $addedImage ) ) {
-                if(Tools::deleteImageMute( $addedImage, 'public/assets/images/slider/' )){
+        if ( !$this->sliderManager->isPositionFreeGeneric( $position, 'home_slider' ) ) {
+            Tools::showAlert( 'La position est déjà prise', 'alert-danger' );
+            header( 'Location: ' . URL . 'admin/slider/sliders_page' );
+            return;
+        }
+
+        if ( $addedImage = Tools::addImage( $image, 'public/assets/images/slider/' ) ) {
+            if ( !$this->sliderManager->addSliderDB( $position, $title, $btnText, $btnLink, $addedImage ) ) {
+                if ( Tools::deleteImageMute( $addedImage, 'public/assets/images/slider/' ) ) {
                     Tools::showAlert( "Erreur lors de l'ajout du slider", 'alert-danger' );
-                }else{
-                    Tools::showAlert( "Problème ? Réessayez ou appeler votre dministrateur !", 'alert-danger' );
+                } else {
+                    Tools::showAlert( 'Problème ? Réessayez ou appeler votre dministrateur !', 'alert-danger' );
                 }
             } else {
                 Tools::showAlert( 'Slider ajouté avec succès', 'alert-success' );
             }
             header( 'Location: ' . URL . 'admin/slider/sliders_page' );
-        } else{
+        } else {
             Tools::showAlert( "Erreur lors de l'ajout du slider !", 'alert-danger' );
         }
     }
 
-    public function deleteSlider($id){ 
-        
+    public function updateSlider( $id, $position, $title, $btnText, $btnLink ) {
+
+        $oldPosition = $this->sliderManager->getSliderById( $id )[ 'position' ];
+
+        if ( !$this->sliderManager->isPositionFreeGeneric( $position, 'home_slider' ) && $position != $oldPosition ) {
+            Tools::showAlert( 'La position est déjà prise', 'alert-danger' );
+            header( 'Location: ' . URL . 'admin/slider/sliders_page' );
+            return;
+        }
+
+        if ( $this->sliderManager->updateSliderDB( $id, $position, $title, $btnText, $btnLink ) ) {
+            Tools::showAlert( 'Slider mis à jour', 'alert-success' );
+        } else {
+            Tools::showAlert( 'Slider inchangé', 'alert-warning' );
+        }
+        header( 'Location: ' . URL . 'admin/slider/sliders_page' );
+
+    }
+
+    public function deleteSlider( $id ) {
+
         $sliderToDelete = $this->sliderManager->getSliderById( $id )[ 'image' ];
-        if( !$this->sliderManager->deleteSliderDB( $id ) ){
+        if ( !$this->sliderManager->deleteSliderDB( $id ) ) {
             Tools::showAlert( 'Erreur lors de la suppression du slider', 'alert-danger' );
         } else {
-            if ( !Tools::deleteImage( $sliderToDelete, 'public/assets/images/slider/' ) ){
+            if ( !Tools::deleteImage( $sliderToDelete, 'public/assets/images/slider/' ) ) {
                 Tools::showAlert( 'Erreur lors de la suppression du slider', 'alert-danger' );
             }
             Tools::showAlert( 'Slider supprimé avec succès', 'alert-success' );
         }
         header( 'Location: ' . URL . 'admin/slider/sliders_page' );
-    
+
     }
 
-    public function overlaySlider ( $slider_id, $overlay ){
-        Tools::showArray($overlay);
-        if ($this->sliderManager->updateOverlay( $slider_id, $overlay )){
+    public function overlaySlider ( $id, $overlay ) {
+        Tools::showArray( $overlay );
+        if ( $this->sliderManager->updateOverlay( $id, $overlay ) ) {
             Tools::showAlert( 'Overlay Mis A Jour', 'alert-success' );
         } else {
             Tools::showAlert( 'Overlay inchangé', 'alert-warning' );
         }
-        
+
         header( 'Location: ' . URL . 'admin/slider/sliders_page' );
     }
 
@@ -83,6 +108,5 @@ class SliderController extends MainController
         ];
         Tools::sendJson_get( $sliders );
     }
-
 
 }

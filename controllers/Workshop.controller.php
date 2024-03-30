@@ -32,14 +32,14 @@ class WorkshopController extends MainController
     }
     public function sendNewCategory($new_category, $new_position)
     {
-
+        
         if (!$this->workshopManager->isCategoryNameFree($new_category)) {
             Tools::showAlert("La catégorie existe déjà", "alert-danger");
             header('Location: ' . URL . 'admin/workshop_page');
             Tools::showArray($new_category);
             return;
         }
-        if (!$this->workshopManager->isPositionFree($new_position)) {
+        if (!$this->workshopManager->isPositionFreeGeneric($new_position,"workshop_categories")) {
             Tools::showAlert("La position est déjà prise", "alert-danger");
             header('Location: ' . URL . 'admin/workshop_page');
             return;
@@ -53,7 +53,7 @@ class WorkshopController extends MainController
     }
     public function modifyCategory($id, $new_category, $new_position)
     {
-        $oldPosition = $this->workshopManager->getCategoryById($id)['cat_position'];
+        $oldPosition = $this->workshopManager->getCategoryById($id)['position'];
         if (!$this->workshopManager->isPositionFree($new_position) && $new_position != $oldPosition) {
             Tools::showAlert("La position est déjà prise", "alert-danger");
             header('Location: ' . URL . 'admin/workshop_page');

@@ -26,12 +26,22 @@ switch ( $url[ 2 ] ) {
     }
     break;
 
+    case 'update_slider':
+        $id = Tools::secureHTML( $_POST[ 'id' ] );
+        $position = Tools::secureHTML( $_POST[ 'position' ] );
+        $title = Tools::secureHTML( $_POST[ 'title' ] );
+        $btnText = Tools::secureHTML( $_POST[ 'btnText' ] );
+        $btnLink = Tools::secureHTML( $_POST[ 'btnLink' ] );
+        $sliderController->updateSlider( $id,$position, $title, $btnText, $btnLink );
+        
+    break;
+
     case 'delete_slider':
     $sliderController->deleteSlider( $_POST[ 'id' ] );
     break;
 
     case 'overlay_slider':
-    $slider_id = Tools::secureHTML( $_POST[ 'slider_id' ] );
+    $slider_id = Tools::secureHTML( $_POST[ 'id' ] );
     $overlay = Tools::secureHTML( $_POST[ 'overlay' ] );
     $sliderController->overlaySlider( $slider_id, $overlay );
 

@@ -27,6 +27,23 @@ switch ( $url[ 2 ] ) {
     }
     break;
 
+    case "update_frame":
+        $id = Tools::secureHTML( $_POST[ 'id' ] );
+        $position = Tools::secureHTML( $_POST[ 'position' ] );
+        $title = Tools::secureHTML( $_POST[ 'title' ] );
+        $text = Tools::secureHTML( $_POST[ 'text' ] );
+        $btnText = Tools::secureHTML( $_POST[ 'btnText' ] );
+        $btnLink = Tools::secureHTML( $_POST[ 'btnLink' ] );
+        if ( empty( $title ) || empty( $btnText ) || empty( $btnLink )){
+            Tools::showAlert( 'Il faut renplir les champs !', 'alert-danger' );
+            header( 'Location: ' . URL . 'admin/frames/frame_page' );
+        } else {
+            $framesController->updateFrame( $id, $position, $title,$text, $btnText, $btnLink );
+        }
+        break;
+
+
+
     case 'delete_frame':
     $framesController->deleteframe( $_POST[ 'id' ] );
     break;

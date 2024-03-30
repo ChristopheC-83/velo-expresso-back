@@ -51,5 +51,22 @@ class FramesManager extends MainManager
         return $isValidate;
     }
 
+    public function  updateFrameDB( $id, $position, $title,$text, $btnText, $btnLink ){ 
+        $req= "UPDATE home_frame SET position = :position, title = :title, text = :text, btnText = :btnText, btnLink = :btnLink WHERE id = :id";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":position", $position, PDO::PARAM_INT);
+        $stmt->bindValue(":title", $title, PDO::PARAM_STR);
+        $stmt->bindValue(":text", $text, PDO::PARAM_STR);
+        $stmt->bindValue(":btnText", $btnText, PDO::PARAM_STR);
+        $stmt->bindValue(":btnLink", $btnLink, PDO::PARAM_STR);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate;
+    
+    
+    }
+
    
 }

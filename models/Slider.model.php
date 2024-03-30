@@ -14,10 +14,10 @@ class SliderManager extends MainManager
 
     }
 
-    public function  getSliderById( $slider_id ){
-        $req= "SELECT * FROM home_slider WHERE slider_id = :slider_id";
+    public function  getSliderById( $id ){
+        $req= "SELECT * FROM home_slider WHERE id = :id";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":slider_id", $slider_id, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $slider = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
@@ -25,10 +25,10 @@ class SliderManager extends MainManager
     
     }
 
-    public function  deleteSliderDB( $slider_id ) { 
-        $req= "DELETE FROM home_slider WHERE slider_id = :slider_id";
+    public function  deleteSliderDB( $id ) { 
+        $req= "DELETE FROM home_slider WHERE id = :id";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":slider_id", $slider_id, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $isValidate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();
@@ -50,11 +50,26 @@ class SliderManager extends MainManager
         return $isValidate;
     }
 
-    public function  updateOverlay($slider_id, $overlay){
-        $req= "UPDATE home_slider SET overlay = :overlay WHERE slider_id = :slider_id";
+    public function  updateSliderDB( $id, $position, $title, $btnText, $btnLink ){ 
+        $req= "UPDATE home_slider SET position = :position, title = :title, btnText = :btnText, btnLink = :btnLink WHERE id = :id";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":position", $position, PDO::PARAM_INT);
+        $stmt->bindValue(":title", $title, PDO::PARAM_STR);
+        $stmt->bindValue(":btnText", $btnText, PDO::PARAM_STR);
+        $stmt->bindValue(":btnLink", $btnLink, PDO::PARAM_STR);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate;
+    
+    }
+
+    public function  updateOverlay($id, $overlay){
+        $req= "UPDATE home_slider SET overlay = :overlay WHERE id = :id";
         $stmt = $this->getDB()->prepare($req);
         $stmt->bindValue(":overlay", $overlay, PDO::PARAM_BOOL);
-        $stmt->bindValue(":slider_id", $slider_id, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $isValidate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();

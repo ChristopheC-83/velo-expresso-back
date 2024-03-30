@@ -61,7 +61,7 @@ abstract class Tools {
         if (!getimagesize($uploadedFile['tmp_name'])) {
             throw new Exception("Le fichier n'est pas une image");
         }
-        if ($extension !== "jpg" && $extension !== "jpeg" && $extension !== "png" && $extension !== "gif") {
+        if ($extension !== "jpg" && $extension !== "jpeg" && $extension !== "png" && $extension !== "gif" && $extension !== "webp") {
             throw new Exception("L'extension n'est pas reconnue.");
         }
         if (file_exists($targetFile)) {
