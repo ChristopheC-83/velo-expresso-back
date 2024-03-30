@@ -51,10 +51,15 @@ switch ($url[2]) {
         $week = Tools::secureHTML($_POST['week']);
         if (empty($name) || empty($position) || empty($half_day) || empty($day) || empty($extra_day) || empty($week)) {
             Tools::showAlert("Il faut remplir tous les champs", "alert-danger");
-            header('Location: ' . URL . 'admin/rental/modify_rental/'.$id);
+            header('Location: ' . URL . 'admin/rental/rentals_page');
         } else {
             $rentalController->updateRental($id, $name, $position, $half_day, $day, $extra_day, $week);
         }
+        break;
+
+        case 'update_rental':
+        Tools::showArray($_POST);
+
         break;
 
 

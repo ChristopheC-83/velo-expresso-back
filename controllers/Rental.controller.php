@@ -75,12 +75,12 @@ class RentalController extends MainController
 
         if (!$this->rentalManager->isNameFreeGeneric($name, "rentals") && $name !== $old_name) {
             Tools::showAlert("Ce nom est déjà pris, Merci d'en changer.", "alert-warning");
-            header('Location: ' . URL . 'admin/rental/modify_rental/' . $id);
+            header('Location: ' . URL . 'admin/rental/rentals_page/');
             return;
         }
         if (!$this->rentalManager->isPositionFreeGeneric($position, "rentals") && $position != $old_position) {
             Tools::showAlert("Cette position est déjà prise, Merci d'en changer.", "alert-warning");
-            header('Location: ' . URL . 'admin/rental/modify_rental/' . $id);
+            header('Location: ' . URL . 'admin/rental/rentals_page/');
             return;
         }
 
@@ -89,7 +89,7 @@ class RentalController extends MainController
             header('Location: ' . URL . 'admin/rental/rentals_page');
         } else {
             Tools::showAlert("La modification n'a pas été effectuée", "alert-danger");
-            header('Location: ' . URL . 'admin/rental/modify_rental/' . $id);
+            header('Location: ' . URL . 'admin/rental/rentals_page/');
         }
     }
 
