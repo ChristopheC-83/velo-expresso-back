@@ -20,7 +20,7 @@ switch ( $url[ 2 ] ) {
     $btnLink = Tools::secureHTML( $_POST[ 'btnLink' ] );
     $image = $_FILES[ 'image' ];
     if ( empty( $image ) || empty( $title ) || empty( $btnText ) || empty( $btnLink )){
-        Tools::showAlert( 'Il faut au moins une image', 'alert-danger' );
+        Tools::showAlert( 'Il faut renplir les champs !', 'alert-danger' );
         header( 'Location: ' . URL . 'admin/frames/frame_page' );
     } else {
         $framesController->addframe( $position, $title,$text, $btnText, $btnLink, $image );

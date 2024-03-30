@@ -26,14 +26,6 @@
                 </form>
             <?php endif; ?>
 
-
-            
-
-
-           
-
-
-
             <form action="<?= URL ?>admin/slider/delete_slider" method="POST"
                 onSubmit="return confirm('On confirme la suppression ?')">
                 <input type="hidden" name="id" value=<?= $slider['slider_id'] ?>>
@@ -47,7 +39,7 @@
     <form action="<?= URL ?>admin/slider/add_slider" method="post" class="d-flex flex-column "
         enctype="multipart/form-data">
 
-        <label for="image" class="py-1 mt-1">Nouvelle image</label>
+        <label for="image" class="py-1 mt-1 text-danger fw-bold">Nouvelle image</label>
         <input type="file" class="text-primary fs-5 rounded mb-3" id="image" name="image"
             placeholder="Nom du partenaire">
 

@@ -27,27 +27,27 @@
     <form action="<?= URL ?>admin/frames/add_frame" method="post" class="d-flex flex-column "
         enctype="multipart/form-data">
 
-        <label for="image" class="py-1 mt-1">Nouvelle image</label>
+        <label for="image" class="py-1 mt-1  text-danger fw-bold">Nouvelle image</label>
         <input type="file" class="text-primary fs-5 rounded mb-3" id="image" name="image"
             placeholder="Nom du partenaire">
 
-        <label for="position" class="py-1 mt-1">Position</label>
+        <label for="position" class="py-1 mt-1  text-danger fw-bold">Position</label>
         <input type="number" class="text-primary fs-5 rounded mb-3" id="position" name="position"
             placeholder="Position / classement">
 
-        <label for="title" class="py-2 mt-1">Titre du frame</label>
+        <label for="title" class="py-2 mt-1  text-danger fw-bold">Titre du frame</label>
         <input type="text" class="text-primary fs-5 rounded mb-3" id="title" name="title"
             placeholder="Texte en haut de l'image">
 
-        <label for="btnText" class="py-2 mt-1">Texte dans le cadre</label>
+        <label for="btnText" class="py-2 mt-1 ">Texte dans le cadre</label>
         <input type="text" class="text-primary fs-5 rounded mb-3" id="btnText" name="text"
             placeholder="Texte au centre du cadre">
 
-        <label for="btnText" class="py-2 mt-1">Texte dans le Bouton</label>
+        <label for="btnText" class="py-2 mt-1  text-danger fw-bold">Texte dans le Bouton</label>
         <input type="text" class="text-primary fs-5 rounded mb-3" id="btnText" name="btnText"
             placeholder="Texte visible dans le bouton">
 
-        <label for="btnLink" class="py-2 mt-1">Lien du bouton</label>
+        <label for="btnLink" class="py-2 mt-1  text-danger fw-bold">Lien du bouton</label>
         <input type="text" class="text-primary fs-5 rounded mb-3" id="btnLink" name="btnLink"
             placeholder="Lien de redirection">
 

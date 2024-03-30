@@ -9,9 +9,15 @@
         class="d-flex flex-column gap-2 col-12 col-sm-10 col-md-8 col-lg-6 mx-auto" enctype="multipart/form-data">
         <!-- Visible du site, par défaut, non, input masqué  -->
         <input type="hidden" name="bike_visibility" id="bike_visibility" value="0">
+        <h5 class="text-decoration-underline mt-3">Données obligatoires pour créer la fiche du vélo :</h5>
+        <!-- photo -->
+        <div class="d-flex flex-column gap-2">
+            <label for="bike_picture" class=" text-danger fw-bold">Photo du vélo *</label>
+            <input type="file" name="bike_picture" id="bike_picture" class="p-1" required>
+        </div>
         <!-- Marque -->
         <div class="d-flex flex-column gap-2">
-            <label for="bike_brand" class="fw-bold">Marque *</label>
+            <label for="bike_brand" class=" text-danger fw-bold">Marque *</label>
             <select name="bike_brand" id="bike_brand" class="p-1" required>
                 <option value="">Choisir une marque</option>
                 <?php foreach ($allDatasFeatures as $feature) : ?>
@@ -23,18 +29,25 @@
         </div>
         <!-- Modele -->
         <div class="d-flex flex-column gap-2">
-            <label for="bike_model" class="fw-bold">Modèle *</label>
+            <label for="bike_model" class=" text-danger fw-bold">Modèle *</label>
             <input type="text" name="bike_model" id="bike_model" class="p-1" required>
         </div>
         <!-- neuf -->
         <div class="d-flex flex-column gap-2">
-            <label for="bike_new" class="fw-bold">Neuf ? *</label>
+            <label for="bike_new" class=" text-danger fw-bold">Neuf ? *</label>
             <select name="bike_new" id="bike_new" class="p-1" required>
                 <option value="">Choisir l'état</option>
                 <option value="new">Neuf</option>
                 <option value="used">Occasion</option>
             </select>
         </div>
+         <!-- prix -->
+         <div class="d-flex flex-column gap-2">
+            <label for="bike_price" class=" text-danger fw-bold">Prix du vélo (hors promo) *</label>
+            <input type="text" name="bike_price" id="bike_price" class="p-1" required>
+        </div>
+        
+        <h5 class="text-decoration-underline mt-3">Données pouvant être renseignées ultérieurement :</h5>
         <!-- type -->
         <div class="d-flex flex-column gap-2">
             <label for="bike_type">Type de vélo</label>
@@ -124,11 +137,7 @@
             <label for="bike_elec_detail">Si électrique, détails</label>
             <input type="text" name="bike_elec_detail" id="bike_elec_detail" class="p-1" >
         </div>
-        <!-- prix -->
-        <div class="d-flex flex-column gap-2">
-            <label for="bike_price" class="fw-bold">Prix du vélo (hors promo) *</label>
-            <input type="text" name="bike_price" id="bike_price" class="p-1" required>
-        </div>
+       
         <!-- promo -->
         <div class="d-flex flex-column gap-2">
             <label for="bike_promo">Vélo en promo ?</label>
@@ -143,11 +152,7 @@
             <label for="bike_price_promo">Si promo, nouveau prix</label>
             <input type="text" name="bike_price_promo" id="bike_price_promo" class="p-1" >
         </div>
-        <!-- photo -->
-        <div class="d-flex flex-column gap-2">
-            <label for="bike_picture" class="fw-bold">Photo du vélo *</label>
-            <input type="file" name="bike_picture" id="bike_picture" class="p-1" required>
-        </div>
+        
         <!-- description -->
         <div class="d-flex flex-column gap-2">
             <label for="bike_description">Description</label>
