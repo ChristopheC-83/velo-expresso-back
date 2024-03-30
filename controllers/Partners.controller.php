@@ -32,8 +32,11 @@ class PartnersController extends MainController
 
     public function addPartner( $name, $link, $position, $logo )
  {
-        // echo( $name. $link );
-        // Tools::showArray( $logo );
+    if ( !$this->partnersManager->isPositionFreeGeneric( $position, 'partners' ) ) {
+        Tools::showAlert( 'La position est déjà prise', 'alert-danger' );
+        header( 'Location: ' . URL . 'admin/partners/partners_page' );
+        return;
+    }
         $addedLogo = Tools::addImage( $logo, 'public/assets/images/partners/' );
         if ( !$this->partnersManager->addPartnerDB( $name, $link, $position, $addedLogo ) ) {
             Tools::showAlert( "Erreur lors de l'ajout du partenaire", 'alert-danger' );
@@ -41,6 +44,26 @@ class PartnersController extends MainController
             Tools::showAlert( 'Partenaire ajouté avec succès', 'alert-success' );
         }
         header( 'Location: ' . URL . 'admin/partners/partners_page' );
+    }
+
+    public function updatePartner( $id, $name, $link, $position ){
+    
+
+        $oldPosition = $this->partnersManager->getPartnerById( $id )[ 'position' ];
+
+        if ( !$this->partnersManager->isPositionFreeGeneric( $position, 'partners' ) && $position != $oldPosition ) {
+            Tools::showAlert( 'La position est déjà prise', 'alert-danger' );
+            header( 'Location: ' . URL . 'admin/partners/partners_page' );
+            return;
+        }
+
+        if ( !$this->partnersManager->updatePartnerDB( $id, $name, $link, $position ) ) {
+            Tools::showAlert( 'Erreur lors de la modification du partenaire', 'alert-danger' );
+        } else {
+            Tools::showAlert( 'Partenaire modifié avec succès', 'alert-success' );
+        }
+        header( 'Location: ' . URL . 'admin/partners/partners_page' );
+    
     }
 
     public function deletePartner( $id )

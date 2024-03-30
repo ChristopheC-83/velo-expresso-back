@@ -29,23 +29,36 @@ class PartnersManager extends MainManager
         return $partners;
     }
 
-    public function  getPartnerById($id_partner){
-        $req = "SELECT * FROM partners WHERE id_partner = :id_partner";
+    public function  getPartnerById($id){
+        $req = "SELECT * FROM partners WHERE id = :id";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":id_partner", $id_partner, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $partner = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
         return $partner;
+    }
+
+    public function  updatePartnerDB( $id, $name, $link, $position ) {
     
+        $req = "UPDATE partners SET name = :name, link = :link, position = :position WHERE id = :id";
+        $stmt = $this->getDB()->prepare($req);
+        $stmt->bindValue(":name", $name, PDO::PARAM_STR);
+        $stmt->bindValue(":link", $link, PDO::PARAM_STR);
+        $stmt->bindValue(":position", $position, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $isValidate = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $isValidate;
     
     }
 
-    public function  deletePartnerDB($id_partner)
+    public function  deletePartnerDB($id)
     {
-        $req = "DELETE FROM partners WHERE id_partner = :id_partner";
+        $req = "DELETE FROM partners WHERE id = :id";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":id_partner", $id_partner, PDO::PARAM_INT);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $isValidate = ($stmt->rowCount() > 0);
         $stmt->closeCursor();

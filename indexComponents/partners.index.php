@@ -22,6 +22,18 @@ switch ( $url[ 2 ] ) {
         $partnersController->addPartner( $name, $link, $position, $logo );
     }
     break;
+    case 'update_partner':
+    $id = Tools::secureHTML( $_POST[ 'id' ] );
+    $name = Tools::secureHTML( $_POST[ 'name' ] );
+    $link = Tools::secureHTML( $_POST[ 'link' ] );
+    $position = Tools::secureHTML( $_POST[ 'position' ] );
+    if ( empty( $name ) || empty( $link ) || empty( $position ) ) {
+        Tools::showAlert( 'Il faut remplir tous les champs', 'alert-danger' );
+        header( 'Location: ' . URL . 'admin/partners/partners_page' );
+    } else {
+        $partnersController->updatePartner( $id, $name, $link, $position );
+    }
+    break;
 
     case 'delete_partner':
     $partnersController->deletePartner( $_POST[ 'id' ] );
