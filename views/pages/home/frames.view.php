@@ -29,12 +29,12 @@
             <form action="<?= URL ?>admin/frames/delete_frame" method="POST"
                 onSubmit="return confirm('On confirme la suppression ?')">
                 <input type="hidden" name="id" value=<?= $frame['id'] ?>>
-                    <button class="btn btn-danger mt-3" type="submit">Supprimer le</button>
+                    <button class="btn btn-danger mt-3" type="submit">Supprimer le cadre</button>
             </form>
         </div>
     </div>
     <?php endforeach; ?>
-    <h2 class="text-center my-3 p-0">Ajout d'une image dans le frame</h2>
+    <h2 class="text-center my-3 p-0">Ajout d'un cadre</h2>
 
     <form action="<?= URL ?>admin/frames/add_frame" method="post" class="d-flex flex-column "
         enctype="multipart/form-data">

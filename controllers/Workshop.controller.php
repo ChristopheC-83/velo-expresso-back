@@ -87,10 +87,10 @@ class WorkshopController extends MainController
 
 
     // les taches
-    public function tasksPage($cat_name)
+    public function tasksPage($name)
     {
-        $category = $this->workshopManager->getCategoryByName($cat_name);
-        $tasks = $this->workshopManager->getTasksByCategory($cat_name);
+        $category = $this->workshopManager->getCategoryByName($name);
+        $tasks = $this->workshopManager->getTasksByCategory($name);
 
         $data_page = [
             "page_description" => "Page de l'atelier",
@@ -102,28 +102,30 @@ class WorkshopController extends MainController
         ];
         $this->functions->generatePage($data_page);
     }
-    public function sendNewTask($task_category, $task_name, $task_position, $task_price)
+    public function sendNewTask($task_category, $name, $position, $price)
     {
-        // if (!$this->workshopManager->isTaskByNameFree($task_name)) {
-        //     Tools::showAlert("La tache existe déjà", "alert-danger");
-        //     header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
-        //     return;
-        // }
-        if (!$this->workshopManager->isPositionTaskFree($task_position, $task_category)) {
-            Tools::showAlert("La position est déjà prise", "alert-danger");
-            header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
+
+        if (!$this->workshopManager->isNameFreeGeneric($name, "workshop")) {
+            Tools::showAlert("Ce nom est déjà pris, Merci d'en changer.", "alert-warning");
+            header('Location: ' . URL . 'admin/workshop/workshop/'.$task_category);
             return;
         }
-        if ($this->workshopManager->createNewTask($task_category, $task_name, $task_position, $task_price)) {
+        if (!$this->workshopManager->isPositionFreeGeneric($position, "workshop")) {
+            Tools::showAlert("Cette position est déjà prise, Merci d'en changer.", "alert-warning");
+            header('Location: ' . URL . 'admin/workshop/workshop/'.$task_category);
+            return;
+        }
+
+        if ($this->workshopManager->createNewTask($task_category, $name, $position, $price)) {
             Tools::showAlert("La tâche a bien été ajoutée", "alert-success");
         } else {
             Tools::showAlert("La tâche n'a pas été ajoutée", "alert-danger");
         }
         header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
     }
-    public function deleteTask($task_id, $task_category)
+    public function deleteTask($id, $task_category)
     {
-        if ($this->workshopManager->deleteTaskFromDB($task_id)) {
+        if ($this->workshopManager->deleteTaskFromDB($id)) {
             Tools::showAlert("La tache a bien été supprimée", "alert-success");
         } else {
             Tools::showAlert("La tache n'a pas été supprimée", "alert-danger");
@@ -133,20 +135,22 @@ class WorkshopController extends MainController
 
     public function  modifyTask($id, $new_name, $new_position, $new_price)
     {
-        $old_position = $this->workshopManager->getTaskById($id)['task_position'];
+        $old_position = $this->workshopManager->getTaskById($id)['position'];
         $task_category = $this->workshopManager->getTaskById($id)['task_category'];
-        $old_name = $this->workshopManager->getTaskById($id)['task_name'];
+        $old_name = $this->workshopManager->getTaskById($id)['name'];
 
-        // if (!$this->workshopManager->isTaskByNameFree($new_name) && $new_name !== $old_name) {
-        //     Tools::showAlert("La nom est déjà pris", "alert-danger");
-        //     header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
-        //     return;
-        // }
-        if (!$this->workshopManager->isPositionTaskFree($new_position, $task_category) && $new_position != $old_position) {
-            Tools::showAlert("La position est déjà prise", "alert-danger");
+
+        if (!$this->workshopManager->isNameFreeGeneric($new_name, "workshop") && $new_name != $old_name) {
+            Tools::showAlert("Ce nom est déjà pris, Merci d'en changer.", "alert-warning");
             header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
             return;
         }
+        if (!$this->workshopManager->isPositionFreeGeneric($new_position, "workshop") && $new_position != $old_position) {
+            Tools::showAlert("Cette position est déjà prise, Merci d'en changer.", "alert-warning");
+            header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
+            return;
+        }
+
         if ($this->workshopManager->updateTask($id, $new_name, $new_position, $new_price)) {
             Tools::showAlert("La tache a bien été modifiée", "alert-success");
         } else {

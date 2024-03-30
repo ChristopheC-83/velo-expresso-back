@@ -7,12 +7,14 @@
             <div class="d-flex flex-column my-4 border border-black border-3">
 
                 <div class="border">
-                    <h2 class="text-uppercase bg-secondary p-0 m-0"><?= $category['cat_name'] ?></h2>
+                    <a href="<?= URL  ?>admin/workshop/workshop/<?= $category['name']   ?>" class="text-light">
+                        <h3 class="text-uppercase bg-secondary p-0 m-0"><?= $category['name'] ?></h3>
+                    </a>
                 </div>
                 <?php foreach ($tasks as $task) : ?>
-                    <?php if ($task['task_category'] == $category['cat_name']) : ?>
+                    <?php if ($task['task_category'] == $category['name']) : ?>
                         <div class="d-flex align-items-center justify-content-between border">
-                            <p class="p-2 m-0 " ><?= $task['task_name'] ?></p>
+                            <p class="p-2 m-0 " ><?= $task['name'] ?></p>
                             <p class="p-2 m-0 " ><?= $task['task_price'] ?> €</p>
                         </div>
                     <?php endif; ?>

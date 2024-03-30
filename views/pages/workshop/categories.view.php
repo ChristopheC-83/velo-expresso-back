@@ -10,7 +10,7 @@
     <?php foreach ($categories as $category) : ?>
         <?php if (empty($_POST['id']) || $_POST['id'] != $category['id']) : ?>
             <div class="row w-100 border p-2">
-                <div class="col-5 text-capitalize"><a href="<?= URL ?>admin/workshop/<?= $category['name'] ?>"><?= $category['name'] ?></a></div>
+                <div class="col-5 text-capitalize"><a href="<?= URL ?>admin/workshop/workshop/<?= $category['name'] ?>"><?= $category['name'] ?></a></div>
                 <div class="col-3 text-center"><?= $category['position'] ?></div>
                 <div class="col-2 text-center text-secondary">
                     <form method="POST" action="">

@@ -103,7 +103,7 @@ class WorkshopManager extends MainManager
     public function createNewTask($task_category, $name, $position, $task_price)
     {
 
-        $req = "INSERT INTO workshop (task_category, name,task_pospositionition, task_price) VALUES (:task_category,:name, :position, :task_price)";
+        $req = "INSERT INTO workshop (task_category, name,position, task_price) VALUES (:task_category,:name, :position, :task_price)";
         $stmt = $this->getDB()->prepare($req);
         $stmt->bindValue(":task_category", $task_category, PDO::PARAM_STR);
         $stmt->bindValue(":name", $name, PDO::PARAM_STR);
@@ -179,13 +179,12 @@ class WorkshopManager extends MainManager
 
 
 
-    public function  updateTask($id, $new_name, $new_position, $new_price)
-    {
-        $req = "UPDATE workshop SET name = :new_name, position = :new_position, task_price = :new_price WHERE task_id = :id";
+    public function  updateTask($id, $name, $position, $task_price){
+        $req = "UPDATE workshop SET name = :name, position = :position, task_price = :task_price WHERE id = :id";
         $stmt = $this->getDB()->prepare($req);
-        $stmt->bindValue(":new_name", $new_name, PDO::PARAM_STR);
-        $stmt->bindValue(":new_position", $new_position, PDO::PARAM_INT);
-        $stmt->bindValue(":new_price", $new_price, PDO::PARAM_INT);
+        $stmt->bindValue(":name", $name, PDO::PARAM_STR);
+        $stmt->bindValue(":position", $position, PDO::PARAM_INT);
+        $stmt->bindValue(":task_price", $task_price, PDO::PARAM_INT);
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $isValidate = ($stmt->rowCount() > 0);

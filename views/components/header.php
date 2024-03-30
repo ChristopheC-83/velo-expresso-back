@@ -13,18 +13,22 @@
             <div class="d-flex flex-column justify-content-between  m-0 ">
                 <h3 class="w-100 text-black text-center m-0">Accueil</h3>
                 <div class=" w-100 d-flex flex-wrap justify-content-center">
-                    <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/slider/sliders_page" class="text-light text-decoration-none">Sliders</a>
-                    </button>
-                    <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/frames/frames_page" class="text-light text-decoration-none">Cadres</a>
-                    </button>
-                    <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/partners/partners_page" class="text-light text-decoration-none">Partenaires</a>
-                    </button>
-                    <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/opinions/opinions_page" class="text-light text-decoration-none">Avis</a>
-                    </button>
+                    <div class="d-flex">
+                        <button class="btn btn-secondary btn-lg text-light m-1">
+                            <a href="<?= URL ?>admin/slider/sliders_page" class="text-light text-decoration-none">Sliders</a>
+                        </button>
+                        <button class="btn btn-secondary btn-lg text-light m-1">
+                            <a href="<?= URL ?>admin/frames/frames_page" class="text-light text-decoration-none">Cadres</a>
+                        </button>
+                    </div>
+                    <div class="d-flex">
+                        <button class="btn btn-secondary btn-lg text-light m-1">
+                            <a href="<?= URL ?>admin/partners/partners_page" class="text-light text-decoration-none">Partenaires</a>
+                        </button>
+                        <button class="btn btn-secondary btn-lg text-light m-1">
+                            <a href="<?= URL ?>admin/opinions/opinions_page" class="text-light text-decoration-none">Avis</a>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="m-0 ">
