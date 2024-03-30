@@ -58,7 +58,7 @@ class RentalController extends MainController
 
         $rentalToUpdate = $this->rentalManager->getRentalById($id);
 
-        $data_page = [
+        $data_page = [ 
             "page_description" => "Page d'ajout d'une location",
             "page_title" => "VE | Ajout Location",
             "view" => "./views/pages/rental/modifyRental.view.php",

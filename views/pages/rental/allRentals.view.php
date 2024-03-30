@@ -37,9 +37,16 @@
 
             </div>
         </div>
-
         <?php endforeach; ?>
     </div>
+
+
+
+
+
+
+
+
     <h2 class="text-center mt-4 mb-2 p-0">Ajout d'une location</h2>
      <!-- ajout d'une location  -->
      <div class="container mt-5">
