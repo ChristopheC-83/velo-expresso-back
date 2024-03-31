@@ -22,7 +22,7 @@
                 <option value="">Choisir une marque</option>
                 <?php foreach ($allDatasFeatures as $feature) : ?>
                 <?php if($feature['feature'] === "brand"): ?>
-                <option value="<?= $feature['data'] ?>"><?= $feature['data'] ?></option>
+                <option value="<?= $feature['name'] ?>"><?= $feature['name'] ?></option>
                 <?php endif; ?>
                 <?php endforeach?>
             </select>
@@ -55,7 +55,7 @@
                 <option value="">Choisir un type</option>
                 <?php foreach ($allDatasFeatures as $feature) : ?>
                 <?php if($feature['feature'] === "bike_type"): ?>
-                <option value="<?= $feature['data'] ?>"><?= $feature['data'] ?></option>
+                <option value="<?= $feature['name'] ?>"><?= $feature['name'] ?></option>
                 <?php endif; ?>
                 <?php endforeach?>
             </select>
@@ -67,7 +67,7 @@
                 <option value="">Choisir une taille</option>
                 <?php foreach ($allDatasFeatures as $feature) : ?>
                 <?php if($feature['feature'] === "size"): ?>
-                <option value="<?= $feature['data'] ?>"><?= $feature['data'] ?></option>
+                <option value="<?= $feature['name'] ?>"><?= $feature['name'] ?></option>
                 <?php endif; ?>
                 <?php endforeach?>
             </select>
@@ -79,7 +79,7 @@
                 <option value="">Type de suspensions</option>
                 <?php foreach ($allDatasFeatures as $feature) : ?>
                 <?php if($feature['feature'] === "suspension"): ?>
-                <option value="<?= $feature['data'] ?>"><?= $feature['data'] ?></option>
+                <option value="<?= $feature['name'] ?>"><?= $feature['name'] ?></option>
                 <?php endif; ?>
                 <?php endforeach?>
             </select>
@@ -91,7 +91,7 @@
                 <option value="">Choisir le nombre de vitesses</option>
                 <?php foreach ($allDatasFeatures as $feature) : ?>
                 <?php if($feature['feature'] === "speeds_number"): ?>
-                <option value="<?= $feature['data'] ?>"><?= $feature['data'] ?></option>
+                <option value="<?= $feature['name'] ?>"><?= $feature['name'] ?></option>
                 <?php endif; ?>
                 <?php endforeach?>
             </select>
@@ -108,7 +108,7 @@
                 <option value="">Choisir le diamètre</option>
                 <?php foreach ($allDatasFeatures as $feature) : ?>
                 <?php if($feature['feature'] === "wheels_dim"): ?>
-                <option value="<?= $feature['data'] ?>"><?= $feature['data'] ?></option>
+                <option value="<?= $feature['name'] ?>"><?= $feature['name'] ?></option>
                 <?php endif; ?>
                 <?php endforeach?>
             </select>

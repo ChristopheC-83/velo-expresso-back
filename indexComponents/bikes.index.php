@@ -57,7 +57,6 @@ switch ( $url[ 2 ] ) {
             header( 'Location: ' . URL . 'admin/bikes/create_bike' );
     } else {
         $bikesController->sendNewBike( $infos_new_bike );
-        header( 'Location: ' . URL . 'admin/bikes/bikes_page' );
     }
     break;
 
