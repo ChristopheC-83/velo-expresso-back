@@ -177,6 +177,17 @@ class BikesController extends MainController
     
     }
 
+    public function updateBike2($bikeDatas){
+        if($this->bikesManager->updateBikeDB2($bikeDatas)){
+            Tools::showAlert("Le vélo a bien été modifié", "alert-success");
+            header('Location: ' . URL . 'admin/bikes/one_bike/' . $bikeDatas['bike_id']);
+        } else{
+            Tools::showAlert("Le vélo n'a pas pu être modifié", "alert-danger");
+            header('Location: ' . URL . 'admin/bikes/one_bike/' . $bikeDatas['bike_id']);
+        }
+    
+    }
+
     public function  sendBikes() {
 
         $bikes = $this->bikesManager->getAllVisibleBikes();

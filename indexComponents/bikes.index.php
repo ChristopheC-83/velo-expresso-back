@@ -85,12 +85,51 @@ switch ( $url[ 2 ] ) {
         if ( empty( $infos_new_picture[ 'name' ] )
             || empty( $infos_new_picture[ 'tmp_name' ] )
             || empty( $infos_new_picture[ 'size' ] ) ) {
-                Tools::showAlert( 'Il manque des informations essentielles', 'alert-danger' );
+                Tools::showAlert( 'Il manque des informations essentielles !!!', 'alert-danger' );
                 header( 'Location: ' . URL . 'admin/bikes/one_bike/' . $infos_new_picture[ 'bike_id' ] );
         } else {
             $bikesController->changePicture( $infos_new_picture );
         }
+        break;
 
+
+        case "update_bike2":
+            $bikeDatas=[
+                "bike_id"=>Tools::secureHTML($_POST["bike_id"]),
+                "bike_visibility"=>Tools::secureHTML($_POST["bike_visibility"]),
+                "bike_brand"=>Tools::secureHTML($_POST["bike_brand"]),
+                "bike_model"=>Tools::secureHTML($_POST["bike_model"]),
+                "bike_new"=>Tools::secureHTML($_POST["bike_new"]),
+                "bike_type"=>Tools::secureHTML($_POST["bike_type"]),
+                "bike_size"=>Tools::secureHTML($_POST["bike_size"]),
+                "bike_suspension"=>Tools::secureHTML($_POST["bike_suspension"]),
+                "bike_speeds_number"=>Tools::secureHTML($_POST["bike_speeds_number"]),
+                "bike_transmission"=>Tools::secureHTML($_POST["bike_transmission"]),
+                "bike_wheels_dim"=>Tools::secureHTML($_POST["bike_wheels_dim"]),
+                "bike_wheels"=>Tools::secureHTML($_POST["bike_wheels"]),
+                "bike_brake"=>Tools::secureHTML($_POST["bike_brake"]),
+                "bike_elec"=>Tools::secureHTML($_POST["bike_elec"]),
+                "bike_elec_detail"=>Tools::secureHTML($_POST["bike_elec_detail"]),
+                "bike_price"=>Tools::secureHTML($_POST["bike_price"]),
+                "bike_promo"=>Tools::secureHTML($_POST["bike_promo"]),
+                "bike_price_promo"=>Tools::secureHTML($_POST["bike_price_promo"]),
+                "bike_picture"=>Tools::secureHTML($_POST["bike_picture"]),
+                "bike_description"=>Tools::secureHTML($_POST["bike_description"]),
+                "bike_msg_perso"=>Tools::secureHTML($_POST["bike_msg_perso"]),
+            ];
+            if ( empty( $bikeDatas[ 'bike_brand' ] )
+            || empty( $bikeDatas[ 'bike_model' ] )
+            || empty( $bikeDatas[ 'bike_new' ] )
+            || empty( $bikeDatas[ 'bike_price' ] ) ) {
+                Tools::showAlert( 'Il manque des informations essentielles...', 'alert-danger' );
+                header( 'Location: ' . URL . 'admin/bikes/one_bike/'.$bikeDatas[ 'bike_id' ] );
+        } else {
+            $bikesController->updateBike2( $bikeDatas);
+        }
+            break;
+
+
+// case utilisé pour la page oneBikePage copy en en réserve
     case 'update_bike':
             $bike_id = Tools::secureHTML( $_POST[ 'bike_id' ] );
             $to_update = Tools::secureHTML( $_POST[ 'to_update' ] );

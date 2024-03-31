@@ -104,6 +104,57 @@ class BikesManager extends MainManager
         return $isValidate;
     }
 
+    public function updateBikeDB2($bikeDatas){ 
+        $req = 'UPDATE bikes SET 
+        bike_visibility = :bike_visibility,
+        bike_brand = :bike_brand,
+        bike_model = :bike_model,
+        bike_new = :bike_new,
+        bike_type = :bike_type,
+        bike_size = :bike_size,
+        bike_suspension = :bike_suspension,
+        bike_speeds_number = :bike_speeds_number,
+        bike_transmission = :bike_transmission,
+        bike_wheels_dim = :bike_wheels_dim,
+        bike_wheels = :bike_wheels,
+        bike_brake = :bike_brake,
+        bike_elec = :bike_elec,
+        bike_elec_detail = :bike_elec_detail,
+        bike_price = :bike_price,
+        bike_promo = :bike_promo,
+        bike_price_promo = :bike_price_promo,
+        bike_picture= :bike_picture,
+        bike_description = :bike_description,
+        bike_msg_perso = :bike_msg_perso
+        WHERE bike_id = :bike_id';
+        $stmt = $this->getDB()->prepare( $req );
+        $stmt->bindValue( ':bike_id', $bikeDatas[ 'bike_id' ], PDO::PARAM_INT );
+        $stmt->bindValue( ':bike_visibility', $bikeDatas[ 'bike_visibility' ], PDO::PARAM_INT );
+        $stmt->bindValue( ':bike_brand', $bikeDatas[ 'bike_brand' ], PDO::PARAM_STR );
+        $stmt->bindValue( ':bike_model', $bikeDatas[ 'bike_model' ], PDO::PARAM_STR );
+        $stmt->bindValue( ':bike_new', $bikeDatas[ 'bike_new' ], PDO::PARAM_STR );
+        $stmt->bindValue( ':bike_type', $bikeDatas[ 'bike_type' ], PDO::PARAM_STR );
+        $stmt->bindValue( ':bike_size', $bikeDatas[ 'bike_size' ], PDO::PARAM_STR );
+        $stmt->bindValue( ':bike_suspension', $bikeDatas[ 'bike_suspension' ], PDO::PARAM_STR );
+        $stmt->bindValue( ':bike_speeds_number', $bikeDatas[ 'bike_speeds_number' ], PDO::PARAM_STR );
+        $stmt->bindValue( ':bike_transmission', $bikeDatas[ 'bike_transmission' ], PDO::PARAM_STR );
+        $stmt->bindValue( ':bike_wheels_dim', $bikeDatas[ 'bike_wheels_dim' ], PDO::PARAM_STR );
+        $stmt->bindValue( ':bike_wheels', $bikeDatas[ 'bike_wheels' ], PDO::PARAM_STR );
+        $stmt->bindValue( ':bike_brake', $bikeDatas[ 'bike_brake' ], PDO::PARAM_STR );
+        $stmt->bindValue( ':bike_elec', $bikeDatas[ 'bike_elec' ], PDO::PARAM_INT );
+        $stmt->bindValue( ':bike_elec_detail', $bikeDatas[ 'bike_elec_detail' ], PDO::PARAM_STR );
+        $stmt->bindValue( ':bike_price', $bikeDatas[ 'bike_price' ], PDO::PARAM_INT );
+        $stmt->bindValue( ':bike_promo', $bikeDatas[ 'bike_promo' ], PDO::PARAM_INT );
+        $stmt->bindValue( ':bike_price_promo', $bikeDatas[ 'bike_price_promo' ], PDO::PARAM_INT );
+        $stmt->bindValue( ':bike_picture', $bikeDatas[ 'bike_picture' ], PDO::PARAM_STR );
+        $stmt->bindValue( ':bike_description', $bikeDatas[ 'bike_description' ], PDO::PARAM_STR );
+        $stmt->bindValue( ':bike_msg_perso', $bikeDatas[ 'bike_msg_perso' ], PDO::PARAM_STR );
+        $stmt->execute();
+        $isValidate = ( $stmt->rowCount() > 0 );
+        $stmt->closeCursor();
+        return $isValidate;    
+    }
+
     public function  getAllVisibleBikes(){
         $req = 'SELECT * FROM bikes WHERE bike_visibility = 1 ORDER BY bike_id DESC';
         $stmt = $this->getDB()->prepare( $req );
@@ -114,5 +165,6 @@ class BikesManager extends MainManager
     
     
     }
+
 
 }
