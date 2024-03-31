@@ -1,11 +1,11 @@
 <h1 class="text-center my-4"><u>Gestion des vélos</u></h1>
 <div class="container mt-3 d-flex flex-column justify-content-center align-items-center gap-2">
-    <a href="<?=URL?>admin/bikes/create_bike"><button class="btn btn-secondary fs-3">Créer un Vélo</button></a>
+    <!-- <a href="<?=URL?>admin/bikes/create_bike"><button class="btn btn-secondary fs-3">Créer un Vélo</button></a>
     <div class="d-flex flexMid gap-2">
         <a href="<?=URL?>admin/bikes/bikes_page"><button class="btn btn-secondary fs-3">Tous les vélos</button></a>
         <a href="<?=URL?>admin/bikes/new_bikes_page"><button class="btn btn-secondary fs-3">Les neufs</button></a>
         <a href="<?=URL?>admin/bikes/used_bikes_page"><button class="btn btn-secondary fs-3">Les occaz'</button></a>
-    </div>
+    </div> -->
 
     <div class="d-flex flex-row flex-wrap gap-2 w-100">
 

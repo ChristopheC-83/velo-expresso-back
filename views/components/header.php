@@ -3,74 +3,63 @@
         <h1 class="container text-light text-center fw-bold d-inline">Les données du site </h1>
     </a>
     <?php if (!empty($_SESSION['user_name'])) : ?>
-        <a href="<?= URL ?>admin/logout" class="btn btn-black text-white align-middle mb-1 ms-auto">Logout <?= $_SESSION['user_name']  ?></a>
+    <a href="<?= URL ?>admin/logout" class="btn btn-black text-white align-middle mb-1 ms-auto">Logout
+        <?= $_SESSION['user_name']  ?></a>
     <?php endif ?>
 </header>
 
 <?php if (!empty($_SESSION['user_name'])) : ?>
-    <div class="min-vw-100 p-2 p-sm-3 bg-info">
-        <div class="container d-flex justify-content-between flex-column flex-sm-row">
-            <div class="d-flex flex-column justify-content-between  m-0 ">
-                <h3 class="w-100 text-black text-center m-0">Accueil</h3>
-                <div class=" w-100 d-flex flex-wrap justify-content-center">
-                    <div class="d-flex">
-                        <button class="btn btn-secondary btn-lg text-light m-1">
-                            <a href="<?= URL ?>admin/slider/sliders_page" class="text-light text-decoration-none">Sliders</a>
-                        </button>
-                        <button class="btn btn-secondary btn-lg text-light m-1">
-                            <a href="<?= URL ?>admin/frames/frames_page" class="text-light text-decoration-none">Cadres</a>
-                        </button>
-                    </div>
-                    <div class="d-flex">
-                        <button class="btn btn-secondary btn-lg text-light m-1">
-                            <a href="<?= URL ?>admin/partners/partners_page" class="text-light text-decoration-none">Partenaires</a>
-                        </button>
-                        <button class="btn btn-secondary btn-lg text-light m-1">
-                            <a href="<?= URL ?>admin/opinions/opinions_page" class="text-light text-decoration-none">Avis</a>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="m-0 ">
-                <h3 class="w-100 text-black text-center m-0">Location</h3>
-                <div class="container d-flex justify-content-center">
-                    
-                    <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/rental/rentals_page" class="text-light text-decoration-none">Locations</a>
-                    </button>
-                    <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/rental/text_under_array_rentals" class="text-light text-decoration-none">Texte</a>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="container d-flex justify-content-between flex-column flex-sm-row">
-            <div class="m-0 ">
-                <h3 class="w-100 text-black text-center m-0">Atelier</h3>
-                <div class="container d-flex justify-content-center">
-                    <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/workshop/workshop_page" class="text-light text-decoration-none">Catégories</a>
-                    </button>
-                    <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/workshop/show_all_tasks" class="text-light text-decoration-none">Voir Tout</a>
-                    </button>
+<div class="d-flex w-100 flex-wrap justify-content-between ">
 
-                </div>
-            </div>
-            <div class="m-0">
-                <h3 class="w-100 text-black text-center m-0">Vélos</h3>
-                <div class="container d-flex justify-content-center">
-                    <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/features/features_page" class="text-light text-decoration-none">Caractéristiques</a>
-                    </button>
-                    <button class="btn btn-secondary btn-lg text-light m-1">
-                        <a href="<?= URL ?>admin/bikes/bikes_page" class="text-light text-decoration-none">Vélos</a>
-                    </button>
-                </div>
-            </div>
-        </div>
+    <div class="btn-group  m-1 flex-grow-1 ">
+        <button class="btn btn-success btn-lg dropdown-toggle " type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Accueil
+        </button>
+        <ul class="dropdown-menu ">
+            <li><a href="<?= URL ?>admin/slider/sliders_page" class="dropdown-item">Accueil - Sliders</a></li>
+            <li><a href="<?= URL ?>admin/frames/frames_page" class="dropdown-item">Accueil - Cadres</a></li>
+            <li><a href="<?= URL ?>admin/partners/partners_page" class="dropdown-item">Accueil - Partenaires</a></li>
+            <li><a href="<?= URL ?>admin/opinions/opinions_page" class="dropdown-item">Accueil - Avis</a></li>
+        </ul>
     </div>
+    <div class="btn-group    m-1  flex-grow-1 ">
+        <button class="btn btn-warning btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Location
+        </button>
+        <ul class="dropdown-menu ">
+            <li><a href="<?= URL ?>admin/rental/rentals_page" class="dropdown-item">Location - Locations</a></li>
+            <li><a href="<?= URL ?>admin/rental/text_under_array_rentals" class="dropdown-item">Location - Texte</a>
+            </li>
+        </ul>
+    </div>
+    <div class="btn-group    m-1 flex-grow-1 ">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Atelier
+        </button>
+        <ul class="dropdown-menu ">
+            <li><a href="<?= URL ?>admin/workshop/workshop_page" class="dropdown-item">Atelier - Catégories</a></li>
+            <li><a href="<?= URL ?>admin/workshop/show_all_tasks" class="dropdown-item">Atelier - Voir Tout</a></li>
+        </ul>
+    </div>
+    <div class="btn-group    m-1 flex-grow-1 ">
+        <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Vélos
+        </button>
+        <ul class="dropdown-menu ">
+            <li><a href="<?= URL ?>admin/features/features_page" class="dropdown-item">Vélos - Caractéristiques</a></li>
+            <li><a href="<?= URL ?>admin/bikes/bikes_page" class="dropdown-item">Vélos - Tous les Vélos</a></li>
+            <li><a href="<?= URL ?>admin/bikes/new_bikes_page" class="dropdown-item">Vélos - Les neufs</a></li>
+            <li><a href="<?= URL ?>admin/bikes/used_bikes_page" class="dropdown-item">Vélos - Les occasions</a></li>
+            <li><a href="<?= URL ?>admin/bikes/create_bike" class="dropdown-item">Vélos - Créer un vélo</a></li>
+        </ul>
+    </div>
+</div>
 
-   
+
+
 
 <?php endif ?>

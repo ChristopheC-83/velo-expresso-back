@@ -44,6 +44,7 @@
         <?php require_once("./views/components/footer.php"); ?>
 
         <script src="<?=URL?>public/javascript/app.js"></script>
+        <script src="<?=URL?>public/javascript/bootstrap.bundle.min.js"></script>
         <?php if (!empty($javascript)) : ?>
             <?php foreach ($javascript as $fichier_js) : ?>
                 <script src="<?= URL ?>public/javascript/<?= $fichier_js ?>"></script>
