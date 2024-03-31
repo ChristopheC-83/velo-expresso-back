@@ -14,12 +14,12 @@ switch ( $url[ 2 ] ) {
     // Tools::showArray( $_POST );
     $feature = Tools::secureHTML( $_POST[ 'feature' ] );
     $position = Tools::secureHTML( $_POST[ 'position' ] );
-    $data = Tools::secureHTML( $_POST[ 'data' ] );
-    if ( empty( $feature ) || empty( $position ) || empty( $data ) || $feature === 'Caractéristique' ) {
+    $name = Tools::secureHTML( $_POST[ 'name' ] );
+    if ( empty( $feature ) || empty( $position ) || empty( $name ) || $feature === 'Caractéristique' ) {
         Tools::showAlert( 'Il faut remplir les 3 champs !', 'alert-danger' );
         header( 'Location: ' . URL . 'admin/features/features_page' );
     } else {
-        $featuresController->sendNewFeatures( $feature, $position, $data );
+        $featuresController->sendNewFeatures( $feature, $position, $name );
     }
     break;
 
