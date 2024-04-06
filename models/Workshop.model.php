@@ -172,9 +172,9 @@ class WorkshopManager extends MainManager
         return $task;
     }
 
-    public function isPositionTaskFree($id, $task_category)
+    public function isPositionTaskFree($position, $task_category)
     {
-        return (empty($this->getTaskByPosition($id, $task_category)));
+        return (empty($this->getTaskByPosition($position, $task_category)));
     }
 
 

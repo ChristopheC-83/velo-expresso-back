@@ -145,7 +145,8 @@ class WorkshopController extends MainController
             header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
             return;
         }
-        if (!$this->workshopManager->isPositionFreeGeneric($new_position, "workshop") && $new_position != $old_position) {
+        // Position et categorie
+        if (!$this->workshopManager->isPositionTaskFree($new_position, $task_category) && $new_position != $old_position ) {
             Tools::showAlert("Cette position est déjà prise, Merci d'en changer.", "alert-warning");
             header('Location: ' . URL . 'admin/workshop/workshop/' . $task_category);
             return;
