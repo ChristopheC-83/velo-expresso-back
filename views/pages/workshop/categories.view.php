@@ -1,3 +1,5 @@
+<!-- gestion des cat de l'atelier -->
+
 <h1 class="text-center my-4"><u>Atelier</u></h1>
 <div class="container">
     <!-- <?= Tools::showArray($categories)  ?> -->

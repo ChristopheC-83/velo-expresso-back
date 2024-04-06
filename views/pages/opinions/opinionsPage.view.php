@@ -1,18 +1,23 @@
+<!--  Les avis à valider ou supprimer -->
+
 <h1 class="text-center my-4"><span class="bg-danger p-2 px-4 rounded-pill"><?=count($allOpinions)?></span><u> avis à valider</u></h1>
 <h3 class="text-center ">Ici les avis non validés</h3>
 <h3 class="text-center ">Non affichés sur le site</h3>
-
+<h5 class="text-center ">Un avis non validé pourrait être une réclamation.</h5>
+<h5 class="text-center ">un petit mail de prise de contact pourrait être très pro !</h5>
 <div class="container mt-3 d-flex flex-column justify-content-center align-items-center gap-4">
     
 
     <?php foreach ($allOpinions as $opinion) : ?>
     <?php if($opinion['validated'] === 0) : ?>
     <div class="d-flex flex-column bg-white border border-2 border-black rounded p-3" style="width:290px">
-            <div class="d-flex flex-column w-100">
+    <div class="d-flex flex-column w-100">
                 <div class="w-100 d-flex justify-content-between">
                     <h5><?=$opinion['name'] ?></h5>
                     <p class="text-secondary"><?=date("d/m/Y", strtotime($opinion['createdAt'] )) ?></p>
                 </div>
+                <p class="fw-light">mail : <?= $opinion['userEmail'] ?></p>
+                <hr>
                 <div class="rounded mb-3"><?=$opinion['message'] ?></div>
             </div>
             <form action="<?=URL?>admin/opinions/add_opinion/" method="post">

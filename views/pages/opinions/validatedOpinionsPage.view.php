@@ -1,3 +1,5 @@
+<!-- gestion des avis déjà validés -->
+
 <h1 class="text-center my-4"><u>Gestion des avis validés</u></h1>
 <h3 class="text-center ">Ici les avis validés</h3>
 <h3 class="text-center ">Visibles sur le site</h3>
@@ -12,6 +14,8 @@
                     <h5><?=$opinion['name'] ?></h5>
                     <p class="text-secondary"><?=date("d/m/Y", strtotime($opinion['createdAt'] )) ?></p>
                 </div>
+                <p >mail : <?= $opinion['userEmail'] ?></p>
+                <hr>
                 <div class="rounded mb-3"><?=$opinion['message'] ?></div>
             </div>
             <form action="<?=URL?>admin/opinions/update_opinion/" method="post">

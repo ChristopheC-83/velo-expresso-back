@@ -1,3 +1,5 @@
+<!-- Gestion des cadres au coeur de la page d'accueil -->
+
 <h1 class="text-center my-4"><u>Les Cadres</u></h1>
 <h2 class="text-center my-4">Liste & Ajout</h2>
 

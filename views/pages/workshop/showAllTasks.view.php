@@ -1,3 +1,5 @@
+<!-- Récap de toutes les taches en atelier -->
+
 <h1 class="text-center my-4"><u>L'atelier / Toutes les taches</u></h1>
 
 <div class="container">

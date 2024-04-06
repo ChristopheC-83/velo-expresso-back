@@ -1,3 +1,5 @@
+<!-- gestion des logos ds partenaires -->
+
 <h1 class="text-center my-4"><u>Les Partenaires</u></h1>
 <h2 class="text-center my-4">Liste & Ajout</h2>
 

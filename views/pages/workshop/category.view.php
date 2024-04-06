@@ -1,3 +1,5 @@
+<!-- Gestion des taches d'une cat en atelier -->
+
 <h1 class="text-center my-4"><u>Gestion de : <span class="text-capitalize"><?= $category['name'] ?></span></u></h1>
 
 <div class="container">

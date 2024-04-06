@@ -1,3 +1,5 @@
+<!-- Page d'accueil pour connexion de l'administrateur de la DB du magasin -->
+
 <div class="container pt-3">
 
     <div class="container row mx-auto">
