@@ -17,11 +17,11 @@
             selector: 'textarea#default'
         });
     </script>
-    
     <title><?=$page_title?></title>
 </head>
 
 <body class="d-flex flex-column min-vh-100 roboto-font bg-light">
+
     <div class="content flex-grow-1 d-flex flex-column overflow-x-hidden">
 
         <?php require_once("./views/components/header.php")  ?>
