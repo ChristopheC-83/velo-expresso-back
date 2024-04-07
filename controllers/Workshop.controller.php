@@ -40,7 +40,7 @@ class WorkshopController extends MainController
             return;
         }
         if (!$this->workshopManager->isPositionFreeGeneric($new_position,"workshop_categories")) {
-            Tools::showAlert("La position est déjà prise", "alert-danger");
+            Tools::showAlert("La position est déjà prise", "alert-warning");
             header('Location: ' . URL . 'admin/workshop/workshop_page');
             return;
         }
@@ -110,7 +110,7 @@ class WorkshopController extends MainController
             header('Location: ' . URL . 'admin/workshop/workshop/'.$task_category);
             return;
         }
-        if (!$this->workshopManager->isPositionFreeGeneric($position, "workshop")) {
+        if (!$this->workshopManager->isPositionTaskFree($position, $task_category) ) {
             Tools::showAlert("Cette position est déjà prise, Merci d'en changer.", "alert-warning");
             header('Location: ' . URL . 'admin/workshop/workshop/'.$task_category);
             return;
