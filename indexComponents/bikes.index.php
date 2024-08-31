@@ -41,7 +41,7 @@ switch ( $url[ 2 ] ) {
         'bike_price_promo' => Tools::secureHTML( $_POST[ 'bike_price_promo' ] ),
         'bike_description' => Tools::secureHTML( $_POST[ 'bike_description' ] ),
         'bike_msg_perso' => Tools::secureHTML( $_POST[ 'bike_msg_perso' ] ),
-        'bike_image_name' => $_FILES[ 'bike_picture' ][ 'name' ],
+        'bike_image_name' => str_replace(' ', '_', $_FILES['new_picture']['name']),
         'bike_image_tmp' => $_FILES[ 'bike_picture' ][ 'tmp_name' ],
         'bike_image_size' => $_FILES[ 'bike_picture' ][ 'size' ],
         "bike_picture" => ""
@@ -75,7 +75,7 @@ switch ( $url[ 2 ] ) {
     case 'change_picture':
         $infos_new_picture = [
             'bike_id' => Tools::secureHTML( $_POST[ 'bike_id' ] ),
-            'name' => $_FILES[ 'new_picture' ][ 'name' ],
+            'name' => str_replace(' ', '_', $_FILES['new_picture']['name']),
             'tmp_name' => $_FILES[ 'new_picture' ][ 'tmp_name' ],
             'size' => $_FILES[ 'new_picture' ][ 'size' ],
         ];
