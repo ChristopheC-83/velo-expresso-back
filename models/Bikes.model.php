@@ -107,6 +107,7 @@ class BikesManager extends MainManager
     public function updateBikeDB2($bikeDatas){ 
         $req = 'UPDATE bikes SET 
         bike_visibility = :bike_visibility,
+        bike_sold = :bike_sold,
         bike_brand = :bike_brand,
         bike_model = :bike_model,
         bike_new = :bike_new,
@@ -130,6 +131,7 @@ class BikesManager extends MainManager
         $stmt = $this->getDB()->prepare( $req );
         $stmt->bindValue( ':bike_id', $bikeDatas[ 'bike_id' ], PDO::PARAM_INT );
         $stmt->bindValue( ':bike_visibility', $bikeDatas[ 'bike_visibility' ], PDO::PARAM_INT );
+        $stmt->bindValue( ':bike_sold', $bikeDatas[ 'bike_sold' ], PDO::PARAM_INT );
         $stmt->bindValue( ':bike_brand', $bikeDatas[ 'bike_brand' ], PDO::PARAM_STR );
         $stmt->bindValue( ':bike_model', $bikeDatas[ 'bike_model' ], PDO::PARAM_STR );
         $stmt->bindValue( ':bike_new', $bikeDatas[ 'bike_new' ], PDO::PARAM_STR );

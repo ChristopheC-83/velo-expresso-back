@@ -96,6 +96,7 @@ switch ( $url[ 2 ] ) {
             $bikeDatas=[
                 "bike_id"=>Tools::secureHTML($_POST["bike_id"]),
                 "bike_visibility"=>Tools::secureHTML($_POST["bike_visibility"]),
+                "bike_sold"=>Tools::secureHTML($_POST["bike_sold"]),
                 "bike_brand"=>Tools::secureHTML($_POST["bike_brand"]),
                 "bike_model"=>Tools::secureHTML($_POST["bike_model"]),
                 "bike_new"=>Tools::secureHTML($_POST["bike_new"]),

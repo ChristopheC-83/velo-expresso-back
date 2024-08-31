@@ -28,6 +28,11 @@
                 <?php elseif($bike['bike_visibility'] == 1) : ?>
                 <h5 class="text-success">Vélo en ligne</h5>
                 <?php endif?>
+                <?php if($bike['bike_sold'] == 1) : ?>
+                <h5 class="text-danger">Vélo vendu</h5>
+                <?php elseif($bike['bike_sold'] == 0) : ?>
+                <h5 class="text-success">Vélo à la vente</h5>
+                <?php endif?>
                 <a href="<?=URL?>admin/bikes/one_bike/<?=$bike['bike_id']?>" class="btn btn-primary">Détail & Modif</a>
                 <form action="<?=URL?>admin/bikes/delete_bike" method="POST"
                     onSubmit="return confirm('On confirme la suppression ?')">

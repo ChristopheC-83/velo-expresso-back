@@ -33,6 +33,18 @@
             <?php endif?>
         </select>
         <hr>
+        <!-- Maj état vendu ou pas -->
+        <label for="bike_sold"><b>Vendu</b> sur site ?</label>
+        <select type="number" name="bike_sold" id="bike_sold" class="p-2 rounded mx-2" required>
+            <?php if($bike['bike_sold'] == 1) : ?>
+            <option value=1>oui</option>
+            <option value=0>non</option>
+            <?php else : ?>
+            <option value=0>non</option>
+            <option value=1>oui</option>
+            <?php endif?>
+        </select>
+        <hr>
         <!-- Maj Marque -->
         <label for="bike_brand">On change la <b>marque </b> ?</label><br>
         <select type="text" name="bike_brand" id="bike_brand" class="p-2 rounded" required>
